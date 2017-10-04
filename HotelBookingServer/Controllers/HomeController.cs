@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.IO;
 
 namespace HotelBookingServer.Controllers
 {
@@ -9,7 +10,7 @@ namespace HotelBookingServer.Controllers
         [HttpGet("index")]
         public IActionResult Index()
         {
-            return View("Views/Index.cshtml");
+            return File(new FileStream("wwwroot/index.html", FileMode.Open), "text/html");
         }
     }
 }
