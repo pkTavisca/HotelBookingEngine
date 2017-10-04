@@ -1,0 +1,64 @@
+﻿<html>
+<head>
+    <title>
+        TripAdvisor
+    </title>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link rel="shortcut icon" href="../Resources/hotelicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Css/indexstyle.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+  $(document).ready(function() {
+      $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+  $(document).ready(function() {
+      $("#datepicker2").datepicker({ dateFormat: 'yy-mm-dd' });
+  });
+    </script>
+</head>
+<body>
+    <div class="main-container">
+        <div class="first-container">
+            <header id="header">
+                <h1>
+                    <a href="">
+                        <img src="../Resources/logo.svg" alt="expedia" width="140" height="90" align="left" />
+                </h1>
+        </div>
+        <div class="second-container">
+            <nav>
+                <ul><a href="#">Contact Us</a></ul>
+            </nav>
+        </div>
+    </div>
+    </header>
+
+    <div style="border-radius:5px;padding:40px;" id="form-section">
+        <form>
+            <h2 class="padding-left">SEARCH HOTELS</h2>
+            <label for="fname">Going-to</label><br>
+            <input type="text" id="fname" name="firstname" placeholder="Destination,Hotel Name,LandMark..">
+            <span>
+                <br>
+                <fieldset class="columns-nested">
+                    <div class="In">
+                        <label for="Check-In">Check-In</label><br>
+                        <input type="text" name="Check-In" id="datepicker" placeholder="yyyy-mm-dd"><br>
+                    </div>
+                    <div class="Out">
+                        <label for="Check-Out">Check-Out</label><br>
+                        <input type="text" name="Check-Out" id="datepicker2" placeholder="yyyy-mm-dd">
+                    </div>
+                </fieldset>
+                <div class="xyz">
+                    <button><a href="">Search</a></button>
+                </div>
+        </form>
+    </div>
+</body>
+</html>
