@@ -2,10 +2,6 @@
 using HotelBookingServer.Contracts;
 using HotelBookingServer.Generators;
 using HotelBookingServer.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HotelBookingServer.Services
 {
