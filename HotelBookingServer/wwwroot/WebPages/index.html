@@ -14,10 +14,10 @@
     <script src="script.js"></script>
     <script>
   $(document).ready(function() {
-    $("#datepicker").datepicker();
+      $("#datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
   });
   $(document).ready(function() {
-    $("#datepicker2").datepicker();
+      $("#datepicker2").datepicker({ dateFormat: 'yy-mm-dd' });
   });
     </script>
 </head>
@@ -48,11 +48,11 @@
                 <fieldset class="columns-nested">
                     <div class="In">
                         <label for="Check-In">Check-In</label><br>
-                        <input type="text" name="Check-In" id="datepicker" placeholder="dd/mm/yyyy"><br>
+                        <input type="text" name="Check-In" id="datepicker" placeholder="yyyy-mm-dd"><br>
                     </div>
                     <div class="Out">
                         <label for="Check-Out">Check-Out</label><br>
-                        <input type="text" name="Check-Out" id="datepicker2" placeholder="dd/mm/yyyy">
+                        <input type="text" name="Check-Out" id="datepicker2" placeholder="yyyy-mm-dd">
                     </div>
                 </fieldset>
                 <div class="xyz">
