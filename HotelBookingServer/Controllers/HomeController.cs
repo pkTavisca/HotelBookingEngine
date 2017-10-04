@@ -2,12 +2,14 @@
 
 namespace HotelBookingServer.Controllers
 {
+    [Route("/")]
     public class HomeController : Controller
     {
         [HttpGet]
+        [HttpGet("index")]
         public IActionResult Index()
         {
-            return View();
+            return View("Views/Index.cshtml");
         }
     }
 }
