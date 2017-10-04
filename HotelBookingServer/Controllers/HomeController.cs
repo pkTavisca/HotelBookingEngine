@@ -10,7 +10,7 @@ namespace HotelBookingServer.Controllers
         [HttpGet("index")]
         public IActionResult Index()
         {
-            return File(new FileStream("wwwroot/index.html", FileMode.Open), "text/html");
+            return File(new FileStream("wwwroot/WebPages/index.html", FileMode.Open), "text/html");
         }
     }
 }
