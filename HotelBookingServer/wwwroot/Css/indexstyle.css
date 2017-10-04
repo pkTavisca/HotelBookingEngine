@@ -1,7 +1,7 @@
-body
-{
-	margin:0;
-
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 480px;
 }
 h1
 {
@@ -31,18 +31,17 @@ ul
     min-width: 1000px;
     height: 120px;
     z-index: 100;
- 
-	transition: background-color 0.6s ease-in-out;
+    transition: background-color 0.6s ease-in-out;
 	color:blue;
 }
-
-
 li 
 {
     float: left;
 	text-align:center;
 }
-a{
+
+a
+{
 	text-decoration:none;
 	float:left;
 }
@@ -145,8 +144,14 @@ article
 {
 	background-color:#666666;
 }
-#form-section{
-	background-image:url("../Resources/real.jpg");
+#form-section {
+    background-image: url("../Resources/real.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
 }
 #btn-style
 {
@@ -162,7 +167,6 @@ nav
 {
 	max-width:1300px;
 	background-color:#fff;
-	margin:40px auto 0 auto;
 	line-height:1.65;
     padding:0;
 	display:flex;
@@ -181,9 +185,9 @@ flex:1;
 order:2;
 }
 
-#fname
-{
-	width:60%;
+#fname {
+    width: 60%;
+    min-width: 179px;
 }
 
 #datepicker
@@ -194,18 +198,7 @@ order:2;
 {
 	width:180px;
 }
-#rooms
-{
-	width:80px;
-}
-#adults
-{
-	width:80px;
-}
-#children
-{
-	width:80px;
-}
+
 .xyz
 {
 	padding-bottom:30px;
@@ -238,22 +231,4 @@ fieldset
 {
 	float:left;
     padding-right:30px;
-}
-.column-room
-{
-	float:left;
-	padding-right:30px;
-	
-	
-}
-.column-adults
-{
-	float:left;
-	padding-right:30px;
-
-}
-.column-children
-{
-  float:left;
-  
 }
