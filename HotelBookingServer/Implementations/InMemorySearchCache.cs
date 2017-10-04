@@ -20,7 +20,7 @@ namespace HotelBookingServer.Implementations
 
         public SearchObject GetFromCache(string searchId)
         {
-            throw new NotImplementedException();
+            return _searches[searchId];
         }
     }
 }

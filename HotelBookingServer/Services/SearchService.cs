@@ -18,5 +18,10 @@ namespace HotelBookingServer.Services
             string searchGuid = _searchCache.AddToCache(searchObject);
             return searchGuid;
         }
+
+        public SearchObject GetSearchObject(string searchId)
+        {
+            return _searchCache.GetFromCache(searchId);
+        }
     }
 }
