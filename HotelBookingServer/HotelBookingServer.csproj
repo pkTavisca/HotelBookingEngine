@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="wwwroot\Resources\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Models\**" />
     <Content Remove="Models\**" />
     <EmbeddedResource Remove="Models\**" />
