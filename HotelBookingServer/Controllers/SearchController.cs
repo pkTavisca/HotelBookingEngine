@@ -20,5 +20,11 @@ namespace HotelBookingServer.Controllers
         {
             return _searchService.GetSearchObject(searchId);
         }
+
+        [HttpGet("getResults/{searchId}")]
+        public object GetResultsFromSearch(string searchId)
+        {
+            return _searchService.GetResults(searchId);
+        }
     }
 }

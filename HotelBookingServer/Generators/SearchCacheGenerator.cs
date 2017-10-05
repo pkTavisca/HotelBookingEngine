@@ -7,12 +7,12 @@ namespace HotelBookingServer.Generators
 {
     public static class SearchCacheGenerator
     {
-        private static Dictionary<SearchCacheType, ISearchCache> _generator = new Dictionary<SearchCacheType, ISearchCache>()
+        private static Dictionary<CacheType, ISearchCache> _generator = new Dictionary<CacheType, ISearchCache>()
         {
-            { SearchCacheType.InMemory,new InMemorySearchCache()}
+            { CacheType.InMemory,new InMemorySearchCache()}
         };
 
-        public static ISearchCache Generate(SearchCacheType searchCacheType)
+        public static ISearchCache Generate(CacheType searchCacheType)
         {
             return _generator[searchCacheType];
         }
