@@ -9,16 +9,21 @@ namespace HotelBookingServer.Implementations
 {
     public class InMemorySearchAutoSuggestCache : ISearchAutoSuggestCache
     {
-        private Dictionary<string, SearchAutosuggestObject> _cache = new Dictionary<string, SearchAutosuggestObject>();
+        private Dictionary<string, string> _cache = new Dictionary<string, string>();
 
-        public void AddToCache(string id, SearchAutosuggestObject searchAutosuggestObject)
+        public void AddToCache(string searchTerm, string searchAutosuggestObject)
         {
-            _cache[id] = searchAutosuggestObject;
+            _cache[searchTerm] = searchAutosuggestObject;
         }
 
-        public SearchAutosuggestObject GetFromCache(string id)
+        public bool Contains(string searchTerm)
         {
-            return _cache[id];
+            return _cache.ContainsKey(searchTerm);
+        }
+
+        public string GetFromCache(string searchTerm)
+        {
+            return _cache[searchTerm];
         }
     }
 }

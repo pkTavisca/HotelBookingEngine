@@ -8,7 +8,8 @@ namespace HotelBookingServer.Contracts
 {
     public interface ISearchAutoSuggestCache
     {
-        void AddToCache(string id, SearchAutosuggestObject searchAutosuggestObject);
-        SearchAutosuggestObject GetFromCache(string id);
+        void AddToCache(string searchTerm, string searchAutosuggestObject);
+        string GetFromCache(string searchTerm);
+        bool Contains(string searchTerm);
     }
 }

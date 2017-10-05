@@ -23,14 +23,14 @@ namespace HotelBookingServer.Services
         public string OnNewSearch(SearchObject searchObject)
         {
             string searchGuid = _searchCache.AddToCache(searchObject);
-            Task.Factory.StartNew(() => AddResultsToCache(searchObject, searchGuid));
             return searchGuid;
         }
 
-        private void AddResultsToCache(SearchObject searchObject, string searchGuid)
+        private void AddResultsToCache(string searchTerm)
         {
-            string autosuggestApiUrl = _appSettings.SearchAutosuggestApiBaseUrl + searchObject.SearchTerm;
+            string autosuggestApiUrl = _appSettings.SearchAutosuggestApiBaseUrl + searchTerm;
             string autosuggestResult = MakeApiCall(autosuggestApiUrl);
+            _searchAutoSuggestResultsCache.AddToCache(searchTerm, autosuggestResult);
         }
 
         private string MakeApiCall(string autosuggestApiUrl)
@@ -46,9 +46,12 @@ namespace HotelBookingServer.Services
             return _searchCache.GetFromCache(searchId);
         }
 
-        public object GetAutoSuggestResults(string searchId)
+        public string GetAutoSuggestResults(string searchTerm)
         {
-            return null;
+            if (_searchAutoSuggestResultsCache.Contains(searchTerm))
+                return _searchAutoSuggestResultsCache.GetFromCache(searchTerm);
+            AddResultsToCache(searchTerm);
+            return _searchAutoSuggestResultsCache.GetFromCache(searchTerm);
         }
     }
 }
