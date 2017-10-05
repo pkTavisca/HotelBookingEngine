@@ -5,6 +5,7 @@ using HotelBookingServer.Generators;
 using HotelBookingServer.Models;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
+using System.Net.Http;
 
 namespace HotelBookingServer.Services
 {
@@ -29,6 +30,15 @@ namespace HotelBookingServer.Services
         private void AddResultsToCache(SearchObject searchObject, string searchGuid)
         {
             string autosuggestApiUrl = _appSettings.SearchAutosuggestApiBaseUrl + searchObject.SearchTerm;
+            string autosuggestResult = MakeApiCall(autosuggestApiUrl);
+        }
+
+        private string MakeApiCall(string autosuggestApiUrl)
+        {
+            HttpClient client = new HttpClient();
+            HttpResponseMessage response = client.GetAsync(autosuggestApiUrl).GetAwaiter().GetResult();
+            var content = response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
+            return content;
         }
 
         public SearchObject GetSearchObject(string searchId)
