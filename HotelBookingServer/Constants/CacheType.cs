@@ -1,6 +1,6 @@
 ﻿namespace HotelBookingServer.Constants
 {
-    public enum SearchCacheType
+    public enum CacheType
     {
         InMemory,
         File
