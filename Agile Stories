@@ -1,0 +1,11 @@
+1)As a Customer, I want to build a HOTEL BOOKING APPLICATION so that my customers can book hotels online.
+2)As a Customer ,I want to search a hotel either by Hotel Name or by City Name so that search can be enhanced from my user perspective.
+3)As a Customer, I want  to show the list of the hotels available so that my customers can get list of options.
+4)As a Customer, I want to implement auto search feature so that my application becomes more convenient.
+5)As a customer I want to show the details of the selected hotel so that my customer can get all information regarding  that specific hotel.
+6)As a Customer, I want to implement PUSH NOTIFICATIONS feature so that it can notify my customers when some hotel is not available.
+7)As a customer, I want integrate Payment Gateway via Credit Card or third Party so that transactions can be easily done by customers in secure manner.
+8)As a customer I want to generate an Invoice in case of Successful  transactions so that My CUSTOMERS  can get proof of payment.
+9)As customer ,I want to maintain a Log of each transactions so that I have a record of a business and look forward to areas of improvement.
+10)As  a Customer, I wish to have a responsive UI, so that my user have a better booking experience.
+11)As a customer, I want all the notifications may be regarding  Booking Confirmation or reminders should be sent via email to my customers so that they are notified about their activities and interests.
