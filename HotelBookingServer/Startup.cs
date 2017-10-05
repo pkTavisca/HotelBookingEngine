@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using HotelBookingServer.Models;
 
 namespace HotelBookingServer
 {
@@ -29,6 +30,8 @@ namespace HotelBookingServer
         {
             // Add framework services.
             services.AddMvc();
+            var appSettings = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettings);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
