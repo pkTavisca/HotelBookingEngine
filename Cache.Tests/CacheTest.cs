@@ -5,10 +5,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace Cache.Tests
 {
     [TestClass]
-    public class UnitTest1
+    public class CacheTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Check_If_Add_To_Cache_Is_Working_Or_Not()
         {
             InMemorySearchCache inMemorySearchCache = new InMemorySearchCache(3);
             string id1 = inMemorySearchCache.AddToCache(new SearchObject());
