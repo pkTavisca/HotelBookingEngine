@@ -8,17 +8,42 @@ namespace HotelBookingServer.Implementations
     public class InMemorySearchCache : ISearchCache
     {
         private Dictionary<string, SearchObject> _searches = new Dictionary<string, SearchObject>();
+        private Queue<string> _keys;
+        private int _capacity;
 
+        public InMemorySearchCache()
+        {
+            _capacity = 10;
+        }
+        public InMemorySearchCache(int capacity)
+        {
+            this._keys = new Queue<string>(capacity);
+            this._capacity = capacity;
+            this._searches = new Dictionary<string, SearchObject>(capacity);
+        }
         public string AddToCache(SearchObject searchObject)
         {
+            if (_searches.Count == _capacity)
+            {
+                var oldestKey = _keys.Dequeue();
+                _searches.Remove(oldestKey);
+            }
+
             string guid = Guid.NewGuid().ToString();
             _searches.Add(guid, searchObject);
+            _keys.Enqueue(guid);
             return guid;
+        }
+        
+        public bool IsPresent(string id)
+        {
+            return _keys.Contains(id);
         }
 
         public SearchObject GetFromCache(string searchId)
         {
             return _searches[searchId];
         }
+
     }
 }
