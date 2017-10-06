@@ -29,17 +29,24 @@ $("#search-field").keyup(function () {
         contentType: "application/json",
         success: function (jsonresult) {
 
-            alert(parseit(jsonresult));
+            //alert(parseit(jsonresult));
+
+            $('#search-field').autocomplete({
+                minChars: 3,
+                source: parseit(jsonresult),
+                select: function (e, data) {
+                    console.log(data);
+                }
+            });
 
         }
     })
 })
 function parseit(jsonresult) {
-    var ooo
-    var outputf;
+    var ooo = [];
     jsonobject = JSON.parse(jsonresult);
     for (var i = 0; i < jsonobject[0].ItemList.length; i++) {
-        ooo += jsonobject[0].ItemList[i].Name + "\n";
+        ooo.push({ value: jsonobject[0].ItemList[i].CulturedText, data: jsonobject[0].ItemList[i] });
     }
     return ooo;
 }
