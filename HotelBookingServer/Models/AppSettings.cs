@@ -8,5 +8,6 @@ namespace HotelBookingServer.Models
     public class AppSettings
     {
         public string SearchAutosuggestApiBaseUrl { get; set; }
+        public string HotelSessionId { get; set; }
     }
 }
