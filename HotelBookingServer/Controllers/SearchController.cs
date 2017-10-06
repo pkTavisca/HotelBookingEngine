@@ -2,6 +2,8 @@
 using HotelBookingServer.Models;
 using HotelBookingServer.Services;
 using Microsoft.Extensions.Options;
+using System.Collections.Generic;
+using System;
 
 namespace HotelBookingServer.Controllers
 {
@@ -9,7 +11,6 @@ namespace HotelBookingServer.Controllers
     public class SearchController : Controller
     {
         private SearchService _searchService;
-
         public SearchController(IOptions<AppSettings> appSettings)
         {
             _searchService = new SearchService(appSettings);
