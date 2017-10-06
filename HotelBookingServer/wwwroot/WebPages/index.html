@@ -10,16 +10,16 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../Css/style.css" />
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 
     <script>
         $(document).ready(function () {
-            $("#ci-datepicker").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#ci-datepicker").datepicker({ dateFormat: 'yy-mm-dd',minDate:0 });
         });
         $(document).ready(function () {
-            $("#co-datepicker2").datepicker({ dateFormat: 'yy-mm-dd' });
+            $("#co-datepicker2").datepicker({ dateFormat: 'yy-mm-dd',minDate:1});
         });
     </script>
 </head>
@@ -53,11 +53,11 @@
                     <fieldset class="columns-nested">
                         <div class="In">
                             <label>Check-In</label><br>
-                            <input type="text" name="Check-In" id="ci-datepicker" placeholder="yyyy-mm-dd"><br>
+                            <input type="text" name="Check-In" id="ci-datepicker" placeholder="yyyy-mm-dd" required><br>
                         </div>
                         <div class="Out">
                             <label for="Check-Out">Check-Out</label><br>
-                            <input type="text" name="Check-Out" id="co-datepicker2" placeholder="yyyy-mm-dd">
+                            <input type="text" name="Check-Out" id="co-datepicker2" placeholder="yyyy-mm-dd" required>
                         </div>
                     </fieldset>
                     <div class="button-padding">
