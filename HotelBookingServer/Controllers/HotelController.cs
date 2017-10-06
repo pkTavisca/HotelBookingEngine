@@ -18,12 +18,12 @@ namespace HotelBookingServer.Controllers
         }
 
         [HttpGet("get")]
-        public string GetHotelDetails()
+        public HotelSearchRS GetHotelDetails()
         {
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
             var result = hotelEngineClient.HotelAvailAsync(BuildSearchRequest()).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
-            return result.ServiceStatus.Status.ToString();
+            return result;
         }
 
         private HotelSearchRQ BuildSearchRequest()
@@ -104,7 +104,7 @@ namespace HotelBookingServer.Controllers
             hotelSearchCriterion.PriceCurrencyCode = "USD";
             hotelSearchCriterion.Location = new Location()
             {
-                CodeContext = LocationCodeContext.City,
+                CodeContext = LocationCodeContext.GeoCode,
                 GeoCode = new GeoCode() { Latitude = 36.11093f, Longitude = -115.16935f },
                 GmtOffsetMinutes = 0,
                 Id = 0,
@@ -124,8 +124,35 @@ namespace HotelBookingServer.Controllers
                     Quantity = 2
                 }
             };
-            hotelSearchCriterion.Location = new Location();
-
+            hotelSearchCriterion.RoomOccupancyTypes = new RoomOccupancyType[1]
+            {
+                new RoomOccupancyType()
+                {
+                    PaxQuantities =new PassengerTypeQuantity[]
+                    {
+                        new PassengerTypeQuantity()
+                        {
+                            Ages = new int[2]
+                            {
+                               30,30
+                            },
+                            PassengerType = PassengerType.Adult,
+                            Quantity = 2
+                        }
+                    }
+                }
+            };
+            hotelSearchCriterion.ProcessingInfo = new HotelSearchProcessingInfo()
+            {
+                DisplayOrder = HotelDisplayOrder.ByRelevanceScoreDescending
+            };
+            hotelSearchCriterion.NoOfRooms = 1;
+            hotelSearchCriterion.StayPeriod = new DateTimeSpan()
+            {
+                Duration = 0,
+                End = new DateTime(2017, 10, 26),
+                Start = new DateTime(2017, 10, 25)
+            };
             return hotelSearchCriterion;
         }
     }
