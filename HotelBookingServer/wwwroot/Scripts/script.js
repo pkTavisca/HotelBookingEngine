@@ -36,7 +36,7 @@ $("button").click(function () {
     var ci = $("#ci-datepicker")[0].value;
     var co = $("#co-datepicker2")[0].value;
     var data = {
-        "searchterm": term,
+        "searchterm": JSON.stringify(term),
         "checkin": ci,
         "checkout": co
     }
