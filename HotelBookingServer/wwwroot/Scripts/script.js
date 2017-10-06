@@ -1,25 +1,5 @@
-﻿$("button").click(function () {
-    var term = $("#search-field")[0].value;
-    var ci = $("#ci-datepicker")[0].value;
-    var co = $("#co-datepicker2")[0].value;
-    var data = {
-        "searchterm": term,
-        "checkin": ci,
-        "checkout": co
-    }
-    var datam = JSON.stringify(data);
-    $.ajax({
-        url: '/api/search/new',
-        type: 'post',
-        contentType: "application/json",
-        success: function (result) {
-            alert(result);
-        },
-        data: datam
-    });
-});
-
-
+﻿
+var datatobesend;
 var jsonobject;
 $("#search-field").keyup(function () {
     var search = $("#search-field")[0].value;
@@ -34,8 +14,9 @@ $("#search-field").keyup(function () {
             $('#search-field').autocomplete({
                 minChars: 3,
                 source: parseit(jsonresult),
-                select: function (e, data) {
-                    console.log(data);
+                select: function (e, mdata) {
+                    datatobesend = mdata;
+                    console.log(mdata);
                 }
             });
 
@@ -50,3 +31,25 @@ function parseit(jsonresult) {
     }
     return ooo;
 }
+$("button").click(function () {
+    var term = datatobesend;
+    var ci = $("#ci-datepicker")[0].value;
+    var co = $("#co-datepicker2")[0].value;
+    var data = {
+        "searchterm": term,
+        "checkin": ci,
+        "checkout": co
+    }
+    var datam = JSON.stringify(data);
+    console.log(datam);
+    $.ajax({
+        url: '/api/search/new',
+        type: 'post',
+        contentType: "application/json",
+        success: function (result) {
+            alert(result);
+        },
+        data: datam
+    });
+});
+
