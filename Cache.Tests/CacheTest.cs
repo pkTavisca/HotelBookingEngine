@@ -15,5 +15,12 @@ namespace Cache.Tests
             string id2 = inMemorySearchCache.AddToCache(new SearchObject());
             Assert.IsTrue(inMemorySearchCache.IsPresent(id1));
         }
+        [TestMethod]
+        public void Check_If_Add_To_AutoSuggest_Cache_Is_Working_Or_Not()
+        {
+            InMemorySearchAutoSuggestCache inmemorysearchautosuggestcache = new InMemorySearchAutoSuggestCache(2);
+             inmemorysearchautosuggestcache.AddToCache("PU","Pune");
+            Assert.IsTrue(inmemorysearchautosuggestcache.Contains("PU"));
+        }
     }
 }
