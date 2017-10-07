@@ -12,5 +12,11 @@ namespace HotelBookingServer.Controllers
         {
             return File(new FileStream("wwwroot/WebPages/index.html", FileMode.Open), "text/html");
         }
+
+        [HttpGet("hotelListing")]
+        public IActionResult GetHotelListingPage()
+        {
+            return File(new FileStream("wwwroot/WebPages/hotel-listing.html", FileMode.Open), "text/html");
+        }
     }
 }
