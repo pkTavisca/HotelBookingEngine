@@ -15,20 +15,38 @@ namespace HotelBookingServer.Services
         public HotelSearchRS GetHotelDetails()
         {
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1));
+            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger());
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
             return result;
         }
 
-        private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, int noOfRooms = 1)
+        private PassengerTypeQuantity[] GetDefaultPassenger()
+        {
+            return
+            new PassengerTypeQuantity[]
+                {
+                    new PassengerTypeQuantity()
+                    {
+                        Ages = new int[1]
+                        {
+                           20
+                        },
+                        PassengerType = PassengerType.Adult,
+                        Quantity = 1
+                    }
+                };
+        }
+
+        private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
+            int noOfRooms = 1, float latitude = 0, float longitude = 0)
         {
             return new HotelSearchRQ
             {
                 ResultRequested = ResponseType.Complete,
                 Filters = SetHotelFilters(),
                 SessionId = _appSettings.HotelSessionId,
-                HotelSearchCriterion = SetSearchCriterion(noOfRooms, start, end),
+                HotelSearchCriterion = SetSearchCriterion(noOfRooms, start, end, passengers, latitude, longitude),
                 PagingInfo = SetPagingInfo(),
             };
         }
@@ -57,7 +75,8 @@ namespace HotelBookingServer.Services
             return hotelFilters;
         }
 
-        private HotelSearchCriterion SetSearchCriterion(int noOfRooms, DateTime start, DateTime end)
+        private HotelSearchCriterion SetSearchCriterion(int noOfRooms, DateTime start, DateTime end,
+            PassengerTypeQuantity[] passengers, float latitude, float longitude)
         {
             HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion();
             hotelSearchCriterion.Attributes = new StateBag[]
@@ -100,41 +119,19 @@ namespace HotelBookingServer.Services
             hotelSearchCriterion.Location = new Location()
             {
                 CodeContext = LocationCodeContext.GeoCode,
-                GeoCode = new GeoCode() { Latitude = 36.11093f, Longitude = -115.16935f },
-                GmtOffsetMinutes = 0,
-                Id = 0,
-                Name = "Las Vegas",
+                GeoCode = new GeoCode() { Latitude = latitude, Longitude = longitude },
                 Radius = new Distance()
                 {
-                    Amount = 30,
-                    From = LocationCodeContext.City,
+                    Amount = 10,
+                    From = LocationCodeContext.GeoCode,
                     Unit = DistanceUnit.mi
                 },
-            };
-            hotelSearchCriterion.Guests = new PassengerTypeQuantity[] {
-                new PassengerTypeQuantity()
-                {
-                    Ages= new int[]{20,20},
-                    PassengerType = PassengerType.Adult,
-                    Quantity = 2
-                }
             };
             hotelSearchCriterion.RoomOccupancyTypes = new RoomOccupancyType[1]
             {
                 new RoomOccupancyType()
                 {
-                    PaxQuantities =new PassengerTypeQuantity[]
-                    {
-                        new PassengerTypeQuantity()
-                        {
-                            Ages = new int[2]
-                            {
-                               30,30
-                            },
-                            PassengerType = PassengerType.Adult,
-                            Quantity = 2
-                        }
-                    }
+                    PaxQuantities = passengers
                 }
             };
             hotelSearchCriterion.ProcessingInfo = new HotelSearchProcessingInfo()
