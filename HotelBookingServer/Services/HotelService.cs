@@ -7,7 +7,6 @@ namespace HotelBookingServer.Services
     public class HotelService
     {
         private AppSettings _appSettings;
-
         public HotelService(AppSettings appSettings)
         {
             _appSettings = appSettings;
@@ -16,19 +15,20 @@ namespace HotelBookingServer.Services
         public HotelSearchRS GetHotelDetails()
         {
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            var result = hotelEngineClient.HotelAvailAsync(BuildSearchRequest()).GetAwaiter().GetResult();
+            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1));
+            var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
             return result;
         }
 
-        private HotelSearchRQ BuildSearchRequest()
+        private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, int noOfRooms = 1)
         {
             return new HotelSearchRQ
             {
                 ResultRequested = ResponseType.Complete,
                 Filters = SetHotelFilters(),
                 SessionId = _appSettings.HotelSessionId,
-                HotelSearchCriterion = SetSearchCriterion(),
+                HotelSearchCriterion = SetSearchCriterion(noOfRooms, start, end),
                 PagingInfo = SetPagingInfo(),
             };
         }
@@ -57,7 +57,7 @@ namespace HotelBookingServer.Services
             return hotelFilters;
         }
 
-        private HotelSearchCriterion SetSearchCriterion()
+        private HotelSearchCriterion SetSearchCriterion(int noOfRooms, DateTime start, DateTime end)
         {
             HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion();
             hotelSearchCriterion.Attributes = new StateBag[]
@@ -141,12 +141,12 @@ namespace HotelBookingServer.Services
             {
                 DisplayOrder = HotelDisplayOrder.ByRelevanceScoreDescending
             };
-            hotelSearchCriterion.NoOfRooms = 1;
+            hotelSearchCriterion.NoOfRooms = noOfRooms;
             hotelSearchCriterion.StayPeriod = new DateTimeSpan()
             {
-                Duration = 0,
-                End = new DateTime(2017, 10, 26),
-                Start = new DateTime(2017, 10, 25)
+                End = end,
+                Start = start,
+                Duration = (int)Math.Ceiling(end.Subtract(start).TotalDays)
             };
             return hotelSearchCriterion;
         }
