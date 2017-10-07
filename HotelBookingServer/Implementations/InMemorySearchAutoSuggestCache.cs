@@ -21,7 +21,15 @@ namespace HotelBookingServer.Implementations
 
         public void AddToCache(string searchTerm, string searchAutosuggestObject)
         {
+
+            if (_cache.Count == _size)
+            {
+                var oldestKey = _storedcache.Dequeue();
+                _cache.Remove(oldestKey);
+            }
             _cache[searchTerm] = searchAutosuggestObject;
+            _storedcache.Enqueue(searchTerm);
+
         }
 
         public bool Contains(string searchTerm)
