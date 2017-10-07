@@ -1,28 +1,27 @@
-<!doctype html>
-<html>
+<!Doctype html>
+<html lang="en">
 <head>
-
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width" ,intial-scale=1.0,minimum-scale =1.0">
+    <title>Hotel Listings</title>
+    <link rel="type/stylesheet" href="../Css/listing-style.css">
 </head>
-
 <body>
 
-  <h1>Hotel List page</h1>
-
-  <div id="hotelList-container">
-  </div>
- 
-  <script id="hotel-item" type="text/x-handlebars-template">
-    {{#each this}} 
-    <div style="border:solid 1px gray;margin-bottom:30px">
-      <img src="{{image}}" />
-      <h3>{{name}}</h3>
-      <h3>{{address}}</h3>
-    </div>
- {{/each}}
-  </script>
-
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-  <script src="listing-js.js" type=""></script>
+    <h1>List of Hotels</h1>
+    <ul class="hotel-list-container"></ul>
+    <script id="hotel-list-template" type="text/x-handlebars-template">
+        {{#itineraries}}
+        <li class="itinerary">
+            <p>Name : {{hotelProperty.city}}</p>
+            <p>Country : {{hotelProperty.city.country}}</p>
+            <p>City : {{hotelProperty.city.name}}</p>
+        </li>
+        {{/itineraries}}
+    </script>
+    <script src="../Scripts/jquery-3.2.1.min.js"></script>
+    <script src="../Scripts/handlebars-v4.0.10.js"></script>
+    <script src="../Scripts/listing-script.js"></script>
 </body>
 </html>
