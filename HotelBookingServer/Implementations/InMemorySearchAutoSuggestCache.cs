@@ -10,6 +10,14 @@ namespace HotelBookingServer.Implementations
     public class InMemorySearchAutoSuggestCache : ISearchAutoSuggestCache
     {
         private Dictionary<string, string> _cache = new Dictionary<string, string>();
+        private Queue<string> _storedcache;
+        private int _size;
+        public InMemorySearchAutoSuggestCache(int size=1000)
+        {
+            _size = size;
+            _cache = new Dictionary<string, string>(_size);
+            _storedcache = new Queue<string>(_size);
+        }
 
         public void AddToCache(string searchTerm, string searchAutosuggestObject)
         {
