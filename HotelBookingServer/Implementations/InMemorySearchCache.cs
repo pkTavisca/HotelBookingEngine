@@ -11,16 +11,13 @@ namespace HotelBookingServer.Implementations
         private Queue<string> _keys;
         private int _capacity;
 
-        public InMemorySearchCache()
+        public InMemorySearchCache(int capacity = 1000)
         {
-            _capacity = 10;
+            _capacity = capacity;
+            _keys = new Queue<string>(_capacity);
+            _searches = new Dictionary<string, SearchObject>(_capacity);
         }
-        public InMemorySearchCache(int capacity)
-        {
-            this._keys = new Queue<string>(capacity);
-            this._capacity = capacity;
-            this._searches = new Dictionary<string, SearchObject>(capacity);
-        }
+
         public string AddToCache(SearchObject searchObject)
         {
             if (_searches.Count == _capacity)
@@ -34,10 +31,10 @@ namespace HotelBookingServer.Implementations
             _keys.Enqueue(guid);
             return guid;
         }
-        
+
         public bool IsPresent(string id)
         {
-            return _keys.Contains(id);
+            return _searches.ContainsKey(id);
         }
 
         public SearchObject GetFromCache(string searchId)
