@@ -39,7 +39,7 @@ namespace HotelBookingServer.Services
         }
 
         private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
-            int noOfRooms = 1, float latitude = 0, float longitude = 0)
+            int noOfRooms = 1, float latitude = 42.3601f, float longitude = -71.0589f)
         {
             return new HotelSearchRQ
             {
@@ -144,6 +144,15 @@ namespace HotelBookingServer.Services
                 End = end,
                 Start = start,
                 Duration = (int)Math.Ceiling(end.Subtract(start).TotalDays)
+            };
+            hotelSearchCriterion.Guests = new PassengerTypeQuantity[]
+            {
+                new PassengerTypeQuantity()
+                {
+                    Ages = new int[1]{20 },
+                    PassengerType = PassengerType.Adult,
+                    Quantity = 1
+                }
             };
             return hotelSearchCriterion;
         }
