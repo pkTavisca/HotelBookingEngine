@@ -15,7 +15,7 @@ $.ajax({
 function hotelAjaxCall() {
     $.ajax({
         type: "GET",
-        url: '../api/hotel/get/hotel/' + searchResults.Latitude + "/" + searchResults.Longitude,
+        url: '../api/hotel/get/' + searchResults.SearchType + '/' + searchResults.Latitude + '/' + searchResults.Longitude,
         success: onSuccess
     });
 }
