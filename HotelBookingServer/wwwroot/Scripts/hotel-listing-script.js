@@ -21,6 +21,7 @@ function hotelAjaxCall() {
 }
 
 function onSuccess(result) {
+    $("#loading-icon").hide();
     var hotelListHtml = "";
     for (itinerary of result.itineraries) {
         if (itinerary.itineraryType !== "Hotel") continue;
