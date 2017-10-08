@@ -6,7 +6,7 @@ var searchResults;
 $.ajax({
     type: "GET",
     url: '../api/search/get/' + guid,
-    success: function (result) {
+    success: function(result) {
         searchResults = JSON.parse(result.searchTerm).item.data;
         hotelAjaxCall();
     }
@@ -32,12 +32,14 @@ function onSuccess(result) {
         i++;
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
-        htmlContainer.append("<div class='somediv'>" + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " + itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country + " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " + itinerary.hotelProperty.address.addressLine1 + "</p>" + "</div>");
-        for (imageUrl of itinerary.hotelProperty.mediaContent) {
-            htmlContainer.append('<img src="' + imageUrl.url + '" />')
+         for (imageUrl of itinerary.hotelProperty.mediaContent) {
+             htmlContainer.append("<div class='somediv'>" + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " + itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country + " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " + itinerary.hotelProperty.address.addressLine1 + "</p>" + '<img src="' + imageUrl.url + '" />'+"</div>");
+       
+          
         }
+       
     }
     $("#hotel-list").html(htmlContainer);
-
+   
 
 }
