@@ -1,7 +1,6 @@
 ﻿using HotelBookingServer.Models;
 using HotelEngineServiceReference;
 using System;
-
 namespace HotelBookingServer.Services
 {
     public class HotelService
@@ -11,18 +10,16 @@ namespace HotelBookingServer.Services
         {
             _appSettings = appSettings;
         }
-
         public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
         {
             float latitude = float.Parse(lat);
             float longitude = float.Parse(lon);
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger(), 1, latitude, longitude);
+            var searchRequest = BuildSearchRequest(type, DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger(), 1, latitude, longitude);
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
             return result;
         }
-
         private PassengerTypeQuantity[] GetDefaultPassenger()
         {
             return
@@ -39,8 +36,7 @@ namespace HotelBookingServer.Services
                     }
                 };
         }
-
-        private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
+        private HotelSearchRQ BuildSearchRequest(string searchType, DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
             int noOfRooms = 1, float latitude = 19.0760f, float longitude = 72.8777f)
         {
             return new HotelSearchRQ
@@ -48,11 +44,10 @@ namespace HotelBookingServer.Services
                 ResultRequested = ResponseType.Complete,
                 Filters = SetHotelFilters(),
                 SessionId = Guid.NewGuid().ToString(),
-                HotelSearchCriterion = SetSearchCriterion(noOfRooms, start, end, passengers, latitude, longitude),
+                HotelSearchCriterion = SetSearchCriterion(searchType, noOfRooms, start, end, passengers, latitude, longitude),
                 PagingInfo = SetPagingInfo(),
             };
         }
-
         private PagingInfo SetPagingInfo()
         {
             return new PagingInfo()
@@ -64,7 +59,6 @@ namespace HotelBookingServer.Services
                 TotalResults = 0
             };
         }
-
         private HotelFilter[] SetHotelFilters()
         {
             HotelFilter[] hotelFilters = new HotelFilter[]
@@ -76,11 +70,13 @@ namespace HotelBookingServer.Services
             };
             return hotelFilters;
         }
-
-        private HotelSearchCriterion SetSearchCriterion(int noOfRooms, DateTime start, DateTime end,
+        private HotelSearchCriterion SetSearchCriterion(string searchType, int noOfRooms, DateTime start, DateTime end,
             PassengerTypeQuantity[] passengers, float latitude, float longitude)
         {
             HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion();
+            HotelDisplayOrder displayOrder;
+            if (searchType.ToLowerInvariant().Equals("hotel")) displayOrder = HotelDisplayOrder.DistanceAscending;
+            else displayOrder = HotelDisplayOrder.ByRelevanceScoreDescending;
             hotelSearchCriterion.Attributes = new StateBag[]
             {
                 new StateBag() { Name= "API_SESSION_ID",Value= "bf453bd0-8de8-417c-bccf-c6b8d50d6ad6" },
@@ -124,7 +120,7 @@ namespace HotelBookingServer.Services
                 GeoCode = new GeoCode() { Latitude = latitude, Longitude = longitude },
                 Radius = new Distance()
                 {
-                    Amount = 10,
+                    Amount = displayOrder == HotelDisplayOrder.DistanceAscending ? 5 : 50,
                     From = LocationCodeContext.GeoCode,
                     Unit = DistanceUnit.mi
                 },
@@ -138,7 +134,7 @@ namespace HotelBookingServer.Services
             };
             hotelSearchCriterion.ProcessingInfo = new HotelSearchProcessingInfo()
             {
-                DisplayOrder = HotelDisplayOrder.ByRelevanceScoreDescending
+                DisplayOrder = displayOrder
             };
             hotelSearchCriterion.NoOfRooms = noOfRooms;
             hotelSearchCriterion.StayPeriod = new DateTimeSpan()
