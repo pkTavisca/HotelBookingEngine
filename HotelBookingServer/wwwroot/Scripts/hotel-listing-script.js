@@ -1,6 +1,6 @@
 ﻿$.ajax({
     type: "GET",
-    url: 'api/hotel/get',
+    url: '../api/hotel/get',
     success: onSuccess
 });
 

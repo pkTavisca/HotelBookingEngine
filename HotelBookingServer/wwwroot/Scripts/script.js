@@ -1,20 +1,19 @@
-﻿
-var datatobesend;
+﻿var datatobesend;
 var jsonobject;
-$("#search-field").keyup(function () {
+$("#search-field").keyup(function() {
     var search = $("#search-field")[0].value;
     $.ajax({
         url: '/api/search/getAutoSuggestResults/' + search,
         type: 'get',
         contentType: "application/json",
-        success: function (jsonresult) {
+        success: function(jsonresult) {
 
             //alert(parseit(jsonresult));
 
             $('#search-field').autocomplete({
                 minChars: 3,
                 source: parseit(jsonresult),
-                select: function (e, mdata) {
+                select: function(e, mdata) {
                     datatobesend = mdata;
                     console.log(mdata);
                 }
@@ -23,6 +22,7 @@ $("#search-field").keyup(function () {
         }
     })
 })
+
 function parseit(jsonresult) {
     var ooo = [];
     jsonobject = JSON.parse(jsonresult);
@@ -31,7 +31,7 @@ function parseit(jsonresult) {
     }
     return ooo;
 }
-$("button").click(function () {
+$("button").click(function() {
     var term = datatobesend;
     var ci = $("#ci-datepicker")[0].value;
     var co = $("#co-datepicker2")[0].value;
@@ -46,10 +46,9 @@ $("button").click(function () {
         url: '/api/search/new',
         type: 'post',
         contentType: "application/json",
-        success: function (result) {
-            alert(result);
+        success: function(result) {
+            window.location.href = "/hotellisting/" + result;
         },
         data: datam
     });
 });
-
