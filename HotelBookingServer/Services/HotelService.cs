@@ -12,10 +12,12 @@ namespace HotelBookingServer.Services
             _appSettings = appSettings;
         }
 
-        public HotelSearchRS GetHotelDetails()
+        public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
         {
+            float latitude = float.Parse(lat);
+            float longitude = float.Parse(lon);
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger());
+            var searchRequest = BuildSearchRequest(DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger(), 1, latitude, longitude);
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
             return result;

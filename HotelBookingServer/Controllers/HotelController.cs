@@ -18,10 +18,10 @@ namespace HotelBookingServer.Controllers
             _hotelService = new HotelService(_appSettings);
         }
 
-        [HttpGet("get")]
-        public HotelSearchRS GetHotelDetails()
+        [HttpGet("get/{type}/{lat}/{lon}")]
+        public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
         {
-            return _hotelService.GetHotelDetails();
+            return _hotelService.GetHotelDetails(type, lat, lon);
         }
     }
 }
