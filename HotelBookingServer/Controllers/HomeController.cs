@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HotelBookingServer.Services;
+using Microsoft.AspNetCore.Mvc;
 using System.IO;
 
 namespace HotelBookingServer.Controllers
@@ -6,6 +7,13 @@ namespace HotelBookingServer.Controllers
     [Route("/")]
     public class HomeController : Controller
     {
+        private HomeService _homeService;
+
+        public HomeController()
+        {
+            _homeService = new HomeService();
+        }
+
         [HttpGet]
         [HttpGet("index")]
         public IActionResult Index()
