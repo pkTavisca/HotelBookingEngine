@@ -27,11 +27,16 @@ function onSuccess(result) {
     if (searchResults.SearchType === "Hotel" || searchResults.SearchType === "hotel")
         isHotel = true;
     var i = 0;
+    var htmlContainer = $('<div />');
     for (itinerary of result.itineraries) {
         i++;
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
-        hotelListHtml += "<div>" + itinerary.hotelProperty.name + "</div>";
+        htmlContainer.append("<div class='somediv'>"+"<h2>"+itinerary.hotelProperty.name +"</h2>"+" "+"<p>"+"City : "+itinerary.hotelProperty.address.city.name +"</p>"+" " +" " +"Country:"+ itinerary.hotelProperty.address.city.country + " "+"</div>");
+       
+       
     }
-    $("#hotel-list").html(hotelListHtml);
+    $("#hotel-list").html(htmlContainer);
+   
+
 }
