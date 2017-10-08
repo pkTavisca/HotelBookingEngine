@@ -39,13 +39,13 @@ namespace HotelBookingServer.Services
         }
 
         private HotelSearchRQ BuildSearchRequest(DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
-            int noOfRooms = 1, float latitude = 42.3601f, float longitude = -71.0589f)
+            int noOfRooms = 1, float latitude = 19.0760f, float longitude = 72.8777f)
         {
             return new HotelSearchRQ
             {
                 ResultRequested = ResponseType.Complete,
                 Filters = SetHotelFilters(),
-                SessionId = _appSettings.HotelSessionId,
+                SessionId = Guid.NewGuid().ToString(),
                 HotelSearchCriterion = SetSearchCriterion(noOfRooms, start, end, passengers, latitude, longitude),
                 PagingInfo = SetPagingInfo(),
             };
