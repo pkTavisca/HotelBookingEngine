@@ -27,18 +27,16 @@ function onSuccess(result) {
     if (searchResults.SearchType === "Hotel" || searchResults.SearchType === "hotel")
         isHotel = true;
     var i = 0;
-    var htmlContainer = $('<div />');
+    var htmlContainer = $('#hotel-list');
+    htmlContainer.addClass('somediv');
     for (itinerary of result.itineraries) {
         i++;
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
-        for (itinerary of result.itineraries) {
-            if (itinerary.itineraryType !== "Hotel") continue;
-            htmlContainer.append("<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " + itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country + " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " + itinerary.hotelProperty.address.addressLine1 + "</p>");
-            for (imageUrl of itinerary.hotelProperty.mediaContent) {
-                var imglink = '<img width=100 height=100 src="' + imageUrl.url + '" />';
-                htmlContainer.append(imglink);
-            }
+        htmlContainer.append('<article class="hotel-info">' + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " + itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country + " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " + itinerary.hotelProperty.address.addressLine1 + "</p>" + '</article>');
+        for (imageUrl of itinerary.hotelProperty.mediaContent) {
+            var imglink = '<img   width=100 height=100 src="' + imageUrl.url + '" />';
+            htmlContainer.append(imglink);
         }
     }
 }
