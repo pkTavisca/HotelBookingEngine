@@ -1,8 +1,7 @@
 body{
     background: url(../Resources/loading-circle.svg) no-repeat center center fixed;
-    background-color: solid black
-   background-size: cover;
-
+    background-color: solid black;
+    background-size: cover;
     margin:0;
 }
 .somediv {
@@ -13,11 +12,11 @@ body{
     
 }
 
-.somediv h2
-{
-	font-weight:900;
-	
-}
+    .somediv h2 {
+        font-weight: 900;
+        font-family: 'Comic Sans MS';
+        font-size:40px;
+    }
 #header {
     position: fixed;
     width: 100%;
@@ -31,6 +30,7 @@ body{
     opacity: 0.4;
 
 }
+
 article > img {
     width: 340px;
     height: 50px;
@@ -51,4 +51,9 @@ article > img {
    -o-background-size: cover;
    background-size: cover;*/
     background-color: rgba(0,0,0,0.9);
+}
+
+p{
+    font-family:'Times New Roman';
+    font-size:20px;
 }
