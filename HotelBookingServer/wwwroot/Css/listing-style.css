@@ -1,6 +1,7 @@
 
-.somediv{
-    background-color:aliceblue;
+.somediv {
+    background-color: aliceblue;
+    border: thick solid #0099ff;
 }
 
 .somediv h2
