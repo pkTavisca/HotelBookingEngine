@@ -1,12 +1,14 @@
 body{
-    background-color:black;
+    background: url(../Resources/loading-circle.svg) no-repeat center center fixed;
+    background-color: solid black
+   background-size: cover;
+
     margin:0;
 }
 .somediv {
     background-color: aliceblue;
     border: thick solid #0099ff;
-    color: black;
-    text-decoration-color: black;
+    color: rgba(230,235,235,0.7);
     
     
 }
@@ -25,8 +27,8 @@ body{
     transition: background-color 0.6s ease-in-out;
     color: blue;
     padding-top:20px;
-    background-color: brown;
-    opacity: 0.6;
+    background-color: firebrick;
+    opacity: 0.4;
 
 }
 article > img {
@@ -37,7 +39,16 @@ article > img {
 .color-white{
     color:white;
 }
-#hotel-list{
-    padding:105px;
-    border:solid black;
+#hotel-list {
+    padding: 150px;
+    border: solid black;
+    margin: white;
+    padding-left: 18%;
+    padding-right: 28%;
+/*    background: url(../Resources/samuel-scrimshaw-166751.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;*/
+    background-color: rgba(0,0,0,0.9);
 }
