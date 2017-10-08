@@ -1,39 +1,11 @@
-body
-{
-	font-size:100%;
-	font-family:"Source Code Pro",Arial,Helvetica,sans-serif;
-	line-height:1.4;
-	padding:50px;
-	background-color:#eaeaea;
-	
+
+.somediv{
+    background-color:aliceblue;
 }
-h1,h2,h3
+
+.somediv h2
 {
 	font-weight:900;
 	
 }
-ul
-{
-	list-style:none;
-}
-h1{
-	margin:30px 0;
-	text-align:center;
-	color:#505961;
-	
-}
 
-.hotel-list-container
-{
-	width:75%;
-	margin:0 auto;
-}
-.itinerary
-{
-	background-color:#fff;
-	margin-bottom:10px;
-	overflow:hidden;
-}
-.itinerary *{
-color:#505961;
-}
