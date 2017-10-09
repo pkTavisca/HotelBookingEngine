@@ -1,8 +1,9 @@
 ﻿using HotelBookingServer.Models;
-using HotelEngineServiceReference;
+using hotelRef =  HotelEngineServiceReference;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using HotelBookingServer.Services;
+using tripRef = TripEngineServiceReference;
 
 namespace HotelBookingServer.Controllers
 {
@@ -19,9 +20,16 @@ namespace HotelBookingServer.Controllers
         }
 
         [HttpGet("get/{type}/{lat}/{lon}")]
-        public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
+        public hotelRef.HotelSearchRS GetHotelDetails(string type, string lat, string lon)
         {
             return _hotelService.GetHotelDetails(type, lat, lon);
+        }
+
+
+        [HttpGet("single")]
+        public tripRef.HotelRoomAvailRS Get()
+        {
+            return null;
         }
     }
 }
