@@ -1,0 +1,54 @@
+body{
+    background: url(../Resources/loading-circle.svg) no-repeat center center fixed;
+    background-color: solid black
+   background-size: cover;
+
+    margin:0;
+}
+.somediv {
+    background-color: aliceblue;
+    border: thick solid #0099ff;
+    color: rgba(230,235,235,0.7);
+    
+    
+}
+
+.somediv h2
+{
+	font-weight:900;
+	
+}
+#header {
+    position: fixed;
+    width: 100%;
+    min-width: 1000px;
+    height: 80px;
+    z-index: 100;
+    transition: background-color 0.6s ease-in-out;
+    color: blue;
+    padding-top:20px;
+    background-color: firebrick;
+    opacity: 0.4;
+
+}
+article > img {
+    width: 340px;
+    height: 50px;
+}
+
+.color-white{
+    color:white;
+}
+#hotel-list {
+    padding: 150px;
+    border: solid black;
+    margin: white;
+    padding-left: 18%;
+    padding-right: 28%;
+/*    background: url(../Resources/samuel-scrimshaw-166751.jpg) no-repeat center center fixed;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;*/
+    background-color: rgba(0,0,0,0.9);
+}
