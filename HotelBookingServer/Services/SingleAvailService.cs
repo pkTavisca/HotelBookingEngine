@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TripEngineServiceReference;
+using HotelEngineServiceReference;
 
 namespace HotelBookingServer.Services
 {
     public class SingleAvailService
     {
-        HotelRoomAvailRQ hotelRoomAvailRQ = new HotelRoomAvailRQ()
+        public HotelRoomAvailRS GetHotel()
         {
-            ResultRequested = ResponseType.Unknown,
-            SessionId = new Guid().ToString(),
-            HotelSearchCriterion = new HotelSearchCriterion()
+            HotelRoomAvailRQ hotelRoomAvailRQ = new HotelRoomAvailRQ()
             {
-                Attributes = new StateBag[]
+                ResultRequested = ResponseType.Unknown,
+                SessionId = new Guid().ToString(),
+                HotelSearchCriterion = new HotelSearchCriterion()
                 {
+                    Attributes = new StateBag[]
+                    {
                     new StateBag()
                     {
                         Name = "API_SESSION_ID",
@@ -26,13 +28,13 @@ namespace HotelBookingServer.Services
                         Name = "FareType",
                         Value = "basefare"
                     }
-                },
-                MatrixResults = true,
-                MaximumResults = 1500,
-                Pos = new PointOfSale()
-                {
-                    AdditionalInfo = new StateBag[]
+                    },
+                    MatrixResults = true,
+                    MaximumResults = 1500,
+                    Pos = new PointOfSale()
                     {
+                        AdditionalInfo = new StateBag[]
+                        {
                         new StateBag()
                         {
                             Name = "IPAddress",
@@ -88,76 +90,76 @@ namespace HotelBookingServer.Services
                             Name = "MemberSignUpDate",
                             Value = "Tue, 04 Jan 2011"
                         }
-                    },
-                    PosId = 101,
-                    Requester = new Company()
-                    {
-                        Agency = new Agency()
+                        },
+                        PosId = 101,
+                        Requester = new Company()
                         {
-                            AgencyAddress = new Address()
+                            Agency = new Agency()
                             {
-                                CodeContext = LocationCodeContext.Address,
-                                GmtOffsetMinutes = 0,
-                                Id = 0,
-                                AddressLine1 = "Test 1",
-                                AddressLine2 = "Test 2",
-                                City = new City()
+                                AgencyAddress = new Address()
                                 {
-                                    CodeContext = LocationCodeContext.City,
+                                    CodeContext = LocationCodeContext.Address,
                                     GmtOffsetMinutes = 0,
                                     Id = 0,
-                                    Name = "Nevada",
-                                    Country = "US",
-                                    State = "NV"
+                                    AddressLine1 = "Test 1",
+                                    AddressLine2 = "Test 2",
+                                    City = new City()
+                                    {
+                                        CodeContext = LocationCodeContext.City,
+                                        GmtOffsetMinutes = 0,
+                                        Id = 0,
+                                        Name = "Nevada",
+                                        Country = "US",
+                                        State = "NV"
+                                    },
+                                    ZipCode = "89002",
                                 },
-                                ZipCode = "89002",
+                                AgencyId = 0,
+                                AgencyName = "WV"
                             },
-                            AgencyId = 0,
-                            AgencyName = "WV"
-                        },
-                        Code = "DTP",
-                        CodeContext = CompanyCodeContext.PersonalTravelClient,
-                        DK = "3285301P",
-                        FullName = "Rovia",
-                        ID = 0
-                    }
-                },
-                PriceCurrencyCode = "USD",
-                Guests = new PassengerTypeQuantity[]
-                {
+                            Code = "DTP",
+                            CodeContext = CompanyCodeContext.PersonalTravelClient,
+                            DK = "3285301P",
+                            FullName = "Rovia",
+                            ID = 0
+                        }
+                    },
+                    PriceCurrencyCode = "USD",
+                    Guests = new PassengerTypeQuantity[]
+                    {
                     new PassengerTypeQuantity()
                     {
                         Ages = new int[]{30,30 },
                         PassengerType = PassengerType.Adult,
                         Quantity = 2
                     }
-                },
-                IsReturnRooms = false,
-                Location = new Location()
-                {
-                   CodeContext = LocationCodeContext.City,
-                   GeoCode = new GeoCode()
-                   {
-                       Latitude = 36.11093f,
-                       Longitude = -115.16935f
-                   },
-                   GmtOffsetMinutes = 0,
-                   Id = 0,
-                   Name = "Las Vegas",
-                   Radius = new Distance
-                   {
-                       Amount = 30,
-                       From = LocationCodeContext.City,
-                       Unit = DistanceUnit.mi
-                   },
-                },
-                NoOfRooms = 1,
-                ProcessingInfo = new HotelSearchProcessingInfo()
-                {
-                    DisplayOrder = HotelDisplayOrder.ByPriceLowToHigh
-                },
-                RoomOccupancyTypes = new RoomOccupancyType[]
-                {
+                    },
+                    IsReturnRooms = false,
+                    Location = new Location()
+                    {
+                        CodeContext = LocationCodeContext.City,
+                        GeoCode = new GeoCode()
+                        {
+                            Latitude = 36.11093f,
+                            Longitude = -115.16935f
+                        },
+                        GmtOffsetMinutes = 0,
+                        Id = 0,
+                        Name = "Las Vegas",
+                        Radius = new Distance
+                        {
+                            Amount = 30,
+                            From = LocationCodeContext.City,
+                            Unit = DistanceUnit.mi
+                        },
+                    },
+                    NoOfRooms = 1,
+                    ProcessingInfo = new HotelSearchProcessingInfo()
+                    {
+                        DisplayOrder = HotelDisplayOrder.ByPriceLowToHigh
+                    },
+                    RoomOccupancyTypes = new RoomOccupancyType[]
+                    {
                     new RoomOccupancyType()
                     {
                         PaxQuantities = new PassengerTypeQuantity[]
@@ -174,36 +176,39 @@ namespace HotelBookingServer.Services
                             }
                         }
                     }
+                    },
+                    SearchType = HotelSearchType.City,
+                    StayPeriod = new DateTimeSpan()
+                    {
+                        Duration = 0,
+                        End = new DateTime(2017, 10, 26),
+                        Start = new DateTime(2017, 10, 25)
+                    },
+                    TravelPreference = new HotelSearchPreference()
+                    {
+                        MaxNumberOfBedRooms = 0,
+                        MaxOccupancy = 0,
+                        MinNumberOfBedRooms = 0,
+                        MinOccupancy = 0
+                    }
+
                 },
-                SearchType = HotelSearchType.City,
-                StayPeriod = new DateTimeSpan()
+                Itinerary = new HotelItinerary()
                 {
-                    Duration = 0,
-                    End = new DateTime(2017,10,26),
-                    Start = new DateTime(2017,10,25)
-                },
-                TravelPreference = new HotelSearchPreference()
-                {
-                    MaxNumberOfBedRooms = 0,
-                    MaxOccupancy = 0,
-                    MinNumberOfBedRooms = 0,
-                    MinOccupancy = 0
+                    Id = new Guid("00000000-0000-0000-0000-000000000000"),
+                    ItineraryStatus = ItineraryStatusType.Unbooked,
+                    Rph = 0,
+                    AllPaxDetailsRequired = false,
+                    GuaranteeRequired = false,
+                    HotelProperty = new HotelProperty()
+                    {
+                        Id = 88359
+                    },
+                    ShippingAddressRequired = false
                 }
-                
-            },
-            Itinerary = new HotelItinerary()
-            {
-                Id = new Guid("00000000-0000-0000-0000-000000000000"),
-                ItineraryStatus = ItineraryStatusType.Unbooked,
-                Rph = 0,
-                AllPaxDetailsRequired = false,
-                GuaranteeRequired = false,
-                HotelProperty = new HotelProperty()
-                {
-                    Id = 88359
-                },
-                ShippingAddressRequired = false
-            }       
-        };
+            };
+            HotelEngineClient hotelEngineClient = new HotelEngineClient();
+            return hotelEngineClient.HotelRoomAvailAsync(hotelRoomAvailRQ).GetAwaiter().GetResult();
+        }
     }
 }
