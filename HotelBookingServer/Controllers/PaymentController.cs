@@ -149,9 +149,9 @@ namespace HotelBookingServer.Controllers
                 Id = new Guid("00000000-0000-0000-0000-000000000000"),
                 PaymentType = PaymentType.Credit,
                 Rph = 0,
-               // CardMake = creditCardPayment
+                //CardMake = creditCardPayment
             };
-            bookingRQ.TripFolderId = new Guid();
+            bookingRQ.TripFolderId = new Guid("bb900986-6117-40f5-8d2e-f72a32ea5185");
 
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
             CompleteBookingRS result = await tripsEngineClient.CompleteBookingAsync(bookingRQ);
