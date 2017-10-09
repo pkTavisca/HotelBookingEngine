@@ -37,12 +37,9 @@ function onSuccess(result) {
         singleHotel.addClass("hotel-info");
         htmlContainer.append(singleHotel);
 
-        singleHotel.append('<h2>' + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " +
-            itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country +
-            " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " +
-            itinerary.hotelProperty.address.addressLine1 + "</p>");
+        singleHotel.append("<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
 
-        var imagesDiv = $("<div>");
+        var imagesDiv = $('<div class="img-format">');
         imagesDiv.css("display", "flex");
 
         singleHotel.append(imagesDiv);
