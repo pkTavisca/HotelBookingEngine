@@ -33,12 +33,22 @@ function onSuccess(result) {
         i++;
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
-        //htmlContainer.append('<article class="hotel-info">' + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " + itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country + " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " + itinerary.hotelProperty.address.addressLine1 + "</p>" + '</article>');
-        //htmlContainer.append('<article class="hotel-info">' + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "Address : " + itinerary.hotelProperty.address.completeAddress + "," + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + '</article>');
-        htmlContainer.append('<article class="hotel-info">' + "<h2>" + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "Address : " + itinerary.hotelProperty.address.completeAddress + "," + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "Price : " + itinerary.fare.baseFare.amount +" "+ itinerary.fare.baseFare.currency + "</p>" + '</article>');
+        var singleHotel = $("<article>");
+        singleHotel.addClass("hotel-info");
+        htmlContainer.append(singleHotel);
+
+        singleHotel.append('<h2>' + itinerary.hotelProperty.name + "</h2>" + " " + "<p>" + "City : " +
+            itinerary.hotelProperty.address.city.name + "</p>" + " " + " " + "Country : " + itinerary.hotelProperty.address.city.country +
+            " " + "<p>" + "Rating : " + itinerary.hotelProperty.hotelRating.rating + "</p>" + "<p>" + "Address : " +
+            itinerary.hotelProperty.address.addressLine1 + "</p>");
+
+        var imagesDiv = $("<div>");
+        imagesDiv.css("display", "flex");
+
+        singleHotel.append(imagesDiv);
         for (imageUrl of itinerary.hotelProperty.mediaContent) {
             var imglink = '<img   width=100 height=100 src="' + imageUrl.url + '" />';
-            htmlContainer.append(imglink);
+            imagesDiv.append(imglink);
         }
     }
 }
