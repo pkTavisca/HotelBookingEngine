@@ -20,6 +20,10 @@ function hotelAjaxCall() {
     });
 }
 
+function bookNowButtonClick(id) {
+    window.location.href = "../HotelDetails/" + id;
+}
+
 function onSuccess(result) {
     $("#loading-icon").hide();
     var hotelListHtml = "";
@@ -41,6 +45,7 @@ function onSuccess(result) {
         singleHotel.append(detailsDiv);
         detailsDiv.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
         detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
+        detailsDiv.append("<button onclick='bookNowButtonClick(" + hotelId + ")'>Book Now</button>")
 
         var imagesDiv = $('<div class="img-format">');
         imagesDiv.css("display", "flex");
