@@ -1,8 +1,9 @@
 body {
     background: url(../Resources/loading-circle.svg) no-repeat center center fixed;
     background-color: solid black;
-    background-size: cover;
+    background-size: 200px;
     margin: 0;
+  
 }
 .somediv {
     background-color: aliceblue;
@@ -13,8 +14,8 @@ body {
 
     .somediv h2 {
         font-weight: 900;
-        font-family: 'Comic Sans MS';
-        font-size:40px;
+        font-family: 'Manuale', serif;
+        font-size: 40px;
     }
 #header {
     position: fixed;
@@ -36,7 +37,7 @@ article > img {
 
 
 #hotel-list {
-    padding: 150px;
+    padding-bottom: 150px;
     padding-left: 18%;
     padding-right: 28%;
     /*   background: url(../Resources/samuel-scrimshaw-166751.jpg) no-repeat center center fixed;
@@ -44,9 +45,14 @@ article > img {
    -moz-background-size: cover;
    -o-background-size: cover;
    background-size: cover; */
-    background-color: white;
     color: black;
-    background-color: #000000;
+    padding-top: 70px;
+    background-color: white;
+    background-image: url(../Resources/hotel-room.jpeg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: c
 }
 
 p{
@@ -54,7 +60,7 @@ p{
     font-size:20px;
 }
 .hotel-info {
-    border: solid black;
+    border: solid #595959;
     padding-bottom: 20px;
     padding-left: 20px;
 }
@@ -64,11 +70,11 @@ span{
 
 .img-format
 {
-
 padding-right:20px;
 }
 
-article{
+article
+{
     background-color:white;
     
 }
