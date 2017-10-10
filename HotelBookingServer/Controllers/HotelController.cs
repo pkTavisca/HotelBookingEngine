@@ -27,8 +27,8 @@ namespace HotelBookingServer.Controllers
         }
 
 
-        [HttpGet("single")]
-        public HotelRoomAvailRS Get()
+        [HttpGet("single/{hotelId}")]
+        public HotelRoomAvailRS Get(string hotelId)
         {
             return _singleAvail.GetHotel();
         }
