@@ -37,7 +37,7 @@ function onSuccess(result) {
         singleHotel.addClass("hotel-info");
         htmlContainer.append(singleHotel);
         var hotelId = itinerary.hotelProperty.id;
-        singleHotel.append("<h2><a href='../api/hotel/single/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
+        singleHotel.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
         singleHotel.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
 
         var imagesDiv = $('<div class="img-format">');
