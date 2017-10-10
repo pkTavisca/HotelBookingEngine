@@ -5,7 +5,7 @@ namespace HotelBookingServer.Services
 {
     public class SingleAvailService
     {
-        public HotelRoomAvailRS GetHotel()
+        public HotelRoomAvailRS GetHotel(int hotelId)
         {
             HotelRoomAvailRQ hotelRoomAvailRQ = new HotelRoomAvailRQ()
             {
@@ -199,7 +199,7 @@ namespace HotelBookingServer.Services
                     GuaranteeRequired = false,
                     HotelProperty = new HotelProperty()
                     {
-                        Id = 88359
+                        Id = hotelId
                     },
                     ShippingAddressRequired = false
                 }

@@ -26,11 +26,10 @@ namespace HotelBookingServer.Controllers
             return _hotelService.GetHotelDetails(type, lat, lon);
         }
 
-
         [HttpGet("single/{hotelId}")]
-        public HotelRoomAvailRS Get(string hotelId)
+        public HotelRoomAvailRS Get(int hotelId)
         {
-            return _singleAvail.GetHotel();
+            return _singleAvail.GetHotel(hotelId);
         }
     }
 }
