@@ -37,16 +37,17 @@ function onSuccess(result) {
         singleHotel.addClass("hotel-info");
         htmlContainer.append(singleHotel);
         var hotelId = itinerary.hotelProperty.id;
-        singleHotel.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
-        singleHotel.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
+        var detailsDiv = $("<div>");
+        singleHotel.append(detailsDiv);
+        detailsDiv.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
+        detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
 
         var imagesDiv = $('<div class="img-format">');
         imagesDiv.css("display", "flex");
 
-        singleHotel.append(imagesDiv);
-        for (imageUrl of itinerary.hotelProperty.mediaContent) {
-            var imglink = '<img   width=100 height=100 src="' + imageUrl.url + '" />';
-            imagesDiv.append(imglink);
-        }
+        singleHotel.prepend(imagesDiv);
+        singleHotel.css("display", "flex");
+        var imglink = '<img   width=100 height=100 src="' + itinerary.hotelProperty.mediaContent[0].url + '" />';
+        imagesDiv.append(imglink);
     }
 }
