@@ -94,20 +94,32 @@ namespace HotelBookingServer.Controllers
                             LeadPassengerRph = 0,
                             Owner = new User()
                             {
-
+                                FirstName = "Shweta",
+                                LastName = "Shrikhande",
+                                UserId = 26149061229281280,
+                                UserName = "sshrikhande"
                             },
                             PassengerSegments = new PassengerSegment[]
                             {
                                 new PassengerSegment()
                                 {
-
+                                    PassengerRph = 0,
+                                    Rph = 0
                                 }
                             },
                             PaymentBreakups = new PaymentBreakup[]
                             {
                                 new PaymentBreakup()
                                 {
-
+                                    Amount = new Money()
+                                    {
+                                        Amount = 200.34M,
+                                        Currency = "USD",
+                                        DisplayAmount = 200.34M,
+                                        DisplayCurrency = "USD"
+                                    },
+                                    PassengerRph = 0,
+                                    PaymentRph = 0,
                                 }
                             },
                             PaymentOptions = new PaymentType[]
@@ -118,6 +130,7 @@ namespace HotelBookingServer.Controllers
                             }, 
                             Rph = 0,
                             //hotel
+                            //hotelSearchCriterion 
                         },
                         
                     },
@@ -127,13 +140,21 @@ namespace HotelBookingServer.Controllers
                 },
                 TripProcessingInfo = new TripProcessingInfo()
                 {
-                    
+                    TripProductRphs = new int[] {0}
                 }
 
             };
             HotelItinerary hotelItinerary = new HotelItinerary()
             {
                 
+            };
+            HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion()
+            {
+
+            };
+            RoomOccupancyType roomOccupancyType = new RoomOccupancyType()
+            {
+               
             };
             return null;
         }
