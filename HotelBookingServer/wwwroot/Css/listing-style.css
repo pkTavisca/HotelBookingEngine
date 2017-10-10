@@ -1,21 +1,25 @@
 body {
-    background: url(../Resources/loading-circle.svg) no-repeat center center fixed;
-    background-color: solid black;
-    background-size: 200px;
+    background: url(../Resources/loading-circle.svg) no-repeat center  fixed;
+    background-size: 500px;
     margin: 0;
-  
+    
 }
+
 .somediv {
     background-color: aliceblue;
-    color: rgba(230,235,235,0.7);
-    
-    
+   
+}
+h2>a
+{
+    color:black;
+    text-decoration-color:black;
 }
 
     .somediv h2 {
         font-weight: 900;
         font-family: 'Manuale', serif;
-        font-size: 40px;
+        font-size: 30px;
+        text-decoration:none;
     }
 #header {
     position: fixed;
@@ -24,9 +28,10 @@ body {
     height: 80px;
     z-index: 100;
     transition: background-color 0.6s ease-in-out;
-    color: blue;
+    /*color: blue;*/
     padding-top: 20px;
     background-color: #ff9900;
+    opacity:0.8;
 }
 
 article > img {
@@ -40,19 +45,14 @@ article > img {
     padding-bottom: 150px;
     padding-left: 18%;
     padding-right: 28%;
-    /*   background: url(../Resources/samuel-scrimshaw-166751.jpg) no-repeat center center fixed;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover; */
     color: black;
-    padding-top: 70px;
+    padding-top: 100px;
     background-color: white;
-    background-image: url(../Resources/hotel-room.jpeg);
-    -webkit-background-size: cover;
+    background: url(../Resources/hotel-room.jpeg) no-repeat fixed;
+    background-size: cover;
+    /*-webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: c
+    -o-background-size: cover;*/
 }
 
 p{
