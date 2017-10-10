@@ -36,6 +36,7 @@ namespace HotelBookingServer.Controllers
             bookingRQ.SessionId = Guid.NewGuid().ToString();
             bookingRQ.ExternalPayment = new CreditCardPayment()
             {
+                
                 CardMake = new CreditCardMake()
                 {
                     Code = "VI",
@@ -55,7 +56,7 @@ namespace HotelBookingServer.Controllers
                     Currency = "USD",
                     DisplayAmount = 41.20M,
                     DisplayCurrency = "USD",
-                    UsdEquivAmount = 0M,
+                    UsdEquivAmount = 0M
                 },
 
 
