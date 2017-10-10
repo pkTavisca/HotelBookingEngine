@@ -37,7 +37,7 @@ function onSuccess(result) {
         singleHotel.addClass("hotel-info");
         htmlContainer.append(singleHotel);
         var hotelId = itinerary.hotelProperty.id;
-        var detailsDiv = $("<div>");
+        var detailsDiv = $('<div class="one-hotel-info">');
         singleHotel.append(detailsDiv);
         detailsDiv.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
         detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
@@ -47,7 +47,7 @@ function onSuccess(result) {
 
         singleHotel.prepend(imagesDiv);
         singleHotel.css("display", "flex");
-        var imglink = '<img   width=100 height=100 src="' + itinerary.hotelProperty.mediaContent[0].url + '" />';
+        var imglink = '<img   width=250 height=250 src="' + itinerary.hotelProperty.mediaContent[0].url + '" />';
         imagesDiv.append(imglink);
     }
 }
