@@ -89,7 +89,7 @@ namespace HotelBookingServer.Controllers
                     },
                     Products = new TripProduct[]
                     {
-                        new HotelTripProduct()
+                        new TripProduct()
                         {
                             LeadPassengerRph = 0,
                             Owner = new User()
@@ -127,11 +127,10 @@ namespace HotelBookingServer.Controllers
                                 PaymentType.External,
                                 PaymentType.SoftCash,
                                 PaymentType.Credit
-                            },
+                            }, 
                             Rph = 0,
-                            HotelItinerary = new HotelItinerary(),
-                            HotelSearchCriterion = new HotelSearchCriterion(),
-                            RoomOccupancyTypes = new RoomOccupancyType[]{ }
+                            //hotel
+                            //hotelSearchCriterion 
                             
                         },
                         
