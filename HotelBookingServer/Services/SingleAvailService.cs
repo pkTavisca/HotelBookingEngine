@@ -1,5 +1,6 @@
 ﻿using System;
 using HotelEngineServiceReference;
+using HotelBookingServer.Implementations;
 
 namespace HotelBookingServer.Services
 {
@@ -205,7 +206,9 @@ namespace HotelBookingServer.Services
                 }
             };
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            return hotelEngineClient.HotelRoomAvailAsync(hotelRoomAvailRQ).GetAwaiter().GetResult();
+            var hotelRoomAvailRS = hotelEngineClient.HotelRoomAvailAsync(hotelRoomAvailRQ).GetAwaiter().GetResult();
+            HotelRoomAvailRQRSCache.AddToCache(hotelRoomAvailRQ, hotelRoomAvailRS);
+            return hotelRoomAvailRS;
         }
     }
 }
