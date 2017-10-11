@@ -41,6 +41,11 @@ ul {
     padding-top: 30px;
     background-color: #ff9933;
 }
+ul > li {
+    font-family:'Times New Roman';
+    text-align:left;
+    font-weight:bold;
+}
 
 li {
     float: left;
