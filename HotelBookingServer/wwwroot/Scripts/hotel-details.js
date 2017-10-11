@@ -12,6 +12,10 @@ function hotelAjaxCall() {
 
 function onSuccess(result) {
     console.log(result);
-}
+    $("#loading-icon").hide();
+    
+    }
 
-hotelAjaxCall();
+    hotelAjaxCall();
+
+
