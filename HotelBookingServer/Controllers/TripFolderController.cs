@@ -129,9 +129,81 @@ namespace HotelBookingServer.Controllers
                                 PaymentType.Credit
                             },
                             Rph = 0,
-                            HotelItinerary = new HotelItinerary(),
+                            HotelItinerary = new HotelItinerary()
+                            {
+                                Id = new Guid(),
+                                ItineraryStatus = ItineraryStatusType.Unbooked,
+                                Rph = 0,
+                                AllPaxDetailsRequired = true,
+                                Deals = new Deal[]
+                                {
+                                    new DiscountDeal()
+                                    {
+                                        DealStatus = DealStatus.Active,
+                                        DealType = "DiscountDeal",
+                                        EndDate = new DateTime(2017,12,12),
+                                        IsPackageOnly = false,
+                                        LongDescription = "25%",
+                                        UsageEndDate = new DateTime(0001,01,01),
+                                        UsageStartDate = new DateTime(0001,01,01),
+                                        RoomIds = new Guid[]
+                                        {
+                                            new Guid("f7c55ac1-b9c5-4d74-8eee-8b52353813c7")
+                                        },
+                                        Rph = 0,
+                                        StartDate = new DateTime(2017,12,11),
+                                        Title = "Save 25%",
+                                        Amount = new Money()
+                                        {
+                                            Amount = 59.67M,
+                                            BaseEquivAmount = 53.67M,
+                                            BaseEquivCurrency = "USD",
+                                            DisplayAmount = 59.67M,
+                                            DisplayCurrency = "USD",
+                                            UsdEquivAmount = 59.67M
+                                        },
+                                        ApplyOn ="BaseFare"
+                                    }
+                                    
+                                },
+                                Fare = new HotelFare()
+                                {
+                                    BaseFare = new BaseFare()
+                                    {
+                                        Amount = 137.27M,
+                                        BaseEquivAmount = 0,
+                                        Currency = "USD",
+                                        UsdEquivAmount = 137.27M
+                                    },
+                                    FareType = FareType.Negotiated,
+                                    Id = 0,
+                                    Rph = 0,
+                                    TotalCommission = new Commission()
+                                    {
+                                        Amount = 0,
+                                        BaseEquivAmount = 0,
+                                        Currency = "USD",
+                                        DisplayAmount = 0,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 0
+                                    }
+                                },
+                            },
                             HotelSearchCriterion = new HotelSearchCriterion(),
-                            RoomOccupancyTypes = new RoomOccupancyType[]{ }
+                            RoomOccupancyTypes = new RoomOccupancyType[]
+                            {
+                                new RoomOccupancyType()
+                                {
+                                    PaxQuantities = new PassengerTypeQuantity[]
+                                    {
+                                        new PassengerTypeQuantity()
+                                        {
+                                            
+
+                                        }
+                                    }
+                                }
+                            }
 
                         },
 
@@ -144,18 +216,6 @@ namespace HotelBookingServer.Controllers
                 {
                     TripProductRphs = new int[] { 0 }
                 }
-
-            };
-            HotelItinerary hotelItinerary = new HotelItinerary()
-            {
-
-            };
-            HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion()
-            {
-
-            };
-            RoomOccupancyType roomOccupancyType = new RoomOccupancyType()
-            {
 
             };
             return null;
