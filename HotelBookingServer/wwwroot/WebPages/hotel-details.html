@@ -1,22 +1,37 @@
 ﻿<!doctype html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <title>Hotel details</title>
-    <link rel="stylesheet" href="../Css/listing-style.css">
-    <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
 <body>
-    <section>
-        <article id="header">
-            <img src="../Resources/logo.svg" alt="logo" align="left" />
-        </article>
-    </section>
-    <div id="hotel-list">
-     
-    </div> 
+    <h1>Room Listing </h1>
+    <div id="roomList-container">
+    </div>
+    <script id="room-item" type="text/x-handlebars-template">
+        {{#each this}} {{#unless image}}
+        <div style="border:solid 1px black;margin-bottom:30px">
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <img src="{{image}}" width="200" height="200" />
+                </div>
+                <div class="col-md-5">
+                    <h2>{{name}}</h2>
+                    <h3>{{cost}}</h3>
+                    <h4>{{address}}</h4>
+                    <h4>{{room-type}}</h4>
+                    <h4>{{description}}</h4>
+                </div>
+                <div class="col-md-2">
+                    <button id="roomBtn" name="roomButton">Book This Room</button>
+                </div>
+          </div>
+            </div>
+            {{/unless}} {{/each}}
+    </script>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+    <script src="main.js" type=""></script>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgfzhoseeamdoygbf13fyquitwlaqgxvsngt4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../scripts/hotel-details.js"></script>
 </html>
