@@ -36,6 +36,12 @@ namespace HotelBookingServer.Services
                     }
                 };
         }
+
+        public HotelSearchRS GetMultiAvailDetails(string sessionId)
+        {
+            throw new NotImplementedException();
+        }
+
         private HotelSearchRQ BuildSearchRequest(string searchType, DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
             int noOfRooms = 1, float latitude = 19.0760f, float longitude = 72.8777f)
         {

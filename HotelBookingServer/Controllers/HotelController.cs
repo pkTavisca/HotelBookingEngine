@@ -26,6 +26,12 @@ namespace HotelBookingServer.Controllers
             return _hotelService.GetHotelDetails(type, lat, lon);
         }
 
+        [HttpGet("/multi/{sessionId}")]
+        public HotelSearchRS GetMultiAvailDetails(string sessionId)
+        {
+            return _hotelService.GetMultiAvailDetails(sessionId);
+        }
+
         [HttpGet("single/{hotelId}")]
         public HotelRoomAvailRS Get(int hotelId)
         {

@@ -41,7 +41,6 @@ $("button").click(function() {
         "checkout": co
     }
     var datam = JSON.stringify(data);
-    console.log(datam);
     $.ajax({
         url: '/api/search/new',
         type: 'post',

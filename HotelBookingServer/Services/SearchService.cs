@@ -6,12 +6,12 @@ using HotelBookingServer.Models;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Options;
 using System.Net.Http;
+using HotelBookingServer.Implementations;
 
 namespace HotelBookingServer.Services
 {
     public class SearchService
     {
-        private ISearchCache _searchCache = SearchCacheGenerator.Generate(CacheType.InMemory);
         private ISearchAutoSuggestCache _searchAutoSuggestResultsCache = SearchAutosuggestCacheGenerator.Generate(CacheType.InMemory);
         private AppSettings _appSettings;
 
@@ -22,8 +22,9 @@ namespace HotelBookingServer.Services
 
         public string OnNewSearch(SearchObject searchObject)
         {
-            string searchGuid = _searchCache.AddToCache(searchObject);
-            return searchGuid;
+            string sessionId = Guid.NewGuid().ToString();
+            SearchDataCache.AddToCache(sessionId, searchObject);
+            return sessionId;
         }
 
         private void AddResultsToCache(string searchTerm)
@@ -43,7 +44,7 @@ namespace HotelBookingServer.Services
 
         public SearchObject GetSearchObject(string searchId)
         {
-            return _searchCache.GetFromCache(searchId);
+            return SearchDataCache.GetFromCache(searchId);
         }
 
         public string GetAutoSuggestResults(string searchTerm)
