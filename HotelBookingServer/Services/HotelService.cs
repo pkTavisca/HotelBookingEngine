@@ -22,6 +22,7 @@ namespace HotelBookingServer.Services
             var searchRequest = BuildSearchRequest(sessionId, type, checkIn, checkOut, GetDefaultPassenger(), 1, latitude, longitude);
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
+            HotelMultiAvailCache.AddToCache(searchRequest, result);
             return result;
         }
         private PassengerTypeQuantity[] GetDefaultPassenger()

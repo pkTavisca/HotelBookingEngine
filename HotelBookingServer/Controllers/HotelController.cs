@@ -27,10 +27,10 @@ namespace HotelBookingServer.Controllers
             return _hotelService.GetMultiAvailDetails(sessionId);
         }
 
-        [HttpGet("single/{hotelId}")]
-        public HotelRoomAvailRS Get(int hotelId)
+        [HttpGet("single/{sessionId}/{hotelId}")]
+        public HotelRoomAvailRS Get(string sessionId, int hotelId)
         {
-            return _singleAvail.GetHotel(hotelId);
+            return _singleAvail.GetHotel(sessionId, hotelId);
         }
     }
 }

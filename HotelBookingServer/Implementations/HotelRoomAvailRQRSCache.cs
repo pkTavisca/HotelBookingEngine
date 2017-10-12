@@ -10,7 +10,7 @@ namespace HotelBookingServer.Implementations
 
         public static void AddToCache(HotelRoomAvailRQ hotelRoomAvailRQ, HotelRoomAvailRS hotelRoomAvailRS)
         {
-            _cache.Add(hotelRoomAvailRQ.SessionId, new Tuple<HotelRoomAvailRQ, HotelRoomAvailRS>(hotelRoomAvailRQ, hotelRoomAvailRS));
+            _cache[hotelRoomAvailRQ.SessionId] = new Tuple<HotelRoomAvailRQ, HotelRoomAvailRS>(hotelRoomAvailRQ, hotelRoomAvailRS);
         }
 
         public static Tuple<HotelRoomAvailRQ, HotelRoomAvailRS> GetFromCache(string sessionId)
