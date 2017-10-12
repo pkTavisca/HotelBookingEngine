@@ -14,8 +14,19 @@ function hotelAjaxCall() {
 hotelAjaxCall();
 
 function onSuccess(result) {
+    priceAjaxCall();
     var template = $('#room-item');
     var compiledTemplate = Handlebars.compile(template.html());
     var html = compiledTemplate(result);
     $('#roomList-container').html(html);
+}
+
+function priceAjaxCall() {
+    $.ajax({
+        type: "get",
+        url: '../../api/roomprice/get/' + sessionId,
+        success: function(result) {
+
+        }
+    });
 }

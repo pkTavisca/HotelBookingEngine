@@ -32,7 +32,7 @@ function onSuccess(result) {
         var hotelId = itinerary.hotelProperty.id;
         var detailsDiv = $('<div class="one-hotel-info">');
         singleHotel.append(detailsDiv);
-        detailsDiv.append("<h2><a href='' onclick='bookNowButtonClick(" + hotelId + ")'>" + itinerary.hotelProperty.name + "</a></h2>");
+        detailsDiv.append("<h2><a onclick='bookNowButtonClick(" + hotelId + ")'>" + itinerary.hotelProperty.name + "</a></h2>");
         detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
         detailsDiv.append("<button onclick='bookNowButtonClick(" + hotelId + ")'>Book Now</button>");
 

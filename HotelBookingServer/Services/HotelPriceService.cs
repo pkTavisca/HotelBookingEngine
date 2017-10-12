@@ -15,9 +15,9 @@ namespace HotelBookingServer.Services
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
             HotelRoomPriceRQ priceRequest = new HotelRoomPriceRQ()
             {
-                AdditionalInfo = new StateBag[] { },
+                AdditionalInfo = HotelMultiAvailCache.GetFromCache(sessionId).Item1.AdditionalInfo,
                 HotelSearchCriterion = hotelRoomAvailTuple.Item1.HotelSearchCriterion,
-                Itinerary = hotelRoomAvailTuple.Item2.Itinerary,//new HotelItinerary() { },
+                Itinerary = hotelRoomAvailTuple.Item2.Itinerary,
                 ResultRequested = ResponseType.Complete,
                 SessionId = sessionId
             };
