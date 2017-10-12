@@ -6,8 +6,8 @@ var searchResults;
 $.ajax({
     type: "GET",
     url: '../api/search/get/' + guid,
-    success: function(result) {
-        searchResults = JSON.parse(result.searchTerm).item.data;
+    success: function (hotel) {
+        searchResults = JSON.parse(hotel.searchTerm).item.data;
         hotelAjaxCall();
     }
 });
@@ -24,35 +24,26 @@ function bookNowButtonClick(id) {
     window.location.href = "../HotelDetails/" + id;
 }
 
-function onSuccess(result) {
-    $("#loading-icon").hide();
-    var hotelListHtml = "";
-    var isHotel = false;
-    if (searchResults.SearchType === "Hotel" || searchResults.SearchType === "hotel")
-        isHotel = true;
-    var i = 0;
-    var htmlContainer = $('#hotel-list');
-    htmlContainer.addClass('somediv');
-    for (itinerary of result.itineraries) {
-        i++;
-        if (isHotel && i > 1) continue;
-        if (itinerary.itineraryType !== "Hotel") continue;
-        var singleHotel = $("<article>");
-        singleHotel.addClass("hotel-info");
-        htmlContainer.append(singleHotel);
-        var hotelId = itinerary.hotelProperty.id;
-        var detailsDiv = $('<div class="one-hotel-info">');
-        singleHotel.append(detailsDiv);
-        detailsDiv.append("<h2><a href='../HotelDetails/" + hotelId + "'>" + itinerary.hotelProperty.name + "</a></h2>");
-        detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
-        detailsDiv.append("<button onclick='bookNowButtonClick(" + hotelId + ")'>Book Now</button>");
-
-        var imagesDiv = $('<div class="img-format">');
-        imagesDiv.css("display", "flex");
-
-        singleHotel.prepend(imagesDiv);
-        singleHotel.css("display", "flex");
-        var imglink = '<img   width=250 height=250 src="' + itinerary.hotelProperty.mediaContent[0].url + '" />';
-        imagesDiv.append(imglink);
+function onSuccess(hotel) {
+searchResults = hotel;
+var hotelList = [];
+var urlImage = "";
+for (i = 0; i < hotel.itinerary.length; i++) {
+    for ( k = 0; k < hotel.itinerary[i].hotelProperty.mediaContent.length; k++) {
+        if (hotel.itinerary[i].hotelProperty.mediaContent[k].url != null) {
+            urlImage = hotel.itinerary[i].hotelProperty.mediaContent[k].url.toString();
+            break;
+        }
     }
+    hotelList.push({
+        image: urlImage,
+        name: hotel.itinerary[i].hotelProperty.name,
+        address: hotel.itinerary[i].hotelProperty.address.completeAddress,
+        cost: hotel.itinerary[i].fare.baseFare.amount,
+    });
+}
+var template = $('#hotel-item');
+var compiledTemplate = Handlebars.compile(template.html());
+var html = compiledTemplate(hotelList);
+$('#hotelList-container').html(html);
 }
