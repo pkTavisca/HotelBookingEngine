@@ -14,10 +14,10 @@ namespace HotelBookingServer.Controllers
             _hotelPriceService = new HotelPriceService();
         }
 
-        [HttpGet("get")]
-        public HotelRoomPriceRS GetPrice()
+        [HttpGet("get/{sessionId}")]
+        public HotelRoomPriceRS GetPrice(string sessionId)
         {
-            return _hotelPriceService.GetPrice();
+            return _hotelPriceService.GetPrice(sessionId);
         }
     }
 }
