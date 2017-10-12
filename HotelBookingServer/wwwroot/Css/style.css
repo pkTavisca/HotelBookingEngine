@@ -38,17 +38,26 @@ ul {
     z-index: 100;
     transition: background-color 0.6s ease-in-out;
     color: black;
-    padding-left:20px;
-    padding-top:20px;
     background-color: #ff9933;
-    font-size:50px;
-}
-.logo{
-    width:60px;
+   
     
 }
+header>h1{
+    margin:0;
+    padding-bottom:0px;
+    padding-top:5px;
+    padding-left:20px;
+}
+header > h4
+{
+    margin: 0;
+    font-size:20px;
+    padding-top:50px;
+    float:left;
 
-header>p{
+}
+
+h1{
     width:158px;
     margin:0;
 }
@@ -218,26 +227,23 @@ nav {
 
 
 
-.button-padding {
-    padding-bottom: 30px;
-    padding-top: 30px;
-}
-
 fieldset {
     border: 0;
     justify-content: space-between;
     padding: 0;
+    padding-bottom:20px;
 }
 
-.column-nested {
+/*.column-nested {
     max-width: 1500px;
     margin: 40px auto 0 auto;
     line-height: 1.65;
-    padding: 0;
+    padding:0px;
     display: flex;
     margin: 0;
     height: 60px;
-}
+
+}*/
 
 .In {
     float: left;
@@ -248,4 +254,7 @@ fieldset {
 .Out {
     float: left;
     padding-right: 30px;
+}
+.button-padding{
+    padding-bottom:20px;
 }
