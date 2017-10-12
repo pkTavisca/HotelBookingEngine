@@ -45,23 +45,9 @@ ul {
 header>h1{
     margin:0;
     padding-bottom:0px;
-    padding-top:5px;
+    padding-top:20px;
     padding-left:20px;
 }
-header > h4
-{
-    margin: 0;
-    font-size:20px;
-    padding-top:50px;
-    float:left;
-
-}
-
-h1{
-    width:158px;
-    margin:0;
-}
-
 ul > li {
     font-family:'Times New Roman';
     text-align:left;
@@ -71,7 +57,13 @@ ul > li {
 ul{
     width:250px;
 }
-
+section>article
+{
+    width:200px;
+    height:70px;
+    padding-left:20px;
+    padding-top:15px;
+}
 li {
     float: left;
     text-align: center;
@@ -233,17 +225,6 @@ fieldset {
     padding: 0;
     padding-bottom:20px;
 }
-
-/*.column-nested {
-    max-width: 1500px;
-    margin: 40px auto 0 auto;
-    line-height: 1.65;
-    padding:0px;
-    display: flex;
-    margin: 0;
-    height: 60px;
-
-}*/
 
 .In {
     float: left;
