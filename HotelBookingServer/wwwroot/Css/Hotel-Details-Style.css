@@ -1,4 +1,22 @@
-﻿body 
-{
+﻿#roomList-container {
+    display: flex;
+    flex-direction: column;
+}
 
+#amenities {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.border {
+    border: 1px solid black;
+}
+
+#hotel-name {
+    font-weight: bold;
+    font-size: 2em;
+    align-self: center;
+    padding: 5px;
 }

@@ -26,4 +26,8 @@
     <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\Resources\HotelAmenitiesIcons\" />
+  </ItemGroup>
+
 </Project>
