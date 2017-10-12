@@ -1,4 +1,4 @@
-﻿var datatobesend;
+﻿var dataToSend;
 var jsonobject;
 $("#search-field").keyup(function() {
     var search = $("#search-field")[0].value;
@@ -7,15 +7,11 @@ $("#search-field").keyup(function() {
         type: 'get',
         contentType: "application/json",
         success: function(jsonresult) {
-
-            //alert(parseit(jsonresult));
-
             $('#search-field').autocomplete({
                 minChars: 3,
                 source: parseit(jsonresult),
                 select: function(e, mdata) {
-                    datatobesend = mdata;
-                    console.log(mdata);
+                    dataToSend = mdata;
                 }
             });
 
@@ -24,15 +20,16 @@ $("#search-field").keyup(function() {
 })
 
 function parseit(jsonresult) {
-    var ooo = [];
+    var parsed = [];
     jsonobject = JSON.parse(jsonresult);
     for (var i = 0; i < jsonobject[0].ItemList.length; i++) {
-        ooo.push({ value: jsonobject[0].ItemList[i].CulturedText, data: jsonobject[0].ItemList[i] });
+        parsed.push({ value: jsonobject[0].ItemList[i].CulturedText, data: jsonobject[0].ItemList[i] });
     }
-    return ooo;
+    return parsed;
 }
+
 $("button").click(function() {
-    var term = datatobesend;
+    var term = dataToSend;
     var ci = $("#ci-datepicker")[0].value;
     var co = $("#co-datepicker2")[0].value;
     var data = {
@@ -46,7 +43,7 @@ $("button").click(function() {
         type: 'post',
         contentType: "application/json",
         success: function(result) {
-            window.location.href = "/hotellisting/" + result;
+            window.location.href = "/hotellisting/" + term.item.data.SearchType + "/" + result;
         },
         data: datam
     });

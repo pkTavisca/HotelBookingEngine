@@ -3,6 +3,7 @@ using HotelEngineServiceReference;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using HotelBookingServer.Services;
+using System;
 
 namespace HotelBookingServer.Controllers
 {
@@ -20,13 +21,7 @@ namespace HotelBookingServer.Controllers
             _singleAvail = new SingleAvailService();
         }
 
-        [HttpGet("get/{type}/{lat}/{lon}")]
-        public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
-        {
-            return _hotelService.GetHotelDetails(type, lat, lon);
-        }
-
-        [HttpGet("/multi/{sessionId}")]
+        [HttpGet("multi/{sessionId}")]
         public HotelSearchRS GetMultiAvailDetails(string sessionId)
         {
             return _hotelService.GetMultiAvailDetails(sessionId);

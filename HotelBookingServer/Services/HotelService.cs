@@ -1,6 +1,10 @@
-﻿using HotelBookingServer.Models;
+﻿using HotelBookingServer.Implementations;
+using HotelBookingServer.Models;
 using HotelEngineServiceReference;
 using System;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
 namespace HotelBookingServer.Services
 {
     public class HotelService
@@ -10,12 +14,12 @@ namespace HotelBookingServer.Services
         {
             _appSettings = appSettings;
         }
-        public HotelSearchRS GetHotelDetails(string type, string lat, string lon)
+        public HotelSearchRS GetHotelDetails(string sessionId, string type, string lat, string lon, DateTime checkIn, DateTime checkOut)
         {
             float latitude = float.Parse(lat);
             float longitude = float.Parse(lon);
             HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            var searchRequest = BuildSearchRequest(type, DateTime.Now, DateTime.Now.AddDays(1), GetDefaultPassenger(), 1, latitude, longitude);
+            var searchRequest = BuildSearchRequest(sessionId, type, checkIn, checkOut, GetDefaultPassenger(), 1, latitude, longitude);
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
             return result;
@@ -39,18 +43,24 @@ namespace HotelBookingServer.Services
 
         public HotelSearchRS GetMultiAvailDetails(string sessionId)
         {
-            throw new NotImplementedException();
+            SearchObject searchData = SearchDataCache.GetFromCache(sessionId);
+            JObject searchAutoSuggestData = JsonConvert.DeserializeObject(searchData.SearchTerm) as JObject;
+            var data = searchAutoSuggestData.First.First["data"];
+            string latitiude = (string)data["Latitude"];
+            string longitude = (string)data["Longitude"];
+            string searchType = (string)data["SearchType"];
+            return GetHotelDetails(sessionId, searchType, latitiude, longitude, searchData.CheckIn, searchData.CheckOut);
         }
 
-        private HotelSearchRQ BuildSearchRequest(string searchType, DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
+        private HotelSearchRQ BuildSearchRequest(string sessionId, string searchType, DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
             int noOfRooms = 1, float latitude = 19.0760f, float longitude = 72.8777f)
         {
             return new HotelSearchRQ
             {
                 ResultRequested = ResponseType.Complete,
                 Filters = SetHotelFilters(),
-                SessionId = Guid.NewGuid().ToString(),
-                HotelSearchCriterion = SetSearchCriterion(searchType, noOfRooms, start, end, passengers, latitude, longitude),
+                SessionId = sessionId,
+                HotelSearchCriterion = SetSearchCriterion(sessionId, searchType, noOfRooms, start, end, passengers, latitude, longitude),
                 PagingInfo = SetPagingInfo(),
             };
         }
@@ -76,7 +86,7 @@ namespace HotelBookingServer.Services
             };
             return hotelFilters;
         }
-        private HotelSearchCriterion SetSearchCriterion(string searchType, int noOfRooms, DateTime start, DateTime end,
+        private HotelSearchCriterion SetSearchCriterion(string sessionId, string searchType, int noOfRooms, DateTime start, DateTime end,
             PassengerTypeQuantity[] passengers, float latitude, float longitude)
         {
             HotelSearchCriterion hotelSearchCriterion = new HotelSearchCriterion();
@@ -85,7 +95,7 @@ namespace HotelBookingServer.Services
             else displayOrder = HotelDisplayOrder.ByRelevanceScoreDescending;
             hotelSearchCriterion.Attributes = new StateBag[]
             {
-                new StateBag() { Name= "API_SESSION_ID",Value= "bf453bd0-8de8-417c-bccf-c6b8d50d6ad6" },
+                new StateBag() { Name= "API_SESSION_ID",Value= sessionId },
                 new StateBag() { Name= "FareType",Value= "BaseFare" },
                 new StateBag() { Name= "ResetFiltersIfNoResults",Value= "true" },
                 new StateBag() { Name= "ReturnRestrictedRelevanceProperties",Value= "true" },
@@ -147,7 +157,7 @@ namespace HotelBookingServer.Services
             {
                 End = end,
                 Start = start,
-                Duration = (int)Math.Ceiling(end.Subtract(start).TotalDays)
+                Duration = (int)Math.Ceiling(end.Subtract(start).TotalDays) + 1
             };
             hotelSearchCriterion.Guests = new PassengerTypeQuantity[]
             {

@@ -1,24 +1,13 @@
 ﻿var currentUrl = window.location.href;
 var lastIndex = currentUrl.lastIndexOf("/");
 var guid = currentUrl.slice(lastIndex + 1);
-var searchResults;
+var searchType = currentUrl.split('/')[4];
 
 $.ajax({
     type: "GET",
-    url: '../api/search/get/' + guid,
-    success: function(result) {
-        searchResults = JSON.parse(result.searchTerm).item.data;
-        hotelAjaxCall();
-    }
+    url: '../../api/hotel/multi/' + guid,
+    success: onSuccess
 });
-
-function hotelAjaxCall() {
-    $.ajax({
-        type: "GET",
-        url: '../api/hotel/get/' + searchResults.SearchType + '/' + searchResults.Latitude + '/' + searchResults.Longitude,
-        success: onSuccess
-    });
-}
 
 function bookNowButtonClick(id) {
     window.location.href = "../HotelDetails/" + id;
@@ -28,7 +17,7 @@ function onSuccess(result) {
     $("#loading-icon").hide();
     var hotelListHtml = "";
     var isHotel = false;
-    if (searchResults.SearchType === "Hotel" || searchResults.SearchType === "hotel")
+    if (searchType === "Hotel" || searchType === "hotel")
         isHotel = true;
     var i = 0;
     var htmlContainer = $('#hotel-list');

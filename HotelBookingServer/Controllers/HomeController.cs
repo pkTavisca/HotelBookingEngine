@@ -14,8 +14,9 @@ namespace HotelBookingServer.Controllers
             return File(new FileStream("wwwroot/WebPages/index.html", FileMode.Open), "text/html");
         }
 
-        [HttpGet("hotelListing/{searchGuid}")]
-        public IActionResult GetHotelListingPage(string searchGuid)
+        [HttpGet("hotelListing/City/{searchGuid}")]
+        [HttpGet("hotelListing/Hotel/{searchGuid}")]
+        public IActionResult GetHotelListingPage()
         {
             return File(new FileStream("wwwroot/WebPages/hotel-listing.html", FileMode.Open), "text/html");
         }
