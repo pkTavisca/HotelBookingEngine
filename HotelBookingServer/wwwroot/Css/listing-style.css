@@ -47,9 +47,9 @@ article > img {
     padding-right: 28%;
     color: black;
     padding-top: 100px;
-    background-color: whitesmoke;
-    background: url(../Resources/hotel-room.jpeg) no-repeat fixed;
-    background-size: cover;
+    background-color: white;
+    /*background: url(../Resources/hotel-room.jpeg) no-repeat fixed;*/
+    /*background-size: cover;*/
     /*-webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;*/
@@ -75,8 +75,8 @@ padding-top:20px;
 }
 
 article {
-    background-color:rgb(26,26,26);
-    opacity:0.5;
+    background-color:black;
+    opacity:0.6;
     color:white;
     border-radius: 2px;
 }

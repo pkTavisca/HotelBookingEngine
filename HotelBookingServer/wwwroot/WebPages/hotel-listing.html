@@ -8,15 +8,36 @@
     <link href="https://fonts.googleapis.com/css?family=Amiri" rel="stylesheet">
 </head>
 <body>
-   <section>
-    <article id="header">
-        <img src="../Resources/logo.svg" alt="logo" align="left" />
-    </article>
-       </section>
+    <section>
+        <article id="header">
+            <img src="../Resources/logo.svg" alt="logo" align="left" />
+        </article>
+    </section>
     <div id="hotel-list"></div>
-  
+    <script id="hotel-list-items" type="text/x-handlebars-template">
+        {{#each this}} {{#unless image}}
+        <div style="border:solid 1px black;margin-bottom:30px">
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <img src="{{image}}" width="200" height="200" />
+                </div>
+                <div class="col-md-5">
+                    <h2>{{name}}</h2>
+                    <h4>{{completeaddress}}</h4>
+                    <h4>{{rating}}</h4>
+                    <h3>{{cost}}</h3>
+                </div>
+                <div class="col-md-2">
+                    <button id="roomBtn" name="roomButton">Book This Room</button>
+                </div>
+            </div>
+        </div>
+        {{/unless}} {{/each}}
+    </script>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script src="../Scripts/hotel-listing-script.js"></script>
 
 </html>
+
