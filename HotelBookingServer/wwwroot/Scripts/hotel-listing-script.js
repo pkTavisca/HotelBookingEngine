@@ -25,25 +25,25 @@ function bookNowButtonClick(id) {
 }
 
 function onSuccess(hotel) {
-searchResults = hotel;
-var hotelList = [];
-var urlImage = "";
-for (i = 0; i < hotel.itinerary.length; i++) {
-    for ( k = 0; k < hotel.itinerary[i].hotelProperty.mediaContent.length; k++) {
-        if (hotel.itinerary[i].hotelProperty.mediaContent[k].url != null) {
-            urlImage = hotel.itinerary[i].hotelProperty.mediaContent[k].url.toString();
-            break;
+    searchResults = hotel;
+    var hotelList = [];
+    var urlImage = "";
+    for (i = 0; i < searchResults.itineraries.length; i++) {
+        for (k = 0; k < searchResults.itineraries[i].hotelProperty.mediaContent.length; k++) {
+            if (searchResults.itineraries[i].hotelProperty.mediaContent[k].url != null) {
+                urlImage = searchResults.itineraries[i].hotelProperty.mediaContent[k].url.toString();
+                break;
+            }
         }
+        hotelList.push({
+            image: urlImage,
+            name: searchResults.itineraries[i].hotelProperty.name,
+            address: searchResults.itineraries[i].hotelProperty.address.completeAddress,
+            cost: searchResults.itineraries[i].fare.baseFare.amount,
+        });
     }
-    hotelList.push({
-        image: urlImage,
-        name: hotel.itinerary[i].hotelProperty.name,
-        address: hotel.itinerary[i].hotelProperty.address.completeAddress,
-        cost: hotel.itinerary[i].fare.baseFare.amount,
-    });
-}
-var template = $('#hotel-item');
-var compiledTemplate = Handlebars.compile(template.html());
-var html = compiledTemplate(hotelList);
-$('#hotelList-container').html(html);
+    var template = $('#hotel-item');
+    var compiledTemplate = Handlebars.compile(template.html());
+    var html = compiledTemplate(hotelList);
+    $('#hotelList-container').html(html);
 }
