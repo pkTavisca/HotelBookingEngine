@@ -57,6 +57,10 @@ ul > li {
     font-family:'Times New Roman';
     text-align:left;
     font-weight:bold;
+   
+}
+ul{
+    width:250px;
 }
 
 li {
