@@ -25,6 +25,7 @@ function bookNowButtonClick(id) {
 }
 
 function onSuccess(hotel) {
+    $("#loading-icon").hide();
     searchResults = hotel;
     var hotelList = [];
     var urlImage = "";

@@ -6,13 +6,16 @@
     <link rel="stylesheet" href="../Css/listing-style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
 </head>
 
 <body>
-
-    <h1>List of Hotels</h1>
-
-    <div id="hotelList-container">
+    <section id="header">
+        <article>
+            <h1>TAVISCA</h1>
+        </article>
+    </section>
+   <div id="hotelList-container">
         <div class="col-md-12">
             <div class="col-md-offset-5">
                 <img src="" alt="Loading.." />
@@ -24,10 +27,9 @@
     <script id="hotel-item" type="text/x-handlebars-template">
         {{#each this}}
         <div class="col-md-12">
-            <div style="border:solid 1px gray;margin-bottom:30px">
-
-                <div class="col-md-5">
-                    <img src="{{image}}" width="300" height="250" alt="No Image To Display" />
+            <div style="border:solid 1px gray;margin-bottom:30px" class="one-hotel-list-container">
+           <div class="col-md-5">
+                    <img src="{{image}}" width="300" height="350" alt="No Image To Display" />
                 </div>
                 <div class="col-md-4">
                     <h3>{{name}}</h3>
