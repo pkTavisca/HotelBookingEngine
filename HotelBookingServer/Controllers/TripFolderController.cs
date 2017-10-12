@@ -166,6 +166,7 @@ namespace HotelBookingServer.Controllers
                                     }
                                     
                                 },
+                                DepositRequired = false,
                                 Fare = new HotelFare()
                                 {
                                     BaseFare = new BaseFare()
@@ -185,9 +186,78 @@ namespace HotelBookingServer.Controllers
                                         Currency = "USD",
                                         DisplayAmount = 0,
                                         DisplayCurrency = "USD",
-                                        UsdEquivAmount = 0
+                                        UsdEquivAmount = 0,  
+                                    },
+                                    TotalDiscount = new Discount()
+                                    {
+                                        Amount = 0,
+                                        BaseEquivAmount = 0,
+                                        Currency = "USD",
+                                        DisplayAmount = 0,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 0,
+                                        Id = 0
+                                    },
+                                    TotalFare = new Money()
+                                    {
+                                        Amount = 137.27M,
+                                        BaseEquivAmount = 137.27M,
+                                        BaseEquivCurrency = "USD",
+                                        Currency = "USD",
+                                        DisplayAmount = 137.27M,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 137.27M
+                                    },
+                                    TotalFee = new Fee()
+                                    {
+                                        Amount = 0,
+                                        BaseEquivAmount = 0,
+                                        Currency = "USD",
+                                        DisplayAmount = 0,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 0,
+                                        Id = 0,
+                                        IsRefundable = false
+                                    },
+                                    TotalTax = new Money()
+                                    {
+                                        Amount = 0,
+                                        BaseEquivAmount = 0,
+                                        DisplayAmount = 0,
+                                        UsdEquivAmount = 0,
+                                    },
+                                    AvgDailyRate = new Money()
+                                    {
+                                        Amount = 137.27M,
+                                        BaseEquivAmount = 137.27M,
+                                        BaseEquivCurrency = "USD",
+                                        Currency = "USD",
+                                        DisplayAmount = 137.27M,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 137.27M
+                                    },
+                                    MaxDailyRate = new Money()
+                                    {
+                                        Amount = 119.80m,
+                                        BaseEquivAmount = 119.80M,
+                                        BaseEquivCurrency = "USD",
+                                        Currency = "USD",
+                                        DisplayAmount = 119.80M,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 119.80M
+                                    },
+                                    MinDailyRate = new Money()
+                                    {
+                                        Amount = 111.47M,
+                                        BaseEquivAmount = 111.47M,
+                                        BaseEquivCurrency = "USD",
+                                        Currency = "USD",
+                                        DisplayAmount = 111.47M,
+                                        DisplayCurrency = "USD",
+                                        UsdEquivAmount = 111.47M
                                     }
                                 },
+                                GuaranteeRequired = false
                             },
                             HotelSearchCriterion = new HotelSearchCriterion(),
                             RoomOccupancyTypes = new RoomOccupancyType[]
