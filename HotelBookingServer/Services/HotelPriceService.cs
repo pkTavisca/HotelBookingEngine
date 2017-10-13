@@ -32,6 +32,7 @@ namespace HotelBookingServer.Services
                 SessionId = sessionId,
             };
             TripProductPriceRS priceResponse = tripsEngineClient.PriceTripProductAsync(priceRequest).GetAwaiter().GetResult();
+            TripProductPriceCache.Cache[sessionId] = priceResponse;
             return priceResponse;
         }
     }
