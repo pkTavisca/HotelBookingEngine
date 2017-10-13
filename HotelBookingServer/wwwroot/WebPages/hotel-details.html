@@ -4,7 +4,7 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../Css/hotel-details-style.css">
+    <link rel="stylesheet" type="text/css" href="../../Css/hotel-details-style.css">
     <title>Room Listing</title>
 </head>
 
@@ -18,15 +18,15 @@
         <div>
             {{this.itinerary.hotelProperty.address.completeAddress}}
         </div>
-        <iframe class="map-bottom" width="598" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3ddScAI&amp;q={{this.itinerary.hotelProperty.geoCode.latitude}},{{this.itinerary.hotelProperty.geoCode.longitude}}" allowfullscreen>
+        <iframe class="map-bottom" width="598" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIYzzzQZGLWDSOSovKWaq2UsyX1dQ796c&q={{this.itinerary.hotelProperty.geoCode.latitude}},{{this.itinerary.hotelProperty.geoCode.longitude}}" allowfullscreen>
         </iframe>
         <div>
             Amenities
         </div>
         <div id="amenities">
             {{#each this.itinerary.hotelProperty.amenities}} {{#if this.masterAmenityName}}
-            <div title="{{this.masterAmenityName}}" class="border">
-                <img src="../Resources/HotelAmenitiesIcons/{{this.masterAmenityId}}.svg" width=50 height=50>
+            <div title="{{this.masterAmenityName}}">
+                <img src="../../Resources/HotelAmenitiesIcons/{{this.masterAmenityId}}.svg" width=50 height=50>
             </div>
             {{/if}} {{/each}}
         </div>
@@ -45,7 +45,7 @@
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
     <!-- <script src="../../Scripts/hotel-details.js" type="text/javascript"></script> -->
-    <script src="../Scripts/hotel-details.js" type="text/javascript"></script>
+    <script src="../../Scripts/hotel-details.js" type="text/javascript"></script>
 </body>
 
 </html>
