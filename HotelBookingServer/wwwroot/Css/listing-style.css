@@ -35,6 +35,9 @@ section > article {
     font-family: 'Alegreya', serif;
     color: white;
 }
+.glyphicon{
+    color:goldenrod;
+}
 
 
 .one-hotel-list-container {
