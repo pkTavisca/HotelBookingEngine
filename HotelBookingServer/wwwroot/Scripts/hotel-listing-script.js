@@ -25,7 +25,6 @@ function bookNowButtonClick(id) {
 }
 
 function onSuccess(hotel) {
-    $("#loading-icon").hide();
     searchResults = hotel;
     var hotelList = [];
     var urlImage = "";
@@ -40,7 +39,9 @@ function onSuccess(hotel) {
             image: urlImage,
             name: searchResults.itineraries[i].hotelProperty.name,
             address: searchResults.itineraries[i].hotelProperty.address.completeAddress,
-            cost: searchResults.itineraries[i].fare.baseFare.amount,
+            cost: searchResults.itineraries[i].fare.totalFare.amount +" "+searchResults.itineraries[i].fare.totalFare.currency,
+            rating: searchResults.itineraries[i].hotelProperty.hotelRating.rating,
+
         });
     }
     var template = $('#hotel-item');
