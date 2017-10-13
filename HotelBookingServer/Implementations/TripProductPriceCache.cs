@@ -8,6 +8,6 @@ namespace HotelBookingServer.Implementations
 {
     public static class TripProductPriceCache
     {
-        public static Dictionary<string, TripProductPriceRS> Cache { get; set; }
+        public static Dictionary<string, TripProductPriceRS> Cache { get; set; } = new Dictionary<string, TripProductPriceRS>();
     }
 }

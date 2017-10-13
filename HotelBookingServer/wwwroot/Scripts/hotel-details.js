@@ -4,7 +4,7 @@ var hotelId = currentUrl.slice(lastIndex + 1);
 var sessionId = currentUrl.split('/')[4];
 var presentAmenities = [];
 
-Handlebars.registerHelper('nonRepeatingAmenitiesCond', function(amenity, options) {
+Handlebars.registerHelper('nonRepeatingAmenitiesCond', function (amenity, options) {
     if (checkIfPresent(amenity)) {
         return options.inverse(this);
     } else {
@@ -41,8 +41,16 @@ function priceAjaxCall(roomId) {
     $.ajax({
         type: "get",
         url: '../../api/roomprice/get/' + sessionId + '/' + roomId,
-        success: function(result) {
+        success: function (result) {
             console.log(result);
+            $.ajax({
+                type: "get",
+                url: '../../api/tripfolder/get/' + sessionId,
+                success: function (result2) {
+                    console.log(result2);
+
+                }
+            });
         }
     });
 }
