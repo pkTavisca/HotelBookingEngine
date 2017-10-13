@@ -1,4 +1,11 @@
-﻿var currentUrl = window.location.href;
+﻿Handlebars.registerHelper('times', function (n, block) {
+    var accum = '';
+    for (var i = 0; i < n; ++i)
+        accum += block.fn(i);
+    return accum;
+});
+
+var currentUrl = window.location.href;
 var lastIndex = currentUrl.lastIndexOf("/");
 var guid = currentUrl.slice(lastIndex + 1);
 var searchResults;

@@ -98,25 +98,30 @@ div>button
 /*#btn-div {
     padding-top: 100px;
 }*/
-#hotelList-container 
-{
+#hotelList-container {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
     padding-top: 100px;
-    padding-left:250px;
-    padding-right:250px;
+    padding-left: 250px;
+    padding-right: 250px;
+    justify-content: space-between;
 }
 div {
     border: 0;
     margin: 0;
 }
-#hotels-info-container {
+.hotels-info-container {
     /*padding-left:200px;*/
-    padding-bottom:30px;
-    padding-right:200px;
-    display:flex;
-    flex-flow:wrap;
-    border:solid black;
-    width:1500px;
-
+    padding-bottom: 30px;
+    /*padding-right:200px;*/
+    display: flex;
+    flex-flow: wrap;
+    border: solid black;
+    width: 1200px;
+    flex-flow: row wrap;
+    justify-content:space-between;
+    /*align-items: center;*/
 }
 .hotel-img-container{
     /*width:200px;
@@ -125,6 +130,7 @@ div {
     flex:1;
     padding-top:20px;
     padding-left:10px;
+
 }
 .one-hotel-info {
     width: 500px;
@@ -133,7 +139,16 @@ div {
 .button-container{
     width:150px;
     flex:1;
-    padding-left:50px;
+    padding-left:80px;
     padding-top:100px;
+}
+#bookNowButton
+{
+ width:200px;
+ height:50px;
+
+}
+.img-format{
+    width:300px;
 }
 

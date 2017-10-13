@@ -20,7 +20,7 @@
     </div>
     <script id="hotel-item" type="text/x-handlebars-template">
         {{#each this}}
-        <div id="hotels-info-container">
+        <div class="hotels-info-container">
             <!--<div class="border-maker">-->
            <div class="hotel-img-container">
                     <img src="{{image}}" class="img-format" width="200" height="250" alt="No Image To Display" />
@@ -29,7 +29,9 @@
                     <h2>{{name}}</h2>
                     <h3>{{address}}</h3>
                     <h3>{{cost}}</h3>
-                    <h3>{{rating}}</h3>
+                    <h3>Rating :{{#times rating}}
+                            <span class="glyphicon glyphicon-star blue-icon"></span>
+                            {{/times}}</h3>
                 </div>
 
                 <div class="button-container" id="btn-div">
