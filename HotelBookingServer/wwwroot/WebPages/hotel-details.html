@@ -43,8 +43,12 @@
         <div>Rooms:</div>
         <div id="rooms">
             {{#each this.itinerary.rooms}}
-            <div class="indi-room">
-                <div>{{this.roomName}}</div>
+            <div class="indi-room border">
+                <div>{{this.roomName}} - {{this.roomDescription}}</div>
+                <div>{{this.bedType}}</div>
+                {{#each this.displayRoomRate.dailyRates}}
+                <div>Price: {{this.amount}} {{this.currency}}</div>
+                {{/each}}
             </div>
             {{/each}}
         </div>
