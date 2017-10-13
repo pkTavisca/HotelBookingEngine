@@ -43,7 +43,7 @@
         <div>Rooms:</div>
         <div id="rooms">
             {{#each this.itinerary.rooms}}
-            <div class="indi-room border">
+            <div class="indi-room border" onclick="priceAjaxCall('{{this.roomId}}')">
                 <div>{{this.roomName}} - {{this.roomDescription}}</div>
                 <div>{{this.bedType}}</div>
                 {{#each this.displayRoomRate.dailyRates}}

@@ -16,6 +16,8 @@ namespace HotelBookingServer.Services
         }
         public HotelSearchRS GetHotelDetails(string sessionId, string type, string lat, string lon, DateTime checkIn, DateTime checkOut)
         {
+            if (HotelMultiAvailCache.Contains(sessionId))
+                return HotelMultiAvailCache.GetFromCache(sessionId).Item2;
             float latitude = float.Parse(lat);
             float longitude = float.Parse(lon);
             HotelEngineClient hotelEngineClient = new HotelEngineClient();

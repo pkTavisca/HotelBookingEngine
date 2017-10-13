@@ -16,6 +16,11 @@ namespace HotelBookingServer.Implementations
             _cache[hotelSearchRQ.SessionId] = new Tuple<HotelSearchRQ, HotelSearchRS>(hotelSearchRQ, hotelSearchRS);
         }
 
+        public static bool Contains(string sessionId)
+        {
+            return _cache.ContainsKey(sessionId);
+        }
+
         public static Tuple<HotelSearchRQ, HotelSearchRS> GetFromCache(string sessionId)
         {
             return _cache[sessionId];

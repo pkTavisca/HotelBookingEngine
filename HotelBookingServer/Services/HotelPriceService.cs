@@ -1,27 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HotelEngineServiceReference;
-using HotelBookingServer.Implementations;
+﻿using HotelBookingServer.Implementations;
+using TripEngineServiceReference;
+using hotel = HotelEngineServiceReference;
 
 namespace HotelBookingServer.Services
 {
     public class HotelPriceService
     {
-        public HotelRoomPriceRS GetPrice(string sessionId)
+        public TripProductPriceRS GetPrice(string sessionId, string roomId)
         {
             var hotelRoomAvailTuple = HotelRoomAvailRQRSCache.GetFromCache(sessionId);
-            HotelEngineClient hotelEngineClient = new HotelEngineClient();
-            HotelRoomPriceRQ priceRequest = new HotelRoomPriceRQ()
+            TripsEngineClient tripsEngineClient = new TripsEngineClient();
+            Room selectedRoom = new Room();
+            foreach (var room in hotelRoomAvailTuple.Item2.Itinerary.Rooms)
             {
-                AdditionalInfo = HotelMultiAvailCache.GetFromCache(sessionId).Item1.AdditionalInfo,
-                HotelSearchCriterion = hotelRoomAvailTuple.Item1.HotelSearchCriterion,
-                Itinerary = hotelRoomAvailTuple.Item2.Itinerary,
-                ResultRequested = ResponseType.Complete,
-                SessionId = sessionId
+                if (room.RoomId.ToString() == roomId)
+                {
+                    selectedRoom = ReferenceConverter.Convert<hotel.Room, Room>(room);
+                    break;
+                }
+            }
+            hotelRoomAvailTuple.Item2.Itinerary.Rooms = ReferenceConverter.Convert<Room[], hotel.Room[]>(new Room[] { selectedRoom });
+            TripProductPriceRQ priceRequest = new TripProductPriceRQ()
+            {
+                TripProduct = new HotelTripProduct()
+                {
+                    HotelItinerary = ReferenceConverter.Convert<hotel.HotelItinerary, HotelItinerary>(hotelRoomAvailTuple.Item2.Itinerary),
+                    HotelSearchCriterion = ReferenceConverter.Convert<hotel.HotelSearchCriterion, HotelSearchCriterion>(hotelRoomAvailTuple.Item1.HotelSearchCriterion),
+                },
+                //AdditionalInfo = HotelMultiAvailCache.GetFromCache(sessionId).Item1.AdditionalInfo,
+                ResultRequested = ResponseType.Unknown,
+                SessionId = sessionId,
             };
-            HotelRoomPriceRS priceResponse = hotelEngineClient.HotelRoomPriceAsync(priceRequest).GetAwaiter().GetResult();
+            TripProductPriceRS priceResponse = tripsEngineClient.PriceTripProductAsync(priceRequest).GetAwaiter().GetResult();
             return priceResponse;
         }
     }
