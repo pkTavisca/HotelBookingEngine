@@ -24,11 +24,11 @@
             Amenities
         </div>
         <div id="amenities">
-            {{#each this.itinerary.hotelProperty.amenities}} {{#if this.masterAmenityName}}
+            {{#each this.itinerary.hotelProperty.amenities}} {{#if this.masterAmenityName}} {{#nonRepeatingAmenitiesCond this}}
             <div title="{{this.masterAmenityName}}">
                 <img src="../../Resources/HotelAmenitiesIcons/{{this.masterAmenityId}}.svg" width=50 height=50>
             </div>
-            {{/if}} {{/each}}
+            {{/nonRepeatingAmenitiesCond}} {{/if}} {{/each}}
         </div>
         <div>
             Description
@@ -37,6 +37,14 @@
             {{#each this.itinerary.hotelProperty.descriptions}}
             <div>
                 {{this.description}}
+            </div>
+            {{/each}}
+        </div>
+        <div>Rooms:</div>
+        <div id="rooms">
+            {{#each this.itinerary.rooms}}
+            <div class="indi-room">
+                <div>{{this.roomName}}</div>
             </div>
             {{/each}}
         </div>

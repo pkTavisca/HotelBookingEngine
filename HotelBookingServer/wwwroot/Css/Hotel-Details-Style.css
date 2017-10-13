@@ -20,3 +20,7 @@
     align-self: center;
     padding: 5px;
 }
+
+.indi-room {
+    display: flex;
+}

@@ -2,7 +2,25 @@
 var lastIndex = currentUrl.lastIndexOf("/");
 var hotelId = currentUrl.slice(lastIndex + 1);
 var sessionId = currentUrl.split('/')[4];
-var searchResults;
+var presentAmenities = [];
+
+Handlebars.registerHelper('nonRepeatingAmenitiesCond', function(amenity, options) {
+    if (checkIfPresent(amenity)) {
+        return options.inverse(this);
+    } else {
+        presentAmenities.push(amenity);
+        return options.fn(this);
+    }
+});
+
+function checkIfPresent(amenity) {
+    for (presentAmenity of presentAmenities) {
+        if (presentAmenity.masterAmenityId === amenity.masterAmenityId) {
+            return true;
+        }
+    }
+    return false;
+}
 
 function hotelAjaxCall() {
     $.ajax({
@@ -25,7 +43,7 @@ function priceAjaxCall() {
         type: "get",
         url: '../../api/roomprice/get/' + sessionId,
         success: function(result) {
-
+            console.log(result);
         }
     });
 }
