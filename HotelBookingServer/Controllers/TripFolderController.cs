@@ -16,6 +16,19 @@ namespace HotelBookingServer.Controllers
         [HttpGet("get/{sessionId}")]
         public async Task<TripFolderBookRS> Get(string sessionId)
         {
+            TripFolderBookRQ tripFolderBookRQ2 = new TripFolderBookRQ()
+            {
+                TripFolder = new TripFolder()
+                {
+                    Products = new HotelTripProduct[]{
+                        new HotelTripProduct()
+                        {
+                            HotelSearchCriterion =null,
+                            HotelItinerary =null 
+                        }
+                    }
+                }
+            };
             TripFolderBookRQ tripFolderBookRQ = new TripFolderBookRQ()
             {
                 SessionId = sessionId,
@@ -24,14 +37,36 @@ namespace HotelBookingServer.Controllers
                 {
                     Creator = new User()
                     {
+                        Email = "sshrikhande@tavisca.com",
                         FirstName = "Shweta",
                         LastName = "Shrikhande",
                         UserId = 26149061229281280,
                         UserName = "sshrikhande"
                     },
                     FolderName = "sshrikhande",
+                    Id = new Guid("00000000-0000-0000-0000-000000000000"),
+                    LastModifiedDate = new DateTime(),
                     Owner = new User()
                     {
+                        AdditionalInfo = new StateBag[]
+                        {
+                            new StateBag()
+                            {
+                                Name = "AgencyName",
+                                Value = "WV"
+                            },
+                            new StateBag()
+                            {
+                                Name = "CompanyName",
+                                Value = "Rovia"
+                            },
+                            new StateBag()
+                            {
+                                Name = "UserType",
+                                Value = "Normal"
+                            },
+                        },
+                        Email = "sshrikhande@tavisca.com",
                         FirstName = "Shweta",
                         LastName = "Shrikhande",
                         UserId = 26149061229281280,
@@ -43,7 +78,9 @@ namespace HotelBookingServer.Controllers
                         Requester = new Company()
                         {
                             DK = "200000D",
-                            ID = 0
+                            ID = 0,
+                            CodeContext = CompanyCodeContext.HotelChain,
+
                         }
                     },
                     Type = TripFolderType.Personal,
@@ -57,15 +94,32 @@ namespace HotelBookingServer.Controllers
                             FirstName = "Shweta",
                             Gender = Gender.Male,
                             LastName = "Shrikhande",
+                            PassengerId = new Guid("00000000-0000-0000-0000-000000000000"),
                             PassengerType = PassengerType.Adult,
+                            PhoneNumber = "123456789",
                             Rph = 0,
+                            UserId = 0,
+                            UserName = "sshrikhande@tavisca.com"
                         }
                     },
-                    Payments = new Payment[]
+                    Payments = new CreditCardPayment[]
                     {
-                        new Payment()
+                        new CreditCardPayment()
                         {
-                            Amount = new Money()
+
+                            CardMake = new CreditCardMake()
+                            {
+                                Code = "VI",
+                                Name = "Visa"
+                            },
+                            CardType = CreditCardType.Personal,
+                            ExpiryMonthYear = new DateTime(2019, 01, 01),
+                            NameOnCard = "Saurabh Cache",
+                            IsThreeDAuthorizeRequired = false,
+                            Number = "0000000000001111",
+                            SecurityCode = "123",
+                            Amount =//TripProductPriceCache.Cache[sessionId].TripProduct.
+                            new Money()
                             {
                                 Amount = 200.34M,
                                 Currency = "USD",
@@ -81,6 +135,7 @@ namespace HotelBookingServer.Controllers
                                 ZipCode = "75024",
                                 City = new City()
                                 {
+                                    Code = "PLN",
                                     CodeContext = LocationCodeContext.City,
                                     Name = "Plano",
                                     Country = "US",
@@ -90,7 +145,7 @@ namespace HotelBookingServer.Controllers
                             },
                         }
                     },
-                    Products = new TripProduct[] { TripProductPriceCache.Cache[sessionId].TripProduct }
+                    Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[sessionId].TripProduct }
                 },
                 TripProcessingInfo = new TripProcessingInfo()
                 {
