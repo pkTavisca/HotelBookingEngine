@@ -15,22 +15,6 @@ namespace HotelBookingServer.Controllers
         [HttpGet("Payment")]
         public async Task<CompleteBookingRS> Payments()
         {
-            CreditCardPayment creditCardPayment = new CreditCardPayment()
-            {
-                CardMake = new CreditCardMake()
-                {
-                    Code = "VI",
-                    Name = "Visa"
-                },
-                CardType = CreditCardType.Personal,
-                ExpiryMonthYear = new DateTime(2019, 01, 01),
-                NameOnCard = "Saurabh Cache",
-                IsThreeDAuthorizeRequired = false,
-                Number = "0000000000001111",
-                SecurityCode = "123"
-
-            };
-
             CompleteBookingRQ bookingRQ = new CompleteBookingRQ();
             bookingRQ.ResultRequested = ResponseType.Unknown;
             bookingRQ.SessionId = Guid.NewGuid().ToString();
