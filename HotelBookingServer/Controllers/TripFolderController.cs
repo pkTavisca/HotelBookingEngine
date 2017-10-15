@@ -262,6 +262,7 @@ namespace HotelBookingServer.Controllers
             tripFolderBookRQ.TripFolder.Products[0].Owner = tripFolderBookRQ.TripFolder.Owner;
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
             var response = await tripsEngineClient.BookTripFolderAsync(tripFolderBookRQ);
+            TripFolderCache.Cache[sessionId] = response;
             return response;
         }
     }
