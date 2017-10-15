@@ -46,7 +46,8 @@ function priceAjaxCall(roomId) {
                 type: "get",
                 url: '../../api/tripfolder/get/' + sessionId,
                 success: function (result2) {
-                    console.log(result2);
+                    var x = JSON.stringify(result2)
+                    console.log(x);
                 }
             });
         }
