@@ -42,13 +42,11 @@ function priceAjaxCall(roomId) {
         type: "get",
         url: '../../api/roomprice/get/' + sessionId + '/' + roomId,
         success: function (result) {
-            console.log(result);
             $.ajax({
                 type: "get",
                 url: '../../api/tripfolder/get/' + sessionId,
                 success: function (result2) {
                     console.log(result2);
-
                 }
             });
         }
