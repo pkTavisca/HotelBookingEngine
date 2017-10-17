@@ -20,8 +20,8 @@
                 {{#loop this.itinerary.hotelProperty.hotelRating.rating}}<span class="starred">★</span>{{/loop}}{{#loopun this.itinerary.hotelProperty.hotelRating.rating}}<span class="unstarred">★</span>{{/loopun}}
             </div>
         </div>
-        <div>
-            {{this.itinerary.hotelProperty.address.completeAddress}}
+        <div id="hotel-address">
+            <span><img src="../Resources/location-marker.svg"></span><span>{{this.itinerary.hotelProperty.address.completeAddress}}</span>
         </div>
         <iframe class="map-bottom" width="598" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIYzzzQZGLWDSOSovKWaq2UsyX1dQ796c&q={{this.itinerary.hotelProperty.geoCode.latitude}},{{this.itinerary.hotelProperty.geoCode.longitude}}" allowfullscreen>
         </iframe>

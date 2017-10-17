@@ -19,7 +19,6 @@
     font-weight: bold;
     font-size: 2em;
     color: #944c00;
-    padding: 5px;
 }
 
 .indi-room {
@@ -45,4 +44,15 @@
 
 .unstarred {
     color: #EEE8AA;
+}
+
+#hotel-address {
+    padding: 5px;
+    display: flex;
+    align-content: center;
+}
+
+#hotel-address span>img {
+    width: 1.2em;
+    height: 1.2em;
 }
