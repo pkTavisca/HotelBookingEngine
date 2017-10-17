@@ -1,6 +1,7 @@
 ﻿#roomList-container {
     display: flex;
     flex-direction: column;
+    margin: 0px 3em 0px 5em;
 }
 
 #amenities {
@@ -17,11 +18,31 @@
 #hotel-name {
     font-weight: bold;
     font-size: 2em;
-    align-self: center;
+    color: #944c00;
     padding: 5px;
 }
 
 .indi-room {
     display: flex;
     flex-direction: column;
+}
+
+#hotel-name-rating {
+    display: flex;
+    flex-direction: row;
+}
+
+#hotel-rating {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+    font-size: 2em;
+}
+
+.starred {
+    color: #DAA520;
+}
+
+.unstarred {
+    color: #EEE8AA;
 }

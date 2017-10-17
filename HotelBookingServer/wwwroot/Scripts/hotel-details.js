@@ -4,13 +4,30 @@ var hotelId = currentUrl.slice(lastIndex + 1);
 var sessionId = currentUrl.split('/')[4];
 var presentAmenities = [];
 
-Handlebars.registerHelper('nonRepeatingAmenitiesCond', function (amenity, options) {
+Handlebars.registerHelper('nonRepeatingAmenitiesCond', function(amenity, options) {
     if (checkIfPresent(amenity)) {
         return options.inverse(this);
     } else {
         presentAmenities.push(amenity);
         return options.fn(this);
     }
+});
+
+Handlebars.registerHelper('loop', function(n, options) {
+    var total = '';
+    for (var i = 0; i < n; i++) {
+        total += options.fn(n);
+    }
+    return total;
+});
+
+Handlebars.registerHelper('loopun', function(n, options) {
+    var total = '';
+    n = 5 - n;
+    for (var i = 0; i < n; i++) {
+        total += options.fn(n);
+    }
+    return total;
 });
 
 function checkIfPresent(amenity) {
@@ -26,11 +43,13 @@ function hotelAjaxCall() {
     $.ajax({
         type: "get",
         url: '../../api/hotel/single/' + sessionId + "/" + hotelId,
-        success: onSuccess
+        success: onSuccess,
+        error: onSuccess
     });
 }
 
 function onSuccess(result) {
+    result = hotelSingleAvailDetails;
     var template = $('#room-item');
     var compiledTemplate = Handlebars.compile(template.html());
     var html = compiledTemplate(result);
@@ -41,11 +60,11 @@ function priceAjaxCall(roomId) {
     $.ajax({
         type: "get",
         url: '../../api/roomprice/get/' + sessionId + '/' + roomId,
-        success: function (result) {
+        success: function(result) {
             $.ajax({
                 type: "get",
                 url: '../../api/tripfolder/get/' + sessionId,
-                success: function (result2) {
+                success: function(result2) {
                     var x = JSON.stringify(result2)
                     console.log(x);
                 }
