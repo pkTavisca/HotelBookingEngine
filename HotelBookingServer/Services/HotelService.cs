@@ -52,7 +52,8 @@ namespace HotelBookingServer.Services
             string latitiude = (string)data["Latitude"];
             string longitude = (string)data["Longitude"];
             string searchType = (string)data["SearchType"];
-            return GetHotelDetails(sessionId, searchType, latitiude, longitude, searchData.CheckIn, searchData.CheckOut);
+            var response = GetHotelDetails(sessionId, searchType, latitiude, longitude, searchData.CheckIn, searchData.CheckOut);
+            return response;
         }
 
         private HotelSearchRQ BuildSearchRequest(string sessionId, string searchType, DateTime start, DateTime end, PassengerTypeQuantity[] passengers,
