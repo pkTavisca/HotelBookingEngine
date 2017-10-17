@@ -16,7 +16,7 @@ Handlebars.registerHelper('nonRepeatingAmenitiesCond', function(amenity, options
 Handlebars.registerHelper('loop', function(n, options) {
     var total = '';
     for (var i = 0; i < n; i++) {
-        total += options.fn(n);
+        total += options.fn();
     }
     return total;
 });
@@ -25,7 +25,7 @@ Handlebars.registerHelper('loopun', function(n, options) {
     var total = '';
     n = 5 - n;
     for (var i = 0; i < n; i++) {
-        total += options.fn(n);
+        total += options.fn();
     }
     return total;
 });
@@ -56,6 +56,7 @@ function onSuccess(result) {
     var compiledTemplate = Handlebars.compile(template.html());
     var html = compiledTemplate(result);
     $('#roomList-container').html(html);
+    $('.item').first().addClass('active');
 }
 
 function priceAjaxCall(roomId) {
