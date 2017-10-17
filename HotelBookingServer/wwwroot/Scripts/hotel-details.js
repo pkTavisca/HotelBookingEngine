@@ -13,6 +13,23 @@ Handlebars.registerHelper('nonRepeatingAmenitiesCond', function(amenity, options
     }
 });
 
+Handlebars.registerHelper('loop', function(n, options) {
+    var total = '';
+    for (var i = 0; i < n; i++) {
+        total += options.fn(n);
+    }
+    return total;
+});
+
+Handlebars.registerHelper('loopun', function(n, options) {
+    var total = '';
+    n = 5 - n;
+    for (var i = 0; i < n; i++) {
+        total += options.fn(n);
+    }
+    return total;
+});
+
 function checkIfPresent(amenity) {
     for (presentAmenity of presentAmenities) {
         if (presentAmenity.masterAmenityId === amenity.masterAmenityId) {
@@ -26,11 +43,13 @@ function hotelAjaxCall() {
     $.ajax({
         type: "get",
         url: '../../api/hotel/single/' + sessionId + "/" + hotelId,
-        success: onSuccess
+        success: onSuccess,
+        error: onSuccess
     });
 }
 
 function onSuccess(result) {
+    result = hotelSingleAvailDetails;
     for (room of result.itinerary.rooms)
         console.log(room.hotelFareSource.name);
     var template = $('#room-item');
