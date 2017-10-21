@@ -56,3 +56,7 @@
     width: 1.2em;
     height: 1.2em;
 }
+
+#myCarousel {
+    max-width: 600px;
+}
