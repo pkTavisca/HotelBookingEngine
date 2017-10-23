@@ -95,14 +95,13 @@ div {
     padding-left:80px;
     padding-top:100px;
 }
-#bookNowButton
-{
- width:200px;
- height:50px;
- background-color:lightseagreen;
- font-size:20px;
-
+#bookNowButton {
+    width: 200px;
+    height: 50px;
+    background-color: lightseagreen;
+    font-size: 20px;
 }
+
 .img-format
 {
    width:300px;
