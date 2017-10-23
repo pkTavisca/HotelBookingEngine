@@ -155,12 +155,6 @@ article {
     flex: 1;
 }
 
-/*span {
-    display: inline;
-}*/
-
-
-
 #form-section {
     position: center;
     background-repeat: no-repeat;
@@ -172,12 +166,6 @@ article {
     padding: 300px 100px 300px 100px;
     background: url(../Resources/xyz.jpg);
   }
-
-
-/*#btn-style {
-    background: transparent;
-    border: transparent;
-}*/
 
 nav {
     float: right;
@@ -238,4 +226,10 @@ fieldset {
 }
 .button-padding{
     padding-bottom:20px;
+}
+.ui-widget-header {
+    border: 1px solid lightseagreen;
+    background: lightseagreen url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x;
+    color: #fff;
+    font-weight: bold;
 }
