@@ -71,9 +71,9 @@ namespace HotelBookingServer.Services
         {
             return new PagingInfo()
             {
-                Enabled = true,
-                EndNumber = 120,
-                StartNumber = 100,
+                Enabled = false,
+                EndNumber = 0,
+                StartNumber = 0,
                 TotalRecordsBeforeFiltering = 0,
                 TotalResults = 0
             };
@@ -153,7 +153,7 @@ namespace HotelBookingServer.Services
             };
             hotelSearchCriterion.ProcessingInfo = new HotelSearchProcessingInfo()
             {
-                DisplayOrder = displayOrder
+                DisplayOrder = displayOrder,
             };
             hotelSearchCriterion.NoOfRooms = noOfRooms;
             hotelSearchCriterion.StayPeriod = new DateTimeSpan()
