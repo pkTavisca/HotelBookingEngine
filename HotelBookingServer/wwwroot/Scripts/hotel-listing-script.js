@@ -27,12 +27,6 @@ function onSuccess(result) {
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
 
-        var isPresent = false;
-        for (room of itinerary.rooms) {
-            if (room.hotelFareSource.name.indexOf("touri") > -1) isPresent = true;
-        }
-        if (!isPresent) continue;
-
         var singleHotel = $("<article>");
         singleHotel.addClass("hotel-info");
         htmlContainer.append(singleHotel);
