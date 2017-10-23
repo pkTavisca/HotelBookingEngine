@@ -1,13 +1,13 @@
 body {
-    background: url(../Resources/loading-circle.svg) no-repeat center  fixed;
+    background: url(../Resources/loading-circle.svg) no-repeat center fixed;
     background-size: 200px;
     margin: 0;
 }
 
 .somediv {
     background-color: aliceblue;
-   
 }
+
 #header {
     position: fixed;
     width: 100%;
@@ -16,7 +16,7 @@ body {
     z-index: 100;
     transition: background-color 0.6s ease-in-out;
     color: black;
-    background-color:#20b2aa;
+    background-color: #20b2aa;
 }
 
 article > h1 {
@@ -26,8 +26,9 @@ article > h1 {
     padding-top: 20px;
     padding-left: 20px;
     font-family: 'Acme', sans-serif;
-    font-size:40px;
+    font-size: 40px;
 }
+
 section > article {
     width: 200px;
     height: 70px;
@@ -35,8 +36,9 @@ section > article {
     font-family: 'Alegreya', serif;
     color: white;
 }
-.glyphicon{
-    color:goldenrod;
+
+.glyphicon {
+    color: goldenrod;
 }
 
 
@@ -54,62 +56,62 @@ section > article {
     padding-right: 250px;
     justify-content: space-between;
 }
+
 div {
     border: 0;
     margin: 0;
 }
-.hotels-info-container 
-{
-  
+
+.hotels-info-container {
     padding-bottom: 30px;
     display: flex;
     flex-flow: wrap;
     border: solid black;
     width: 1200px;
     flex-flow: row wrap;
-    justify-content:space-between;
-    color:white;
-    background-color:black;
-     padding-left:20px;
-    padding-top:10px;
-    border-radius:10px;
-   
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 10px;
 }
-.hotel-img-container
-{
-    margin:0;
-    flex:1;
-    padding-top:20px;
-    padding-left:10px;
 
+.hotel-img-container {
+    margin: 0;
+    flex: 1;
+    padding-top: 20px;
+    padding-left: 10px;
 }
-.one-hotel-info 
-{
+
+.one-hotel-info {
     width: 500px;
     flex: 1;
     font-family: 'Acme', sans-serif;
 }
-.button-container{
-    width:150px;
-    flex:1;
-    padding-left:80px;
-    padding-top:100px;
+
+.button-container {
+    width: 150px;
+    flex: 1;
+    padding-left: 80px;
+    padding-top: 100px;
 }
+
 #bookNowButton {
     width: 200px;
     height: 50px;
-    background-color:#20b2aa;
+    background-color: #20b2aa;
     font-size: 20px;
 }
 
-.img-format
-{
-   width:300px;
+.img-format {
+    width: 300px;
 }
-h2
-{
-    text-decoration:underline;
+
+h2 {
+    text-decoration: underline;
 }
-span{
-    color:sienna;
+
+span {
+    color: sienna;
 }
