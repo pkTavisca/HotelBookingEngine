@@ -97,14 +97,14 @@ input[type=text], select {
 
 button {
     width: 100px;
-    background-color: #ff9900;
+    background-color:lightseagreen;
     color: black;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
     font-size: 15px;
-    font-weight: bold;
+   
 }
 
     button:hover {
