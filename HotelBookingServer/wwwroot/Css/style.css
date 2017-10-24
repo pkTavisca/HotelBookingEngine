@@ -37,14 +37,32 @@ ul {
     height: 80px;
     z-index: 100;
     transition: background-color 0.6s ease-in-out;
-    color: blue;
-    padding-top: 30px;
-    background-color: #ff9933;
+    color: black;
+    background-color: #20b2aa;
 }
+
+header > h1 {
+    margin: 0;
+    padding-bottom: 0px;
+    padding-top: 20px;
+    padding-left: 20px;
+}
+
 ul > li {
-    font-family:'Times New Roman';
-    text-align:left;
-    font-weight:bold;
+    font-family: 'Times New Roman';
+    text-align: left;
+    font-weight: bold;
+}
+
+ul {
+    width: 250px;
+}
+
+section > article {
+    width: 200px;
+    height: 70px;
+    padding-left: 20px;
+    padding-top: 15px;
 }
 
 li {
@@ -80,14 +98,13 @@ input[type=text], select {
 
 button {
     width: 100px;
-    background-color: #ff9900;
+    background-color: #20b2aa;
     color: black;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
     font-size: 15px;
-    font-weight: bold;
 }
 
     button:hover {
@@ -101,7 +118,7 @@ div {
 }
 
     div > article {
-        background-color:rgb(26,26,26);
+        background-color: rgb(26,26,26);
         opacity: 0.9;
         border-radius: 8px;
         width: 80%;
@@ -114,7 +131,7 @@ div {
 
 h2 {
     margin: 0;
-    color:white;
+    color: white;
     font-family: 'Cinzel', serif;
     padding: 0;
     padding-bottom: 10px;
@@ -122,8 +139,9 @@ h2 {
 
 article {
     margin: 0;
-    font-family: 'Alegreya', serif;
+    font-family: 'Times New Roman';
     color: white;
+    font-size: 20px;
 }
 
 .call-out-container {
@@ -138,12 +156,6 @@ article {
     flex: 1;
 }
 
-/*span {
-    display: inline;
-}*/
-
-
-
 #form-section {
     position: center;
     background-repeat: no-repeat;
@@ -154,13 +166,7 @@ article {
     align-items: center;
     padding: 300px 100px 300px 100px;
     background: url(../Resources/xyz.jpg);
-  }
-
-
-/*#btn-style {
-    background: transparent;
-    border: transparent;
-}*/
+}
 
 nav {
     float: right;
@@ -200,27 +206,11 @@ nav {
     width: 180px;
 }
 
-
-
-.button-padding {
-    padding-bottom: 30px;
-    padding-top: 30px;
-}
-
 fieldset {
     border: 0;
     justify-content: space-between;
     padding: 0;
-}
-
-.column-nested {
-    max-width: 1500px;
-    margin: 40px auto 0 auto;
-    line-height: 1.65;
-    padding: 0;
-    display: flex;
-    margin: 0;
-    height: 60px;
+    padding-bottom: 20px;
 }
 
 .In {
@@ -233,3 +223,19 @@ fieldset {
     float: left;
     padding-right: 30px;
 }
+
+.button-padding {
+    padding-bottom: 20px;
+}
+
+.ui-widget-header {
+    border: 1px solid #20b2aa !important;
+    background: #20b2aa url(images/ui-bg_gloss-wave_35_f6a828_500x100.png) 50% 50% repeat-x !important;
+    color: #fff;
+    font-weight: bold;
+}
+
+    .ui-state-highlight .ui-widget-content, .ui-widget-header .ui-state-highlight, .ui-state-active {
+        border: 1px solid #20b2aa !important;
+        background: #20b2aa !important;
+    }

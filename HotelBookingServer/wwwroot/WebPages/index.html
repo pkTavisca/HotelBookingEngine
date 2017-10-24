@@ -1,7 +1,9 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta name="description" content="An html page to search for your favourite destinations in the world and get your listings present in our booking engine.">
     <meta charset="utf-8" />
+    <meta name="author" content="Sakshi Sharma,Pratik Kumar,Subham Saraf">
     <title>
         Hotel Search
     </title>
@@ -10,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Alegreya" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../Css/style.css" />
-   <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/ui-lightness/jquery-ui.min.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script>
@@ -25,6 +27,7 @@
                     var minDate = $(this).datepicker('getDate');
                     checkOutDate.datepicker('setDate', minDate);
                     checkOutDate.datepicker('option', 'minDate', minDate);
+
                 }
             });
             $('#co-datepicker2').datepicker({
@@ -32,33 +35,36 @@
             });
         });
     </script>
+
 </head>
 <body>
-    <div id="header">
-        <img src="../Resources/logo.svg" alt="logo"  align="left" />
+    <section id="header">
+        <article>
+            <h1>TAVISCA</h1>
+        </article>
+    </section>
+    <div style="border-radius:5px;" id="form-section">
+        <article>
+            <h2 class="padding-left">SEARCH HOTELS</h2>
+            <label for="search-field">Going-to</label><br>
+            <input type="text" id="search-field" placeholder="Destination,Hotel Name,LandMark..">
+
+            <br>
+            <fieldset class="columns-nested">
+                <div class="In">
+                    <label>Check-In</label><br>
+                    <input type="text" name="Check-In" id="ci-datepicker" placeholder="yyyy-mm-dd" required><br>
+                </div>
+                <div class="Out">
+                    <label for="Check-Out">Check-Out</label><br>
+                    <input type="text" name="Check-Out" id="co-datepicker2" placeholder="yyyy-mm-dd" required>
+                </div>
+            </fieldset>
+            <div class="button-padding">
+                <button>Search</button>
+            </div>
+        </article>
     </div>
-        <div style="border-radius:5px;" id="form-section">
-            <article>
-                <h2 class="padding-left">SEARCH HOTELS</h2>
-                <label for="search-field">Going-to</label><br>
-                <input type="text" id="search-field" placeholder="Destination,Hotel Name,LandMark..">
-                
-                    <br>
-                    <fieldset class="columns-nested">
-                        <div class="In">
-                            <label>Check-In</label><br>
-                            <input type="text" name="Check-In" id="ci-datepicker" placeholder="yyyy-mm-dd" required><br>
-                        </div>
-                        <div class="Out">
-                            <label for="Check-Out">Check-Out</label><br>
-                            <input type="text" name="Check-Out" id="co-datepicker2" placeholder="yyyy-mm-dd" required>
-                        </div>
-                    </fieldset>
-                    <div class="button-padding">
-                        <button>Search</button>
-                    </div>
-            </article>
-        </div>
 </body>
 <script src="../Scripts/script.js"></script>
 </html>
