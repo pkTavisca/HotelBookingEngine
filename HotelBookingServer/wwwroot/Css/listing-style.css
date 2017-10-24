@@ -88,9 +88,11 @@ div {
     flex-shrink:1;
     flex-basis:inherit;
     overflow:hidden;
+    border-radius:20px;
 }
 
-.hotel-img-container {
+.hotel-img-container
+{
     margin: 0;
     flex: 1;
     padding-top: 20px;
@@ -133,7 +135,8 @@ h2 {
     text-decoration: underline;
 }
 
-span {
+span
+{
     color: sienna;
 }
 
