@@ -50,11 +50,11 @@ section > article {
 #hotelList-container {
     display: flex;
     flex-flow: column wrap;
+    justify-content: center;
     align-items: center;
     padding-top: 100px;
-    padding-left: 250px;
-    padding-right: 250px;
-    justify-content: space-between;
+    /*padding-left: 250px;
+    padding-right: 250px;*/
 }
 
 div {
@@ -63,10 +63,10 @@ div {
 }
 
 .hotels-info-container {
-    padding-bottom: 30px;
+    /*padding-bottom: 30px;
     display: flex;
-    flex-flow: wrap;
-    border: solid black;
+    /*flex-flow: wrap;*/
+    /*border: solid black;
     width: 1200px;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -74,7 +74,20 @@ div {
     background-color: black;
     padding-left: 20px;
     padding-top: 10px;
-    border-radius: 10px;
+    border-radius: 10px;*/
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    max-width: 80%;
+    border: solid black;
+    flex-shrink:1;
+    flex-basis:inherit;
+    overflow:hidden;
 }
 
 .hotel-img-container {
@@ -88,12 +101,14 @@ div {
     width: 500px;
     flex: 1;
     font-family: 'Acme', sans-serif;
+    padding-left:30px;
+    padding-right:30px;
 }
 
 .button-container {
     width: 150px;
     flex: 1;
-    padding-left: 80px;
+    /*padding-left: 80px;*/
     padding-top: 100px;
 }
 
@@ -102,10 +117,16 @@ div {
     height: 50px;
     background-color: #20b2aa;
     font-size: 20px;
+    display:block;
+    overflow-x:auto;
+    margin-top:0px;
+    
 }
 
 .img-format {
     width: 300px;
+    padding-left:0px;
+    padding-right:0px;
 }
 
 h2 {
@@ -115,3 +136,4 @@ h2 {
 span {
     color: sienna;
 }
+
