@@ -25,7 +25,7 @@
                     var startDate = $(this).datepicker('getDate');
                     startDate.setDate(startDate.getDate() + 1);
                     var minDate = $(this).datepicker('getDate');
-                    checkOutDate.datepicker('setDate', minDate);
+                    checkOutDate.datepicker('setDate', startDate);
                     checkOutDate.datepicker('option', 'minDate', minDate);
 
                 }
@@ -34,7 +34,7 @@
                 dateFormat: "yy-mm-dd"
             });
         });
-</script>
+    </script>
 
 </head>
 <body>
@@ -63,8 +63,8 @@
             <div class="button-padding">
                 <button>Search</button>
             </div>
-        </article>
-    </div>
+            </article>
+</div>
 </body>
 <script src="../Scripts/script.js"></script>
 </html>

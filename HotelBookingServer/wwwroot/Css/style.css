@@ -96,7 +96,7 @@ input[type=text], select {
 button {
     width: 100px;
     background-color: #20b2aa;
-    color: black;
+    color: white;
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
@@ -124,6 +124,8 @@ div {
         padding-left: 40px;
         padding-right: 90px;
         padding-top: 20px;
+        color:white;
+        font-size:20px;
     }
 
 h2 {
