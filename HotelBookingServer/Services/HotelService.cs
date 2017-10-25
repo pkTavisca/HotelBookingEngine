@@ -10,6 +10,7 @@ namespace HotelBookingServer.Services
     public class HotelService
     {
         private AppSettings _appSettings;
+
         public HotelService(AppSettings appSettings)
         {
             _appSettings = appSettings;
@@ -24,8 +25,17 @@ namespace HotelBookingServer.Services
             var searchRequest = BuildSearchRequest(sessionId, type, checkIn, checkOut, GetDefaultPassenger(), 1, latitude, longitude);
             var result = hotelEngineClient.HotelAvailAsync(searchRequest).GetAwaiter().GetResult();
             hotelEngineClient.CloseAsync().GetAwaiter().GetResult();
-            HotelMultiAvailCache.AddToCache(searchRequest, result);
-            return result;
+            for (var i = 0; i < result.Itineraries.Length; i++)
+            {
+                if((result.Itineraries[i].HotelFareSource.Name.Equals("HotelBeds Test"))|| (result.Itineraries[i].HotelFareSource.Name.Equals("TouricoTGSTest")))
+                {
+                    HotelMultiAvailCache.AddToCache(searchRequest, result);
+                    return result;
+                }
+            }
+            //HotelMultiAvailCache.AddToCache(searchRequest, result);
+            //return result;
+            return null;
         }
         private PassengerTypeQuantity[] GetDefaultPassenger()
         {

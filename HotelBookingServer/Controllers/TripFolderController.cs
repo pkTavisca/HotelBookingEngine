@@ -286,7 +286,7 @@ namespace HotelBookingServer.Controllers
                             new StateBag(){ Name="CompanyName", Value= "Rovia"},
                             new StateBag(){ Name="UserType", Value="Normal"}
                         },
-                        Email = "sshrikhande@tavisca.com",
+                        Email = "ssaraf@tavisca.com",
                         FirstName = "Shweta",
                         LastName = "Shrikhande",
                         Prefix = "Mr.",
@@ -316,7 +316,7 @@ namespace HotelBookingServer.Controllers
                                 Value = "Normal"
                             },
                         },
-                        Email = "sshrikhande@tavisca.com",
+                        Email = "ssaraf@tavisca.com",
                         FirstName = "Shweta",
                         LastName = "Shrikhande",
                         Prefix = "Mr.",
@@ -373,7 +373,7 @@ namespace HotelBookingServer.Controllers
                                 new StateBag(){ Name="Boyd Gaming"},
                                 new StateBag(){ Name="IsPassportRequired" , Value="false"}
                             },
-                            Email = "shrikhande@tavisca.com",
+                            Email = "ssaraf@tavisca.com",
                             FirstName = "Shweta",
                             Gender = Gender.Male,
                             LastName = "Shrikhande",
@@ -460,7 +460,7 @@ namespace HotelBookingServer.Controllers
                                     new StateBag(){ Name="CompanyName", Value="Rovia"},
                                     new StateBag(){ Name="UserType", Value="Normal"}
                                 },
-                             Email = "shrikhande@tavisca.com",
+                             Email = "ssaraf@tavisca.com",
                             FirstName = "Shweta",
                             LastName = "Shrikhande",
                             UserId = 0,
