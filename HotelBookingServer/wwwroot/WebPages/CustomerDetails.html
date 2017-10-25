@@ -9,7 +9,7 @@
     </title>
     <link rel="shortcut icon" href="../Resources/favicon.ico" />
     <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../Css/CustomerDetails.css"/>
+    <link rel="stylesheet" type="text/css" href="../Css/CustomerDetails.css" />
 </head>
 <body>
     <section id="header">
@@ -35,16 +35,16 @@
                 </div>
                 <div class="In">
                     <label>E-mail</label><br>
-                    <input type="text" name="E-mail" id="email" placeholder="xyz@gmail.com" required>
+                    <input type="text" name="E-mail" id="email" pattern="([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})" placeholder="xyz@gmail.com" required>
                 </div>
                 <div class="Middle">
                     <label>Phone</label><br>
-                    <input type="text" name="Phone" id="phone" placeholder="+91**********" required>
+                    <input type="text" name="Phone" id="phone" placeholder="+91**********" pattern="[3-9]{1}[0-9]{9}" required>
                 </div>
                 <div class="Out">
                     <label>Date of birth</label><br>
-                    <select id="date" name="dd">
-                        <option> - Day - </option>
+                    <select id="date" name="dd" required>
+                        <option value=""> - Day - </option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -77,8 +77,8 @@
                         <option value="30">30</option>
                         <option value="31">31</option>
                     </select>
-                    <select id="month" name="mm">
-                        <option> - Month - </option>
+                    <select id="month" name="mm" required>
+                        <option value=""> - Month - </option>
                         <option value="January">January</option>
                         <option value="Febuary">Febuary</option>
                         <option value="March">March</option>
@@ -92,8 +92,8 @@
                         <option value="November">November</option>
                         <option value="December">December</option>
                     </select>
-                    <select id="year" name="yyyy">
-                        <option> - Year - </option>
+                    <select id="year" name="yyyy" required>
+                        <option value=""> - Year - </option>
                         <option value="1993">2016</option>
                         <option value="1993">2015</option>
                         <option value="1993">2014</option>
@@ -175,7 +175,7 @@
                 </div>
                 <div class="Out">
                     <label>Address Lane 2</label><br>
-                    <input type="text" name="Address Lane 2" required>
+                    <input type="text" name="Address Lane 2">
                 </div>
                 <div class="Out">
                     <label>City</label><br>
@@ -184,7 +184,7 @@
                 <div class="Out">
                     <label>Country</label><br>
                     <select name="Country" id="Country" required>
-                        <option> - Country - </option>
+                        <option value=""> - Country - </option>
                         <option value="AF">Afghanistan</option>
                         <option value="AX">Åland Islands</option>
                         <option value="AL">Albania</option>
@@ -438,7 +438,7 @@
                 </div>
                 <div class="Out">
                     <label>ZipCode</label><br>
-                    <input type="text" name="ZipCode" required>
+                    <input type="text" name="ZipCode" maxlength="6" pattern="[0-9]{6}" required>
                 </div>
             </fieldset>
             <div class="button-padding">
