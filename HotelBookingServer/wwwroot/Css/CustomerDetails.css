@@ -50,7 +50,7 @@ section > article {
 }
 
 input[type=text], select {
-    padding: 12px 20px;
+    padding: 12px;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -79,7 +79,7 @@ div {
     padding: 0px;
 }
 
-    div > article {
+    div > form {
         background-color: rgb(26,26,26);
         opacity: 0.9;
         border-radius: 8px;
@@ -90,6 +90,8 @@ div {
         padding-right: 90px;
         padding-top: 30px;
         padding-bottom: 30px;
+        color: white;
+        font-size: 20px;
     }
 
 h2 {
