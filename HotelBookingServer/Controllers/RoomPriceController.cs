@@ -1,4 +1,5 @@
-﻿using HotelBookingServer.Services;
+﻿using HotelBookingServer.Models;
+using HotelBookingServer.Services;
 using HotelEngineServiceReference;
 using Microsoft.AspNetCore.Mvc;
 using TripEngineServiceReference;
@@ -16,7 +17,7 @@ namespace HotelBookingServer.Controllers
         }
 
         [HttpGet("get/{sessionId}/{roomId}")]
-        public TripProductPriceRS GetPrice(string sessionId, string roomId)
+        public UpdatedPriceResponse GetPrice(string sessionId, string roomId)
         {
             return _hotelPriceService.GetPrice(sessionId, roomId);
         }

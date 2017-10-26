@@ -42,14 +42,8 @@ function priceAjaxCall(roomId) {
         type: "get",
         url: '../../api/roomprice/get/' + sessionId + '/' + roomId,
         success: function (result) {
-            $.ajax({
-                type: "get",
-                url: '../../api/tripfolder/get/' + sessionId,
-                success: function (result2) {
-                    var x = JSON.stringify(result2)
-                    console.log(x);
-                }
-            });
+            sessionStorage.setItem('UpdatedPrice', JSON.stringify(result));
+            window.location.href = "/updated-price";
         }
     });
 }

@@ -2,6 +2,7 @@
 using HotelBookingServer.Implementations;
 using TripEngineServiceReference;
 using hotel = HotelEngineServiceReference;
+using HotelBookingServer.Models;
 
 namespace HotelBookingServer.Services
 {
@@ -15,7 +16,7 @@ namespace HotelBookingServer.Services
                 "TouricoTGSTest","HotelBeds Test"
             };
         }
-        public TripProductPriceRS GetPrice(string sessionId, string roomId)
+        public UpdatedPriceResponse GetPrice(string sessionId, string roomId)
         {
             var hotelRoomAvailTuple = HotelRoomAvailRQRSCache.GetFromCache(sessionId);
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
@@ -43,7 +44,23 @@ namespace HotelBookingServer.Services
             TripProductPriceRS priceResponse = tripsEngineClient.PriceTripProductAsync(priceRequest).GetAwaiter().GetResult();
             TripProductPriceCache.Cache[sessionId] = priceResponse;
             updateRates((HotelTripProduct)priceResponse.TripProduct);
-            return priceResponse;
+            UpdatedPriceResponse updatedPriceResponse = UpdatedPriceResponseParser(priceResponse); 
+            return updatedPriceResponse;
+        }
+
+        private UpdatedPriceResponse UpdatedPriceResponseParser(TripProductPriceRS priceResponse)
+        {
+            UpdatedPriceResponse updatedPriceResponse = new UpdatedPriceResponse();
+            HotelTripProduct hotelTripProduct = (HotelTripProduct)priceResponse.TripProduct;
+            HotelItinerary hotelItinerary = hotelTripProduct.HotelItinerary;
+            updatedPriceResponse.CheckinDate = hotelItinerary.StayPeriod.Start;
+            updatedPriceResponse.CheckoutDate = hotelItinerary.StayPeriod.End;
+            updatedPriceResponse.Duration = hotelItinerary.StayPeriod.Duration;
+            updatedPriceResponse.HotelName = hotelItinerary.HotelProperty.Name;
+            updatedPriceResponse.RoomType = hotelItinerary.Rooms[0].RoomName;
+            updatedPriceResponse.UpdatedPrice = hotelItinerary.Rooms[0].DisplayRoomRate.TotalFare.Amount;
+            updatedPriceResponse.SessionId = priceResponse.SessionId;
+            return updatedPriceResponse;
         }
 
         private void updateRates(HotelTripProduct hotelTripProduct)

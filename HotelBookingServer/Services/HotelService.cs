@@ -121,6 +121,7 @@ namespace HotelBookingServer.Services
             {
                 AdditionalInfo = new StateBag[]
                 {
+                    new StateBag() { Name= "API_SESSION_ID",Value= sessionId },
                     new StateBag(){Name="IPAddress",Value="127.0.0.1"},
                     new StateBag(){Name="DealerUrl",Value="localhost"},
                     new StateBag(){Name="SiteUrl",Value="ota"},

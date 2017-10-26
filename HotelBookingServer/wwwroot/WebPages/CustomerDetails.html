@@ -27,7 +27,7 @@
                 </div>
                 <div class="Middle">
                     <label for="search-field">Middle Name</label><br>
-                    <input type="text" name="mname" placeholder="Middle Name">
+                    <input type="text" id="MiddleName" name="mname" placeholder="Middle Name">
                 </div>
                 <div class="Out">
                     <label for="search-field">Last Name</label><br>
@@ -171,15 +171,15 @@
                 <h2>Billing Address</h2>
                 <div class="In">
                     <label>Address Lane 1 </label><br>
-                    <input type="text" name="Address Lane 1" required>
+                    <input type="text" id="addressLine1" name="Address Lane 1" required>
                 </div>
                 <div class="Out">
                     <label>Address Lane 2</label><br>
-                    <input type="text" name="Address Lane 2">
+                    <input type="text" id="addressLine2" name="Address Lane 2">
                 </div>
                 <div class="Out">
                     <label>City</label><br>
-                    <input type="text" name="City" required>
+                    <input type="text" id="city" name="City" required>
                 </div>
                 <div class="Out">
                     <label>Country</label><br>
@@ -442,9 +442,11 @@
                 </div>
             </fieldset>
             <div class="button-padding">
-                <button>Proceed To Pay</button>
+                <button id="confirmation">Proceed To Pay</button>
             </div>
         </form>
     </div>
 </body>
+<script type="text/javascript" src="../Scripts/jquery-3.2.1.min.js"></script>
+<script src="../Scripts/customer-details.js"></script>
 </html>

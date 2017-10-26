@@ -27,6 +27,16 @@ namespace HotelBookingServer.Controllers
             return File(new FileStream("wwwroot/WebPages/hotel-details.html", FileMode.Open), "text/html");
         }
 
+        [HttpGet("updated-price")]
+        public IActionResult GetUpdatedPrice()
+        {
+            return File(new FileStream("wwwroot/WebPages/updated-price.html", FileMode.Open), "text/html");
+        }
+        [HttpGet("customerDetails")]
+        public IActionResult GetCustomerDetails()
+        {
+            return File(new FileStream("wwwroot/WebPages/CustomerDetails.html", FileMode.Open), "text/html");
+        }
         [HttpGet("favicon.ico")]
         public IActionResult GetFavicon()
         {

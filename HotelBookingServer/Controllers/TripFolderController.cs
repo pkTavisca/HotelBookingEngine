@@ -7,16 +7,17 @@ using TripEngineServiceReference;
 using System;
 using HotelBookingServer.Implementations;
 using System.Threading.Tasks;
+using HotelBookingServer.Models;
 
 namespace HotelBookingServer.Controllers
 {
     [Route("/api/[controller]")]
     public class TripFolderController : Controller
     {
-        [HttpGet("get/{sessionId}")]
-        public async Task<TripFolderBookRS> Get(string sessionId)
+        [HttpPost("post")]
+        public async Task<TripFolderBookRS> Get([FromBody]TripFolderRequest tripFolderRequest)
         {
-            HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[sessionId].TripProduct;
+            HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct;
             //TripFolderBookRQ tripFolderBookRQ2 = new TripFolderBookRQ()
             //{
             //    TripFolder = new TripFolder()
@@ -80,7 +81,7 @@ namespace HotelBookingServer.Controllers
             //                    new StateBag()
             //                    {
             //                        Name = "API_SESSION_ID",
-            //                        Value = sessionId
+            //                        Value = tripFolderRequest.SessionID
             //                    },
             //                    new StateBag()
             //                    {
@@ -126,8 +127,8 @@ namespace HotelBookingServer.Controllers
             //        Products = new HotelTripProduct[]{
             //            new HotelTripProduct()
             //            {
-            //                HotelItinerary = ((HotelTripProduct)(TripProductPriceCache.Cache[sessionId].TripProduct)).HotelItinerary,
-            //                HotelSearchCriterion = ((HotelTripProduct)(TripProductPriceCache.Cache[sessionId].TripProduct)).HotelSearchCriterion
+            //                HotelItinerary = ((HotelTripProduct)(TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct)).HotelItinerary,
+            //                HotelSearchCriterion = ((HotelTripProduct)(TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct)).HotelSearchCriterion
             //            }
             //        }
             //    },
@@ -138,7 +139,7 @@ namespace HotelBookingServer.Controllers
             //};
             TripFolderBookRQ tripFolderBookRQ = new TripFolderBookRQ()
             {
-                //    SessionId = sessionId,
+                //    tripFolderRequest.SessionID = tripFolderRequest.SessionID,
                 //    ResultRequested = ResponseType.Unknown,
                 //    TripFolder = new TripFolder()
                 //    {
@@ -225,7 +226,7 @@ namespace HotelBookingServer.Controllers
                 //                IsThreeDAuthorizeRequired = false,
                 //                Number = "0000000000001111",
                 //                SecurityCode = "123",
-                //                Amount =//TripProductPriceCache.Cache[sessionId].TripProduct.
+                //                Amount =//TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct.
                 //                new Money()
                 //                {
                 //                    Amount = 200.34M,
@@ -252,7 +253,7 @@ namespace HotelBookingServer.Controllers
                 //                },
                 //            }
                 //        },
-                //        Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[sessionId].TripProduct },
+                //        Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct },
 
 
                 //    },
@@ -273,8 +274,6 @@ namespace HotelBookingServer.Controllers
                 //        //PassengerRph = 0,
 
                 //    }
-
-                SessionId = sessionId,
                 ResultRequested = ResponseType.Unknown,
                 TripFolder = new TripFolder()
                 {
@@ -294,7 +293,7 @@ namespace HotelBookingServer.Controllers
                         UserId = 26149061229281280,
                         UserName = "sshrikhande"
                     },
-                    FolderName = "sshrikhande",
+                    FolderName = "TripFolder" + DateTime.Now,
                     //LastModifiedDate = new DateTime(),
                     Owner = new User()
                     {
@@ -393,7 +392,7 @@ namespace HotelBookingServer.Controllers
                             PaymentType = PaymentType.Credit,
                             Attributes = new StateBag[]
                             {
-                                new StateBag() { Name="API_SESSION_ID", Value=sessionId},
+                                new StateBag() { Name="API_SESSION_ID", Value=tripFolderRequest.SessionID},
                                 new StateBag() { Name="PointOfSaleRule"},
                                 new StateBag() { Name="SectorRule"},
                                 new StateBag() { Name="_AttributeRule_Rovia_Username"},
@@ -402,13 +401,14 @@ namespace HotelBookingServer.Controllers
                             CardMake = new CreditCardMake()
                             {
                                 Code = "VI",
-                                Name = "Visa"
+                                Name = "VISA"
                             },
+                            Rph=0,
                             CardType = CreditCardType.Personal,
                             ExpiryMonthYear = new DateTime(2019, 01, 01),
                             NameOnCard = "Saurabh Cache",
                             IsThreeDAuthorizeRequired = false,
-                            Number = "0000000000001111",
+                            Number = "4444333322221111",
                             SecurityCode = "123",
                             Amount = tripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare,
                             //new Money()
@@ -423,11 +423,12 @@ namespace HotelBookingServer.Controllers
                                 CodeContext = LocationCodeContext.Address,
                                 AddressLine1 = "5100 Tennyson Parkway",
                                 AddressLine2 = "dsv effs",
-                                PhoneNumber = "972-805-5200",
+                                PhoneNumber = "9728055200",
                                 ZipCode = "75024",
                                 City = new City()
                                 {
-                                    Code = "PLN",
+                                   // Code = "PLN",
+                                   Id=0,
                                     CodeContext = LocationCodeContext.City,
                                     Name = "Plano",
                                     Country = "US",
@@ -437,14 +438,14 @@ namespace HotelBookingServer.Controllers
                             },
                         }
                     },
-                    //Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[sessionId].TripProduct },
+                    //Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct },
                     Products = new HotelTripProduct[]
                     {
                         new HotelTripProduct()
                         {
                             Attributes=new StateBag[]
                             {
-                                new StateBag{ Name ="API_SESSION_ID", Value=sessionId},
+                                new StateBag{ Name ="API_SESSION_ID", Value=tripFolderRequest.SessionID},
                                 new StateBag{ Name ="token", Value=""},
                                 new StateBag{ Name ="ChargingHoursPriorToCPW", Value="48"},
                                 new StateBag{ Name ="IsLoginWhileSearching", Value="Y"},
@@ -473,6 +474,8 @@ namespace HotelBookingServer.Controllers
                                 new PassengerSegment()
                                 {
                                     BookingStatus=TripProductStatus.Planned,
+                                    LineNumber=0,
+                                    PassengerRph=0,
                                     PostBookingStatus=PostBookingTripStatus.None,
                                     Rph=0
                                 }
@@ -481,7 +484,9 @@ namespace HotelBookingServer.Controllers
                             {
                                 new PaymentBreakup()
                                 {
-                                    Amount=tripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare
+                                    Amount=tripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare,
+                                    PassengerRph=0,
+                                    PaymentRph=0
                                 }
                             },
                             PaymentOptions=new PaymentType[]
@@ -522,7 +527,7 @@ namespace HotelBookingServer.Controllers
             tripFolderBookRQ.TripFolder.Products[0].Owner = tripFolderBookRQ.TripFolder.Owner;
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
             var response = await tripsEngineClient.BookTripFolderAsync(tripFolderBookRQ);
-            TripFolderCache.Cache[sessionId] = response;
+            TripFolderCache.Cache[tripFolderRequest.SessionID] = response;
             return response;
         }
     }
