@@ -8,6 +8,8 @@ using System;
 using HotelBookingServer.Implementations;
 using System.Threading.Tasks;
 using HotelBookingServer.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace HotelBookingServer.Controllers
 {
@@ -15,7 +17,7 @@ namespace HotelBookingServer.Controllers
     public class TripFolderController : Controller
     {
         [HttpPost("post")]
-        public async Task<TripFolderBookRS> Get([FromBody]TripFolderRequest tripFolderRequest)
+        public async Task Get([FromBody]TripFolderRequest tripFolderRequest)
         {
             HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct;
             //TripFolderBookRQ tripFolderBookRQ2 = new TripFolderBookRQ()
@@ -528,7 +530,93 @@ namespace HotelBookingServer.Controllers
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
             var response = await tripsEngineClient.BookTripFolderAsync(tripFolderBookRQ);
             TripFolderCache.Cache[tripFolderRequest.SessionID] = response;
-            return response;
+            CompleteBookingRQ completeBookingRQ = CompleteBookingRQParser(response.SessionId,response);
+            CompleteBookingRS completeBookingRS = await tripsEngineClient.CompleteBookingAsync(completeBookingRQ);
+            await HttpContext.Response.WriteAsync(JsonConvert.SerializeObject(completeBookingRS));
+            //return completeBookingRS;
+        }
+        public CompleteBookingRQ CompleteBookingRQParser(string sessionId, TripFolderBookRS tripFolderBookRS)
+        {
+            var tripFolderRS = tripFolderBookRS;
+            CompleteBookingRQ bookingRQ = new CompleteBookingRQ()
+            {
+                ResultRequested = ResponseType.Unknown,
+                SessionId = sessionId,
+                ExternalPayment = tripFolderRS.TripFolder.Payments[0],
+                TripFolderId = tripFolderRS.TripFolder.Id
+            };
+            bookingRQ.ExternalPayment.Attributes = new StateBag[]
+            {
+                new StateBag()
+                {
+                    Name = "PointOfSaleRule",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "SectorRule",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "_AttributeRule_Rovia_Username",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "_AttributeRule_Rovia_Password",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "AmountToAuthorize",
+                    Value = "1"
+                },
+                new StateBag()
+                {
+                    Name = "IsDefaultDollerAuthorization",
+                    Value = "Y"
+                },
+                new StateBag()
+                {
+                    Name = "PaymentStatus",
+                    Value = "Authorization successful"
+                },
+                new StateBag()
+                {
+                    Name = "AuthorizationTransactionId",
+                    Value = "daa73e68-f46f-4035-94d5-df80a77c1c62"
+                },
+                new StateBag()
+                {
+                    Name = "ProviderAuthorizationTransactionId",
+                    Value = "DEF127D6-9257-43D3-AA45-92E53AA59CAE"
+                },
+                new StateBag()
+                {
+                    Name = "PointOfSaleRule",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "SectorRule",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "_AttributeRule_Rovia_Username",
+                    Value = "true"
+                },
+                new StateBag()
+                {
+                    Name = "_AttributeRule_Rovia_Password",
+                    Value = "true"
+                }
+            };
+            //TripsEngineClient tripsEngineClient = new TripsEngineClient();
+            //CompleteBookingRS result = await tripsEngineClient.CompleteBookingAsync(bookingRQ);
+            //return result;
+            return bookingRQ;
         }
     }
 }
