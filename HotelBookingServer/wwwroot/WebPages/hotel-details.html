@@ -1,7 +1,7 @@
 ﻿<!doctype html>
 <html>
-
 <head>
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="../../Css/hotel-details-style.css">
@@ -9,49 +9,71 @@
 </head>
 
 <body>
+    <section>
+        <article id="header">
+            <h1>TAVISCA</h1>
+        </article>
+    </section>
     <div id="roomList-container">
     </div>
     <script id="room-item" type="text/x-handlebars-template">
-        <div id="hotel-name">
-            {{this.itinerary.hotelProperty.name}}
-        </div>
-        <div>
-            {{this.itinerary.hotelProperty.address.completeAddress}}
-        </div>
-        <iframe class="map-bottom" width="598" height="450" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIYzzzQZGLWDSOSovKWaq2UsyX1dQ796c&q={{this.itinerary.hotelProperty.geoCode.latitude}},{{this.itinerary.hotelProperty.geoCode.longitude}}" allowfullscreen>
-        </iframe>
-        <div>
-            Amenities
-        </div>
-        <div id="amenities">
-            {{#each this.itinerary.hotelProperty.amenities}} {{#if this.masterAmenityName}} {{#nonRepeatingAmenitiesCond this}}
-            <div title="{{this.masterAmenityName}}">
-                <img src="../../Resources/HotelAmenitiesIcons/{{this.masterAmenityId}}.svg" width=50 height=50>
+        <section id="hotel-info-section" class="first-section">
+            <div class="col-md-12">
+                <div class="col-md-4">
+                    <iframe class="map-bottom" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCIYzzzQZGLWDSOSovKWaq2UsyX1dQ796c&q={{this.itinerary.hotelProperty.geoCode.latitude}},{{this.itinerary.hotelProperty.geoCode.longitude}}" allowfullscreen></iframe>
+                </div>
+                <div class="col-md-8">
+                    <div id="hotel-name">
+                        {{this.itinerary.hotelProperty.name}}
+                    </div>
+                    <div id="Address">
+                        {{this.itinerary.hotelProperty.address.completeAddress}}
+
+                    </div>
+
+                    <div id="room-heading">Select Rooms</div>
+                    <div id="rooms">
+                        {{#each this.itinerary.rooms}}
+                        <div class="indi-room border" onclick="priceAjaxCall('{{this.roomId}}')">
+                            <div id="roomName" class="room-description room-style"><span class="room-info-style">{{this.roomName}} </span>-{{this.roomDescription}}</div>
+                            <div id="bedType" class="room-description room-style">{{this.bedType}}</div>
+                            {{#each this.displayRoomRate.dailyRates}}
+                            <div id="Price" class="room-style"><span class="room-info-style">Price: </span>{{this.amount}} {{this.currency}}</div>
+                            {{/each}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
-            {{/nonRepeatingAmenitiesCond}} {{/if}} {{/each}}
-        </div>
-        <div>
-            Description
-        </div>
-        <div id="descriptions">
-            {{#each this.itinerary.hotelProperty.descriptions}}
-            <div>
-                {{this.description}}
+        </section>
+        <section id="room-info-section" class="second-section">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="sub-heading">
+                        Amenities
+                    </div>
+                    <div class="amenities" id="amenities">
+                        {{#each this.itinerary.hotelProperty.amenities}} {{#if this.masterAmenityName}} {{#nonRepeatingAmenitiesCond this}}
+                        <div title="{{this.masterAmenityName}}" class="facilities">
+                            <img src="../../Resources/HotelAmenitiesIcons/{{this.masterAmenityId}}.svg" width=50 height=50>
+                        </div>
+                        {{/nonRepeatingAmenitiesCond}} {{/if}} {{/each}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="sub-heading">
+                        Description
+                    </div>
+                    <div id="descriptions">
+                        {{#each this.itinerary.hotelProperty.descriptions}}
+                        <div>
+                            {{this.description}}
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
             </div>
-            {{/each}}
-        </div>
-        <div>Rooms:</div>
-        <div id="rooms">
-            {{#each this.itinerary.rooms}}
-            <div class="indi-room border" onclick="priceAjaxCall('{{this.roomId}}')">
-                <div>{{this.roomName}} - {{this.roomDescription}}</div>
-                <div>{{this.bedType}}</div>
-                {{#each this.displayRoomRate.dailyRates}}
-                <div>Price: {{this.amount}} {{this.currency}}</div>
-                {{/each}}
-            </div>
-            {{/each}}
-        </div>
+        </section>
     </script>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
