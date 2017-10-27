@@ -532,9 +532,28 @@ namespace HotelBookingServer.Controllers
             TripFolderCache.Cache[tripFolderRequest.SessionID] = response;
             CompleteBookingRQ completeBookingRQ = CompleteBookingRQParser(response.SessionId,response);
             CompleteBookingRS completeBookingRS = await tripsEngineClient.CompleteBookingAsync(completeBookingRQ);
-            await HttpContext.Response.WriteAsync(JsonConvert.SerializeObject(completeBookingRS));
+            Confirmation confirmation = ConfirmationParser(completeBookingRS);
+            await HttpContext.Response.WriteAsync(JsonConvert.SerializeObject(confirmation));
             //return completeBookingRS;
         }
+
+        private Confirmation ConfirmationParser(CompleteBookingRS completeBookingRS)
+        {
+            HotelTripProduct tripProduct = (HotelTripProduct)completeBookingRS.TripFolder.Products[0];
+            HotelItinerary hotelItinerary = tripProduct.HotelItinerary;
+            Confirmation confirmation = new Confirmation()
+            {
+                ConfirmationID = completeBookingRS.TripFolder.ConfirmationNumber,
+                HotelName = hotelItinerary.HotelProperty.Name,
+                RoomName = hotelItinerary.Rooms[0].RoomName,
+                CheckIn = hotelItinerary.StayPeriod.Start.ToString(),
+                CheckOut = hotelItinerary.StayPeriod.End.ToString(),
+                BookingStatus = completeBookingRS.ServiceStatus.Status.ToString(),
+                NoOfNights=hotelItinerary.StayPeriod.Duration.ToString(),
+            };
+            return confirmation;
+        }
+
         public CompleteBookingRQ CompleteBookingRQParser(string sessionId, TripFolderBookRS tripFolderBookRS)
         {
             var tripFolderRS = tripFolderBookRS;

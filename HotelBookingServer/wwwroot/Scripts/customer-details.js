@@ -40,19 +40,20 @@
                     'Content-Type': 'application/json'
                 },
                 url: '../../api/tripfolder/post',
+                success: confirmation,
                 cache: false,
                 data: JSON.stringify(bookTripRequest),
                 dataType: 'json',
                 crossDomain: true,
-                success: function (result) {
-                    var x = JSON.stringify(result)
-                    console.log(x);
-                }
+               
             });
         }
         catch (exception) {
             alert("Cannot connect to server ");
         }
-
+        function confirmation(result) {
+            sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
+            window.location.href = "/Confirmation";
+        }
     });
 });

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="description" content="An html page to enter your personal details">
+    <meta charset="utf-8" />
+    <meta name="author" content="Sakshi Sharma,Pratik Kumar,Subham Saraf">
+    <title>
+       Confirmation Page
+    </title>
+    <link rel="shortcut icon" href="../Resources/hotelicon.png" />
+    <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Css/Confirmation-style.css" />
+</head>
+<body>
+    <section id="header">
+        <article>
+            <h1>TAVISCA</h1>
+        </article>
+    </section>
+    <div style="border-radius:5px;" id="form-section">
+        <form>
+            <h2 class="padding-left">Confirmation Details</h2>
+            <fieldset class="columns-nested">
+                <div class="In">
+                    <label>Confirmation Id</label><br>
+                    <input type="text" name="bookingid" id="booking-id" required readonly>
+                </div>
+				<div class="Middle">
+                    <label>Hotel Name</label><br>
+                    <input type="text" name="hotelname" id="hotelname" readonly>
+                </div>
+				 <div class="Middle">
+                    <label>Room Name</label><br>
+                    <input type="text" name="hotelname" id="roomname" readonly>
+                </div>
+                <div class="Out">
+                    <label>Check-In</label><br>
+                    <input type="text" name="check-in" id="check-in" required readonly>
+                </div>
+                <div class="In">
+                    <label>Check-Out</label><br>
+                    <input type="text" name="check-out" id="check-out" required readonly>
+                </div>
+                <div class="Middle">
+                    <label>Nights of Stay</label><br>
+                    <input type="text" name="countofnights" id="nights" required readonly>
+                </div>
+				 <div class="Middle">
+                    <label>Status</label><br>
+                    <input type="text" name="status" id="status" required readonly>
+                </div>
+				</fieldset>
+		</form>
+    	<div class="button-padding">
+                <button onclick="window.print()">Print</button>
+            </div>
+	       
+</body>
+<script src="../Scripts/jquery-3.2.1.min.js"></script>
+<script src="../Scripts/Conformation.js"></script>
+</html>
