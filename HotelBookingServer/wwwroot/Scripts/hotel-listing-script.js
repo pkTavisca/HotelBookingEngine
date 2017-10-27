@@ -26,17 +26,18 @@ function onSuccess(result) {
         i++;
         if (isHotel && i > 1) continue;
         if (itinerary.itineraryType !== "Hotel") continue;
-        var singleHotel = $("<article>");
-        singleHotel.addClass("hotel-info");
+        var singleHotel = $("<div>");
+        singleHotel.addClass(" hotels-info-container");
         htmlContainer.append(singleHotel);
         var hotelId = itinerary.hotelProperty.id;
         var detailsDiv = $('<div class="one-hotel-info">');
         singleHotel.append(detailsDiv);
         detailsDiv.append("<h2><a onclick='bookNowButtonClick(" + hotelId + ")'>" + itinerary.hotelProperty.name + "</a></h2>");
-        detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "*" + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
+        detailsDiv.append("<p>" + "<span>" + "Address : " + "</span>" + itinerary.hotelProperty.address.completeAddress + "," + " " + itinerary.hotelProperty.address.city.country + "</p>" + "<p>" + "<span>" + "Rating : " + "</span>" + itinerary.hotelProperty.hotelRating.rating + "/5"
+            + "</p>" + "<p>" + "<span>" + "Price : " + "</span>" + itinerary.fare.baseFare.amount + " " + itinerary.fare.baseFare.currency + "</p>");
         detailsDiv.append("<button onclick='bookNowButtonClick(" + hotelId + ")'>Book Now</button>");
 
-        var imagesDiv = $('<div class="img-format">');
+        var imagesDiv = $('<div class="hotel-img-container img-format">');
         imagesDiv.css("display", "flex");
 
         singleHotel.prepend(imagesDiv);

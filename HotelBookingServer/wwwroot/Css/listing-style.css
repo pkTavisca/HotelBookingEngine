@@ -1,26 +1,25 @@
 body {
-    background: url(../Resources/loading-circle.svg) no-repeat center  fixed;
-    background-size: 300px;
+    background: url(../Resources/loading-circle.svg) no-repeat center fixed;
+    background-size: 200px;
     margin: 0;
-    
 }
 
 .somediv {
     background-color: aliceblue;
-   
 }
-h2>a
-{
-    color:white;
+
+h2 > a {
+    color: white;
     /*text-decoration-color:black;*/
 }
 
 .somediv h2 {
     font-weight: 900;
-    font-family: 'Amiri', serif;
+    font-family: 'Acme', sans-serif;
     font-size: 30px;
-    text-decoration: none;
+    text-decoration: underline;
 }
+
 #header {
     position: fixed;
     width: 100%;
@@ -48,59 +47,103 @@ article > h1 {
   
 }*/
 
+.hotels-info-container {
+    /*padding-bottom: 30px;
+    display: flex;
+    /*flex-flow: wrap;*/
+    /*border: solid black;
+    width: 1200px;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+    padding-top: 10px;
+    border-radius: 10px;*/
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    color: white;
+    background-color: black;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+    max-width: 80%;
+    border: solid black;
+    flex-shrink: 1;
+    flex-basis: inherit;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
 
 #hotel-list {
-    padding-bottom: 150px;
-    padding-left: 18%;
-    padding-right: 28%;
-    color: black;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
     padding-top: 100px;
-    background-color: white;
-    /*background: url(../Resources/hotel-room.jpeg) no-repeat fixed;*/
-    /*background-size: cover;*/
-    /*-webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;*/
+    /*padding-left: 250px;
+    padding-right: 250px;*/
 }
 
-p{
-    font-family:'Times New Roman';
-    font-size:20px;
+p {
+    font-family: 'Acme', sans-serif;
+    font-size: 20px;
 }
+
 .hotel-info {
     border: solid #595959;
     padding-bottom: 20px;
     padding-left: 20px;
 }
-span{
-    font-weight:bolder;
+
+span {
+    color: sienna;
 }
 
-.img-format
-{
-padding-right:20px;
-padding-top:20px;
+.img-format {
+    width: 300px;
+    padding-left: 0px;
+    padding-right: 0px;
 }
 
 article {
-    background-color:black;
-    color:white;
+    background-color: black;
+    color: white;
     border-radius: 2px;
 }
 
-.one-hotel-info
-{
-   padding-left:40px;
+div {
+    border: 0;
+    margin: 0;
 }
-img:hover
-{
-    color:aqua;
+
+.one-hotel-info {
+    width: 500px;
+    flex: 1;
+    font-family: 'Acme', sans-serif;
+    padding-left: 30px;
+    padding-right: 30px;
 }
-div>button
-{
-   
-    width:100px;
-    height:50px;
-    font-weight:bold;
-    text-align:center;
+
+img:hover {
+    color: aqua;
+}
+
+div > button {
+    width: 200px;
+    height: 50px;
+    background-color: #20b2aa;
+    font-size: 20px;
+    display: block;
+    overflow-x: auto;
+    margin-top: 0px;
+}
+
+.hotel-img-container {
+    margin: 0;
+    flex: 1;
+    padding-top: 20px;
+    padding-left: 10px;
 }
