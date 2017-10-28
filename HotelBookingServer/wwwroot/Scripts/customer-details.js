@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
     var sessionId = sessionStorage.getItem('SessionId');
     $("#confirmation").on("click", function () {
-        var firstName = $("#FisrtName").val();
+        var firstName = $("#FirstName").val();
         var middleName = $("#MiddleName").val();
         var lastName = $("#LastName").val();
         var email = $("#email").val();
