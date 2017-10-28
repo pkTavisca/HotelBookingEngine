@@ -543,7 +543,7 @@ namespace HotelBookingServer.Controllers
             HotelItinerary hotelItinerary = tripProduct.HotelItinerary;
             Confirmation confirmation = new Confirmation()
             {
-                ConfirmationID = completeBookingRS.TripFolder.ConfirmationNumber,
+                ConfirmationID = completeBookingRS.TripFolder.Products[0].PassengerSegments[0].VendorConfirmationNumber,
                 HotelName = hotelItinerary.HotelProperty.Name,
                 RoomName = hotelItinerary.Rooms[0].RoomName,
                 CheckIn = hotelItinerary.StayPeriod.Start.ToString(),

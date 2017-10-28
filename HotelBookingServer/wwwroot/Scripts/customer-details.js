@@ -1,5 +1,9 @@
-﻿$(document).ready(function () {
-    var sessionId = sessionStorage.getItem('SessionId');
+﻿var sessionId;
+var result;
+$(document).ready(function () {
+    sessionId = sessionStorage.getItem('SessionId');
+});
+function formInfo() {
     $("#confirmation").on("click", function () {
         var firstName = $("#FirstName").val();
         var middleName = $("#MiddleName").val();
@@ -32,28 +36,22 @@
                 ZipCode: zipcode,
                 SessionID: sessionId
             };
-        try {
-            $.ajax({
-                type: "POST",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                url: '../../api/tripfolder/post',
-                success: confirmation,
-                cache: false,
-                data: JSON.stringify(bookTripRequest),
-                dataType: 'json',
-                crossDomain: true,
-               
-            });
-        }
-        catch (exception) {
-            alert("Cannot connect to server ");
-        }
-        function confirmation(result) {
-            sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
-            window.location.href = "/Confirmation";
-        }
+        var customerData = JSON.stringify(bookTripRequest);
+        $.ajax({
+
+            url: '../../api/tripfolder/post',
+            type: 'post',
+            data: customerData,
+            crossDomain: true,
+            data: customerData,
+            dataType: 'json',
+            contentType: 'application/json',
+            success: function (result) {
+                sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
+                window.location.href = "/Confirmation";
+            }
+
+        });
+
     });
-});
+}
