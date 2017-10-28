@@ -108,7 +108,7 @@ button {
 }
 
     button:hover {
-        background-color: #ffd11a;
+        background-color: #0094ff;
     }
 
 div {
@@ -132,9 +132,9 @@ div {
 h2 {
     margin: 0;
     color: white;
-    font-family: 'Cinzel', serif;
+    font-family: 'Acme', sans-serif;
     padding: 0;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 article {
@@ -142,18 +142,6 @@ article {
     font-family: 'Times New Roman';
     color: white;
     font-size: 20px;
-}
-
-.call-out-container {
-    max-width: 400px;
-    margin: 20px auto 0 auto;
-    display: flex;
-}
-
-.call-out {
-    padding: 10px;
-    margin-bottom: 10px;
-    flex: 1;
 }
 
 #form-section {
@@ -164,35 +152,13 @@ article {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    padding: 300px 100px 300px 100px;
+    padding: 200px 100px 300px 100px;
     background: url(../Resources/xyz.jpg);
+    font-family: 'Acme', sans-serif;
 }
-
-nav {
-    float: right;
+.label-heading {
+    font-family: 'Acme', sans-serif;
 }
-
-.main-container {
-    max-width: 1300px;
-    background-color: #fff;
-    line-height: 1.65;
-    padding: 0;
-    display: flex;
-    margin: 0;
-    height: 60px;
-}
-
-.first-container {
-    flex: 1;
-    order: 1;
-}
-
-.second-container {
-    padding-top: 10px;
-    flex: 1;
-    order: 2;
-}
-
 #search-field {
     width: 60%;
     min-width: 179px;
@@ -224,8 +190,12 @@ fieldset {
     padding-right: 30px;
 }
 
-.button-padding {
-    padding-bottom: 20px;
+.button-style {
+    padding-bottom: 30px;
+    
+}
+#search-button{
+    color:white;
 }
 
 .ui-widget-header {
