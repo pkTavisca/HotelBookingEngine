@@ -1,111 +1,94 @@
-
 body {
-    width: 100%;
-    height: 100%;
     margin: 0;
+    min-width: 320px;
+    min-height: 480px;
+    overflow-x: hidden;
     background: rgb(13, 52, 71);
 }
 
-
-.btn {
-	display: inline-block;
-  margin-bottom: 0;
-  font-weight: normal;
-  text-align: center;
-  cursor: pointer;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 7px 15px;
-  font-size: 15px;
-  line-height: 1.428571429;
-  border-radius: 4px;
-  margin-left: -5px;
+input[type=text], select {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 
-.form {
-    margin: 40px auto;
-    padding: 10px 30px 35px;
-    display: block;
-    width: 375px;
+#payNow {
+    width: 150px;
+    background-color: rgb(13, 52, 71);
+    opacity: 0.8;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 15px;
+    font-family: 'Acme', sans-serif;
+}
+
+button:hover {
+    background-color: #0094ff;
+}
+
+
+
+div > article {
     background-color: rgb(222, 220, 220);
-    box-shadow: 0 0 25px 0 #000;
+    width: 84%;
+    margin-left: 40px;
+    margin-right: 40px;
+    padding-left: 40px;
+    padding-right: 90px;
+    padding-top: 20px;
 }
 
-.form h2 {
-	color: #434740;
-  font-size: 40px;
-	margin: 10px 0 20px 0;
-}
-.form input, .form button, .form h2 {
-	font-family: 'HelveticaNeue-Light', Helvetica;
-  font-weight: 100;
-}
-
-input[type="text"],
-input[type="password"] {
-	display: block;
-	background-color: #ffffff;
-	border: 1px solid #cccccc;
-	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-	font-size: 22px;
-  height: 50px;
-  padding: 4px 6px;
-  border-radius: 4px;
-  margin-bottom: 10px;
+h2 {
+    font-weight: 100;
+    margin: 0;
+    color: black;
+    text-decoration: underline;
+    font-family: 'Acme', sans-serif;
+    padding: 0;
+    padding-bottom: 20px;
 }
 
-input[type="checkbox"], label {
-	display: inline-block;
-	float: left;
+#form-section {
+    position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 150px 100px 300px 100px;
+    font-family: 'Acme', sans-serif;
 }
 
-input:focus {
-	outline: none;
-	border: 1px solid #44C7A9;
+fieldset {
+    border: 0;
+    justify-content: space-between;
+    padding: 0;
 }
 
-.input-std {
-	width: 95.5%;
+.In {
+    float: left;
+    padding-left: 0px;
 }
 
-.input-half {
-	width: 45.9%;
-	float: left;
+.Out {
+    float: left;
 }
 
-.input-quarter {
-	width: 21%;
-	float: left;
+.button-style {
+    padding-bottom: 30px;
 }
 
-.btn-submit {
-	width: 100%;
-	font-size: 30px;
-	padding: 11px 19px;
-	border-radius: 6px;
-	border: 2px solid #0099ff;
-	cursor: pointer;
-	color: #ffcc00;
+#payNow {
+    color: white;
 }
 
-.btn-submit:focus {
-	outline: none;
+#cvcDiv {
+    padding-right: 80%;
 }
-.btn-submit:hover
-{
-	color:#42f4ee;
-}
-
-#remember-me-wrapper {
-	position: relative;
-	height: 30px;
-}
-
-#payments {
-	background-color: #87ceeb;
-}
-
-#cvc {
-	float:none;
-}
-

@@ -39,16 +39,15 @@ function formInfo() {
         var customerData = JSON.stringify(bookTripRequest);
         $.ajax({
 
-            url: '../../api/tripfolder/post',
+            url: '../../api/TripFolder/post',
             type: 'post',
-            data: customerData,
             crossDomain: true,
             data: customerData,
             dataType: 'json',
             contentType: 'application/json',
             success: function (result) {
-                sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
-                window.location.href = "/Confirmation";
+                sessionStorage.setItem('PaymentDetails', JSON.stringify(sessionId));
+                window.location.href = "/payment-index";
             }
 
         });

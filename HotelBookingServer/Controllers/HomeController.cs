@@ -42,6 +42,11 @@ namespace HotelBookingServer.Controllers
         {
             return File(new FileStream("wwwroot/WebPages/Confirmation.html", FileMode.Open), "text/html");
         }
+        [HttpGet("payment-index")]
+        public IActionResult GetPaymentDetails()
+        {
+            return File(new FileStream("wwwroot/WebPages/payment-index.html", FileMode.Open), "text/html");
+        }
         [HttpGet("favicon.ico")]
         public IActionResult GetFavicon()
         {

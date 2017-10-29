@@ -9,7 +9,7 @@ namespace HotelBookingServer.Controllers
     [Route("/api/[controller]")]
     public class PaymentController : Controller
     {
-        [HttpGet("Payment/{sessionId}")]
+        [HttpGet("{sessionId}")]
         public async Task<CompleteBookingRS> Payments(string sessionId)
         {
             var tripFolderRS = TripFolderCache.Cache[sessionId];
