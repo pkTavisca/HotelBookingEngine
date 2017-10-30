@@ -1,8 +1,6 @@
 var sessionId;
-var paymentDetails;
 $(document).ready(function () {
-    sessionId = sessionStorage.getItem('PaymentDetails');
-    paymentDetails = JSON.parse(sessionId);
+    sessionId = sessionStorage.getItem('SessionId');
     var year = 2017;
     for (i = 0; i < 15; i++) {
         $("#expiry_year").get(0).options[$("#expiry_year").get(0).options.length] = new Option(year, year);
@@ -29,13 +27,13 @@ function paymentInfo() {
             CVC: cvc,
             ExpMonth: expMonth,
             ExpYear: expYear,
-            SessionID: paymentDetails
+            SessionID: sessionId
         };
 
     var paymentInfo = JSON.stringify(paymentData);
     $.ajax({
 
-        url: '../../api/Payment/' + paymentDetails,
+        url: '../../api/Payment/' + sessionId,
         type: 'get',
         success: function (result) {
             sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));

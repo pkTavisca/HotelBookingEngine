@@ -21,9 +21,10 @@ namespace HotelBookingServer.Controllers
         {
             HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[passengerInfo.SessionID].TripProduct;
             DateTime passengerBirthDate = new DateTime(int.Parse(passengerInfo.Year), int.Parse(passengerInfo.Month), int.Parse(passengerInfo.Day));
-            Gender passsGender;
-            if (passengerInfo.Gender.Equals("Female")) passsGender = Gender.Female;
-            else passsGender = Gender.Male;
+            Gender passengerGender;
+            if (passengerInfo.Gender.Equals("Female")) passengerGender = Gender.Female;
+            else passengerGender = Gender.Male;
+            int passengerAge = (int)((DateTime.Now - passengerBirthDate).TotalDays / 365);
             TripFolderBookRQ tripFolderBookRQ = new TripFolderBookRQ()
             {
                 ResultRequested = ResponseType.Unknown,
@@ -116,7 +117,7 @@ namespace HotelBookingServer.Controllers
                     {
                         new Passenger()
                         {
-                            Age = (int)((DateTime.Now - passengerBirthDate).TotalDays/365),
+                            Age = passengerAge,
                             BirthDate = passengerBirthDate,
                             CustomFields=new StateBag[]
                             {
@@ -125,7 +126,7 @@ namespace HotelBookingServer.Controllers
                             },
                             Email = passengerInfo.Email,
                             FirstName = passengerInfo.FirstName,
-                            Gender = passsGender,
+                            Gender = passengerGender,
                             LastName = passengerInfo.LastName,
                             KnownTravelerNumber="789456",
                             PassengerType = PassengerType.Adult,
@@ -245,7 +246,7 @@ namespace HotelBookingServer.Controllers
                                     {
                                         new PassengerTypeQuantity()
                                         {
-                                            Ages=new int[]{27},
+                                            Ages=new int[]{passengerAge},
                                             PassengerType=PassengerType.Adult,
                                             Quantity=1
                                         }
