@@ -13,13 +13,16 @@
         amount: " " + ("USD" + " " + updatedData.updatedPrice)
     }
     $("#hotelName").html(htmlData.hotelName);
-    $("#roomName").val(htmlData.roomType);
-    $("#checkIn").val(htmlData.checkInDate);
-    $("#checkOut").val(htmlData.checkOutDate);
-    $("#nights").val(htmlData.duration);
-    $("#fare").val(htmlData.amount);
+    $("#roomName").html(htmlData.roomType);
+    $("#checkIn").html(htmlData.checkInDate);
+    $("#checkOut").html(htmlData.checkOutDate);
+    $("#nights").html(htmlData.duration);
+    $("#fare").html(htmlData.amount);
     $('#Proceed-button').click(function () {
         sessionStorage.setItem("SessionId", updatedData.sessionId);
         window.location.href = "/customerDetails";
     });
+    $('#Cancel-button').click(function () {
+        window.location.href = "/index";
+    }
 });
