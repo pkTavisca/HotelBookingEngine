@@ -1,62 +1,57 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html>
 <head>
-    <meta name="description" content="An html page to enter your personal details">
-    <meta charset="utf-8" />
-    <meta name="author" content="Sakshi Sharma,Pratik Kumar,Subham Saraf">
-    <title>
-       Confirmation Page
-    </title>
-    <link rel="shortcut icon" href="../Resources/hotelicon.png" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Css/Confirmation-style.css">
     <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../Css/Confirmation-style.css" />
 </head>
+<script type="text/javascript">
+    function print_page() {
+        var ButtonControl = document.getElementById("btnprint");
+        ButtonControl.style.visibility = "hidden";
+        window.print();
+    }
+</script>
 <body>
     <section id="header">
         <article>
             <h1>TAVISCA</h1>
         </article>
     </section>
-    <div style="border-radius:5px;" id="form-section">
-        <form>
-            <h2 class="padding-left">Confirmation Details</h2>
-            <fieldset class="columns-nested">
-                <div class="In">
-                    <label>Confirmation Id</label><br>
-                    <input type="text" name="bookingid" id="booking-id" required readonly>
-                </div>
-				<div class="Middle">
-                    <label>Hotel Name</label><br>
-                    <input type="text" name="hotelname" id="hotelname" readonly>
-                </div>
-				 <div class="Middle">
-                    <label>Room Name</label><br>
-                    <input type="text" name="hotelname" id="roomname" readonly>
-                </div>
-                <div class="Out">
-                    <label>Check-In</label><br>
-                    <input type="text" name="check-in" id="check-in" required readonly>
-                </div>
-                <div class="In">
-                    <label>Check-Out</label><br>
-                    <input type="text" name="check-out" id="check-out" required readonly>
-                </div>
-                <div class="Middle">
-                    <label>Nights of Stay</label><br>
-                    <input type="text" name="countofnights" id="nights" required readonly>
-                </div>
-				 <div class="Middle">
-                    <label>Status</label><br>
-                    <input type="text" name="status" id="status" required readonly>
-                </div>
-				</fieldset>
-		</form>
-        </div>
-    	<div class="button-padding">
-                <button onclick="window.print()">Print</button>
+
+    <div id="guest-container">
+        <div id="inner-guest-container" class="layout">
+            <p>Thank You for booking! Your Confirmation Details are given below.</p>
+            <div id="hotel-name-container">
+                <span id="hotel-name">Confirmation Id :</span><span id="confirmationId" class="info-display"></span>
             </div>
-	       
+            <div id="hotel-type-container">
+                <span id="room-name">Hotel Name :</span><span id="hotelName" class="info-display"></span>
+            </div>
+            <div id="room-type-container">
+                <span id="room-name">Room Name :</span><span id="roomName" class="info-display"></span>
+            </div>
+            <div id="check-in-container">
+                <span id="check-in">Check-In Date :</span><span id="checkIn" class="info-display"></span>
+            </div>
+            <div id="check-out-container">
+                <span id="check-out">Check-Out Date :</span><span id="checkOut" class="info-display"></span>
+            </div>
+            <div id="number-of-nights-container">
+                <span id="numberOfNights">No. of nights :</span><span id="nights" class="info-display"></span>
+            </div>
+            <div id="status-container">
+                <span id="status">Status:</span><span id="confirmStatus" class="info-display"></span>
+            </div>
+            <div id="button-layout">
+                <button id="btnprint" onclick="print_page()">Print</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="../Scripts/Conformation.js"></script>
 </body>
-<script src="../Scripts/jquery-3.2.1.min.js"></script>
-<script src="../Scripts/Conformation.js"></script>
 </html>
