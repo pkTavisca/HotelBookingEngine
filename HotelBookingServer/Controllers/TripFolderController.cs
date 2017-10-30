@@ -282,7 +282,8 @@ namespace HotelBookingServer.Controllers
                 RoomName = hotelItinerary.Rooms[0].RoomName,
                 CheckIn = hotelItinerary.StayPeriod.Start.ToString(),
                 CheckOut = hotelItinerary.StayPeriod.End.ToString(),
-                BookingStatus = completeBookingRS.ServiceStatus.Status.ToString(),
+                Address = hotelItinerary.HotelProperty.Address.AddressLine1.ToString(),
+                Email = completeBookingRS.TripFolder.Passengers[0].Email,
                 NoOfNights = hotelItinerary.StayPeriod.Duration.ToString(),
             };
             return confirmation;
