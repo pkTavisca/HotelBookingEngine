@@ -1,11 +1,12 @@
 ﻿var sessionId;
 var result;
-$(document).ready(function () {
+$(document).ready(function() {
     sessionId = sessionStorage.getItem('SessionId');
 });
 for (var i = 2017; i >= 1947; i--) {
     $("#year").append("<option value='" + i + "'>" + i + "</option>");
 }
+
 function formInfo() {
     var firstName = $("#FirstName").val();
     var middleName = $("#MiddleName").val();
@@ -22,35 +23,24 @@ function formInfo() {
     var country = $("#Country option:selected").val();
     var zipcode = $("#zipcode").val();
 
-    var bookTripRequest =
-        {
-            FirstName: firstName,
-            LastName: lastName,
-            MiddleName: middleName,
-            Gender:gender,
-            Email: email,
-            PhoneNumber: phoneNum,
-            Day: day,
-            Month: month,
-            Year: year,
-            AdressLine1: addressLine1,
-            AdressLIne2: addressLine2,
-            City: city,
-            Country: country,
-            ZipCode: zipcode,
-            SessionID: sessionId
-        };
+    var bookTripRequest = {
+        FirstName: firstName,
+        LastName: lastName,
+        MiddleName: middleName,
+        Gender: gender,
+        Email: email,
+        PhoneNumber: phoneNum,
+        Day: day,
+        Month: month,
+        Year: year,
+        AdressLine1: addressLine1,
+        AdressLIne2: addressLine2,
+        City: city,
+        Country: country,
+        ZipCode: zipcode,
+        SessionID: sessionId
+    };
     var customerData = JSON.stringify(bookTripRequest);
-    $.ajax({
-        url: '../../api/TripFolder/post',
-        type: 'post',
-        crossDomain: true,
-        data: customerData,
-        dataType: 'json',
-        contentType: 'application/json',
-        success: function (result) {
-            sessionStorage.setItem('PaymentDetails', JSON.stringify(sessionId));
-            window.location.href = "/payment-index";
-        }
-    });
+    sessionStorage.setItem('passengerDetails', customerData);
+    window.location.href = "/payment-index";
 }
