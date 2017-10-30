@@ -23,8 +23,6 @@ $(document).ready(function () {
         $("#expiry_year").get(0).options[$("#expiry_year").get(0).options.length] = new Option(year, year);
         year = year + 1;
     }
-
-
 });
 function paymentInfo() {
     var name = $("#cardHolderName").val();
@@ -54,10 +52,6 @@ function paymentInfo() {
 
         url: '../../api/Payment/' + paymentDetails,
         type: 'get',
-        //crossDomain: true,
-        //data: paymentInfo,
-        //dataType: 'json',
-        //contentType: 'application/json',
         success: function (result) {
             sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
             window.location.href = "/Confirmation";
