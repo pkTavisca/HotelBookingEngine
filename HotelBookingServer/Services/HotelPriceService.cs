@@ -62,8 +62,8 @@ namespace HotelBookingServer.Services
             UpdatedPriceResponse updatedPriceResponse = new UpdatedPriceResponse();
             HotelTripProduct hotelTripProduct = (HotelTripProduct)priceResponse.TripProduct;
             HotelItinerary hotelItinerary = hotelTripProduct.HotelItinerary;
-            updatedPriceResponse.CheckinDate = hotelItinerary.StayPeriod.Start;
-            updatedPriceResponse.CheckoutDate = hotelItinerary.StayPeriod.End;
+            updatedPriceResponse.CheckinDate = hotelItinerary.StayPeriod.Start.ToString().Remove(10);
+            updatedPriceResponse.CheckoutDate = hotelItinerary.StayPeriod.End.ToString().Remove(10);
             updatedPriceResponse.Duration = hotelItinerary.StayPeriod.Duration;
             updatedPriceResponse.HotelName = hotelItinerary.HotelProperty.Name;
             updatedPriceResponse.RoomType = hotelItinerary.Rooms[0].RoomName;

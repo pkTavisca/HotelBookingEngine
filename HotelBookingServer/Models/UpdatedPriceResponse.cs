@@ -9,8 +9,8 @@ namespace HotelBookingServer.Models
     {
         public string HotelName { get; set; }
         public string RoomType { get; set; }
-        public DateTime CheckinDate { get; set; }
-        public DateTime CheckoutDate { get; set; }
+        public string CheckinDate { get; set; }
+        public string CheckoutDate { get; set; }
         public int Duration { get; set; }
         public decimal UpdatedPrice { get; set; }
         public string SessionId { get; set; }
