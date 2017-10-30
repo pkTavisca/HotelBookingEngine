@@ -3,6 +3,9 @@ var result;
 $(document).ready(function () {
     sessionId = sessionStorage.getItem('SessionId');
 });
+for (var i = 2017; i >= 1947; i--) {
+    $("#year").append("<option value='" + i + "'>" + i + "</option>");
+}
 function formInfo() {
     $("#confirmation").on("click", function () {
         var firstName = $("#FirstName").val();
