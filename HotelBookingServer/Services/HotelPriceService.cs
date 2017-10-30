@@ -37,14 +37,23 @@ namespace HotelBookingServer.Services
                     HotelItinerary = ReferenceConverter.Convert<hotel.HotelItinerary, HotelItinerary>(hotelRoomAvailTuple.Item2.Itinerary),
                     HotelSearchCriterion = ReferenceConverter.Convert<hotel.HotelSearchCriterion, HotelSearchCriterion>(hotelRoomAvailTuple.Item1.HotelSearchCriterion),
                 },
-                //AdditionalInfo = HotelMultiAvailCache.GetFromCache(sessionId).Item1.AdditionalInfo,
                 ResultRequested = ResponseType.Unknown,
                 SessionId = sessionId,
             };
             TripProductPriceRS priceResponse = tripsEngineClient.PriceTripProductAsync(priceRequest).GetAwaiter().GetResult();
             TripProductPriceCache.Cache[sessionId] = priceResponse;
-            updateRates((HotelTripProduct)priceResponse.TripProduct);
-            UpdatedPriceResponse updatedPriceResponse = UpdatedPriceResponseParser(priceResponse); 
+            UpdatedPriceResponse updatedPriceResponse;
+            try
+            {
+                UpdateRates((HotelTripProduct)priceResponse.TripProduct);
+                updatedPriceResponse = UpdatedPriceResponseParser(priceResponse);
+            }
+            catch
+            {
+                updatedPriceResponse = new UpdatedPriceResponse();
+                updatedPriceResponse.UpdatedPrice = 0;
+            }
+
             return updatedPriceResponse;
         }
 
@@ -64,7 +73,7 @@ namespace HotelBookingServer.Services
             return updatedPriceResponse;
         }
 
-        private void updateRates(HotelTripProduct hotelTripProduct)
+        private void UpdateRates(HotelTripProduct hotelTripProduct)
         {
             hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.BaseFare.DisplayAmount = hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.BaseFare.Amount;
             hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.BaseFare.DisplayCurrency = hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.BaseFare.Currency;
@@ -82,7 +91,6 @@ namespace HotelBookingServer.Services
             hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare.DisplayAmount = hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare.Amount;
             hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalTax.DisplayCurrency = hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalTax.Currency;
             hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalTax.DisplayAmount = hotelTripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalTax.Amount;
-            //
             hotelTripProduct.HotelItinerary.Fare.AvgDailyRate.DisplayAmount = hotelTripProduct.HotelItinerary.Fare.AvgDailyRate.Amount;
             hotelTripProduct.HotelItinerary.Fare.AvgDailyRate.DisplayCurrency = hotelTripProduct.HotelItinerary.Fare.AvgDailyRate.Currency;
             hotelTripProduct.HotelItinerary.Fare.BaseFare.DisplayAmount = hotelTripProduct.HotelItinerary.Fare.BaseFare.Amount;

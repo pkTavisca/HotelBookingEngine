@@ -1,7 +1,14 @@
 ﻿$(document).ready(function () {
-
     var data = sessionStorage.getItem('UpdatedPrice');
     var updatedData = JSON.parse(data);
+    if (updatedData.hotelName === null) {
+        $("#inner-guest-container").hide();
+        $("#error-div").show();
+    }
+    else {
+        $("#inner-guest-container").show();
+        $("#error-div").hide();
+    }
     var inDate = updatedData.checkinDate;
     var outDate = updatedData.checkoutDate;
     var htmlData = {
