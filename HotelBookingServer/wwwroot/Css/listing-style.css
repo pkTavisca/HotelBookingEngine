@@ -129,3 +129,8 @@ div > button {
     padding-top: 20px;
     padding-left: 10px;
 }
+.tagline {
+    text-align: center;
+    color: white;
+}
+

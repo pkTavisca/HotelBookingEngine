@@ -1,18 +1,3 @@
-//function checkDate() {
-//    var selectedDate = new Date(document.getElementById("expiry_year").value, document.getElementById("expiry_month").value);
-//    var today = new Date();
-//    if (today > selectedDate) {
-//        alert("Invalid Month/Year");
-//    }
-//    else {
-//        alert("Valid Month & Year");
-//    }
-//}
-//function generate_year() {
-//    for (var i = 2017; i <= 2104; i++) {
-//        document.write("<option value='" + i + "'>" + i + "</option>");
-//    }
-//}
 var sessionId;
 var paymentDetails;
 $(document).ready(function () {

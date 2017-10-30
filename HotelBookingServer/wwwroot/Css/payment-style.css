@@ -62,7 +62,7 @@ h2 {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    padding: 150px 100px 300px 100px;
+    padding: 150px 100px 100px 100px;
     font-family: 'Acme', sans-serif;
 }
 
@@ -92,3 +92,9 @@ fieldset {
 #cvcDiv {
     padding-right: 80%;
 }
+
+.tagline {
+    text-align: center;
+    color: white;
+}
+
