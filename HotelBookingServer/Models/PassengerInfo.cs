@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace HotelBookingServer.Models
 {
-    public class TripFolderRequest
+    public class PassengerInfo
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

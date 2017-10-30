@@ -17,265 +17,12 @@ namespace HotelBookingServer.Controllers
     public class TripFolderController : Controller
     {
         [HttpPost("post")]
-        public async Task Get([FromBody]TripFolderRequest tripFolderRequest)
+        public async Task Get([FromBody]PassengerInfo passengerInfo)
         {
-            HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct;
-            //TripFolderBookRQ tripFolderBookRQ2 = new TripFolderBookRQ()
-            //{
-            //    TripFolder = new TripFolder()
-            //    {
-            //        Passengers = new Passenger[]
-            //        {
-            //            new Passenger()
-            //            {
-            //                Age = 30,
-            //                BirthDate = DateTime.Now,
-            //                CustomFields = new StateBag[]
-            //                {
-            //                    new StateBag()
-            //                    {
-            //                        Name = "Boyd Gaming"
-            //                    },
-            //                    new StateBag()
-            //                    {
-            //                        Name = "IsPassportRequired"
-            //                    }
-            //                },
-            //                Email = "rsarda@tavisca.com",
-            //                FirstName = "Sandbox",
-            //                Gender = Gender.Male,
-            //                KnownTravelerNumber  ="789456",
-            //                LastName = "Test",
-            //                PassengerId = new Guid("00000000-0000-0000-0000-000000000000"),
-            //                PassengerType = PassengerType.Adult,
-            //                PhoneNumber = "1111111111",
-            //                Rph = 0,
-            //                UserId = 0,
-            //                UserName = "rsarda@tavisca.com"
-            //            }
-            //        },
-            //        Payments = new Payment[]
-            //        {
-            //            new CreditCardPayment()
-            //            {
-            //                CardMake = new CreditCardMake()
-            //                {
-            //                    Code = "VI",
-            //                    Name = "Visa"
-            //                },
-            //                CardType = CreditCardType.Personal,
-            //                ExpiryMonthYear = new DateTime(2020,1,1),
-            //                IsThreeDAuthorizeRequired = false,
-            //                NameOnCard = "test card",
-            //                Number = "0000000000001111",
-            //                SecurityCode = "123",
-            //                Amount = new Money()
-            //                {
-            //                    Amount = (decimal)73.49,
-            //                    BaseEquivAmount = (decimal)73.49,
-            //                    BaseEquivCurrency = "USD",
-            //                    DisplayAmount = 0,
-            //                    DisplayCurrency="",
-            //                    UsdEquivAmount = (decimal)73.49
-            //                },
-            //                Attributes = new StateBag[]
-            //                {
-            //                    new StateBag()
-            //                    {
-            //                        Name = "API_SESSION_ID",
-            //                        Value = tripFolderRequest.SessionID
-            //                    },
-            //                    new StateBag()
-            //                    {
-            //                        Name = "PointOfSaleRule"
-            //                    },
-            //                    new StateBag()
-            //                    {
-            //                        Name = "SectorRule"
-            //                    },
-            //                    new StateBag()
-            //                    {
-            //                        Name = "_AttributeRule_Rovia_Username"
-            //                    },
-            //                    new StateBag()
-            //                    {
-            //                        Name = "_AttributeRule_Rovia_Password"
-            //                    }
-            //                },
-            //                BillingAddress = new Address()
-            //                {
-            //                    AddressLine1 = "E Sunset Rd",
-            //                    AddressLine2 = "Near Trade Center",
-            //                    City = new City()
-            //                    {
-            //                        Country = "US",
-            //                        State = "State",
-            //                        CodeContext = LocationCodeContext.City,
-            //                        GmtOffsetMinutes = 0,
-            //                        Id = 0,
-            //                        Name = "LAS"
-            //                    },
-            //                    PhoneNumber = "123456",
-            //                    ZipCode = "123456",
-            //                    CodeContext = LocationCodeContext.Address,
-            //                    GmtOffsetMinutes = 0,
-            //                    Id = 0
-            //                },
-            //                Id = new Guid("00000000-0000-0000-0000-000000000000"),
-            //                PaymentType = PaymentType.Credit,
-            //                Rph = 0
-            //            }
-            //        },
-            //        Products = new HotelTripProduct[]{
-            //            new HotelTripProduct()
-            //            {
-            //                HotelItinerary = ((HotelTripProduct)(TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct)).HotelItinerary,
-            //                HotelSearchCriterion = ((HotelTripProduct)(TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct)).HotelSearchCriterion
-            //            }
-            //        }
-            //    },
-            //    TripProcessingInfo = new TripProcessingInfo()
-            //    {
-            //        TripProductRphs = new int[] { 4 }
-            //    }
-            //};
+            HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[passengerInfo.SessionID].TripProduct;
+            DateTime passengerBirthDate = new DateTime(int.Parse(passengerInfo.Year), int.Parse(passengerInfo.Month), int.Parse(passengerInfo.Day));
             TripFolderBookRQ tripFolderBookRQ = new TripFolderBookRQ()
             {
-                //    tripFolderRequest.SessionID = tripFolderRequest.SessionID,
-                //    ResultRequested = ResponseType.Unknown,
-                //    TripFolder = new TripFolder()
-                //    {
-                //        Creator = new User()
-                //        {
-                //            Email = "sshrikhande@tavisca.com",
-                //            FirstName = "Shweta",
-                //            LastName = "Shrikhande",
-                //            UserId = 26149061229281280,
-                //            UserName = "sshrikhande"
-                //        },
-                //        FolderName = "sshrikhande",
-                //        Id = new Guid("00000000-0000-0000-0000-000000000000"),
-                //        LastModifiedDate = new DateTime(),
-                //        Owner = new User()
-                //        {
-                //            AdditionalInfo = new StateBag[]
-                //            {
-                //                new StateBag()
-                //                {
-                //                    Name = "AgencyName",
-                //                    Value = "WV"
-                //                },
-                //                new StateBag()
-                //                {
-                //                    Name = "CompanyName",
-                //                    Value = "Rovia"
-                //                },
-                //                new StateBag()
-                //                {
-                //                    Name = "UserType",
-                //                    Value = "Normal"
-                //                },
-                //            },
-                //            Email = "sshrikhande@tavisca.com",
-                //            FirstName = "Shweta",
-                //            LastName = "Shrikhande",
-                //            UserId = 26149061229281280,
-                //            UserName = "sshrikhande"
-                //        },
-                //        Pos = new PointOfSale()
-                //        {
-                //            PosId = 101,
-                //            Requester = new Company()
-                //            {
-                //                DK = "200000D",
-                //                ID = 0,
-                //                CodeContext = CompanyCodeContext.HotelChain,
-
-                //            }
-                //        },
-                //        Type = TripFolderType.Personal,
-                //        Passengers = new Passenger[]
-                //        {
-                //            new Passenger()
-                //            {
-                //                Age = 27,
-                //                BirthDate = new DateTime(1990,03,03),
-                //                Email = "shrikhande@tavisca.com",
-                //                FirstName = "Shweta",
-                //                Gender = Gender.Male,
-                //                LastName = "Shrikhande",
-                //                PassengerId = new Guid("00000000-0000-0000-0000-000000000000"),
-                //                PassengerType = PassengerType.Adult,
-                //                PhoneNumber = "123456789",
-                //                Rph = 0,
-                //                UserId = 0,
-                //                UserName = "sshrikhande@tavisca.com"
-                //            }
-                //        },
-                //        Payments = new CreditCardPayment[]
-                //        {
-                //            new CreditCardPayment()
-                //            {
-
-                //                CardMake = new CreditCardMake()
-                //                {
-                //                    Code = "VI",
-                //                    Name = "Visa"
-                //                },
-                //                CardType = CreditCardType.Personal,
-                //                ExpiryMonthYear = new DateTime(2019, 01, 01),
-                //                NameOnCard = "Saurabh Cache",
-                //                IsThreeDAuthorizeRequired = false,
-                //                Number = "0000000000001111",
-                //                SecurityCode = "123",
-                //                Amount =//TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct.
-                //                new Money()
-                //                {
-                //                    Amount = 200.34M,
-                //                    Currency = "USD",
-                //                    DisplayAmount = 200.34M,
-                //                    DisplayCurrency = "USD"
-                //                },
-                //                BillingAddress = new Address()
-                //                {
-                //                    CodeContext = LocationCodeContext.Address,
-                //                    AddressLine1 = "5100 Tennyson Parkway",
-                //                    AddressLine2 = "dsv effs",
-                //                    PhoneNumber = "972-805-5200",
-                //                    ZipCode = "75024",
-                //                    City = new City()
-                //                    {
-                //                        Code = "PLN",
-                //                        CodeContext = LocationCodeContext.City,
-                //                        Name = "Plano",
-                //                        Country = "US",
-                //                        State = "TX"
-
-                //                    }
-                //                },
-                //            }
-                //        },
-                //        Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct },
-
-
-                //    },
-                //    TripProcessingInfo = new TripProcessingInfo()
-                //    {
-                //        TripProductRphs = new int[] { 0 },
-
-                //    }
-
-                //};
-                //tripFolderBookRQ.TripFolder.Products[0].PassengerSegments = new PassengerSegment[]
-                //{
-                //    new PassengerSegment()
-                //    {
-                //        BookingStatus = TripProductStatus.Planned,
-                //        PostBookingStatus=PostBookingTripStatus.None,
-                //        Rph=0
-                //        //PassengerRph = 0,
-
-                //    }
                 ResultRequested = ResponseType.Unknown,
                 TripFolder = new TripFolder()
                 {
@@ -296,7 +43,6 @@ namespace HotelBookingServer.Controllers
                         UserName = "sshrikhande"
                     },
                     FolderName = "TripFolder" + DateTime.Now,
-                    //LastModifiedDate = new DateTime(),
                     Owner = new User()
                     {
                         AdditionalInfo = new StateBag[]
@@ -367,24 +113,23 @@ namespace HotelBookingServer.Controllers
                     {
                         new Passenger()
                         {
-                            Age = 27,
-                            BirthDate = new DateTime(1990,03,03),
+                            Age = (int)((DateTime.Now - passengerBirthDate).TotalDays/365),
+                            BirthDate = passengerBirthDate,
                             CustomFields=new StateBag[]
                             {
                                 new StateBag(){ Name="Boyd Gaming"},
                                 new StateBag(){ Name="IsPassportRequired" , Value="false"}
                             },
-                            Email = "ssaraf@tavisca.com",
-                            FirstName = "Shweta",
+                            Email = passengerInfo.Email,
+                            FirstName = passengerInfo.FirstName,
                             Gender = Gender.Male,
-                            LastName = "Shrikhande",
+                            LastName = passengerInfo.LastName,
                             KnownTravelerNumber="789456",
-                            //PassengerId = new Guid("00000000-0000-0000-0000-000000000000"),
                             PassengerType = PassengerType.Adult,
-                            PhoneNumber = "123456789",
+                            PhoneNumber = passengerInfo.PhoneNumber,
                             Rph = 0,
                             UserId = 0,
-                            UserName = "sshrikhande@tavisca.com"
+                            UserName = passengerInfo.Email
                         }
                     },
                     Payments = new CreditCardPayment[]
@@ -394,7 +139,7 @@ namespace HotelBookingServer.Controllers
                             PaymentType = PaymentType.Credit,
                             Attributes = new StateBag[]
                             {
-                                new StateBag() { Name="API_SESSION_ID", Value=tripFolderRequest.SessionID},
+                                new StateBag() { Name="API_SESSION_ID", Value=passengerInfo.SessionID},
                                 new StateBag() { Name="PointOfSaleRule"},
                                 new StateBag() { Name="SectorRule"},
                                 new StateBag() { Name="_AttributeRule_Rovia_Username"},
@@ -413,13 +158,6 @@ namespace HotelBookingServer.Controllers
                             Number = "4444333322221111",
                             SecurityCode = "123",
                             Amount = tripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare,
-                            //new Money()
-                            //{
-                            //    Amount = 200.34M,
-                            //    Currency = "USD",
-                            //    DisplayAmount = 200.34M,
-                            //    DisplayCurrency = "USD"
-                            //},
                             BillingAddress = new Address()
                             {
                                 CodeContext = LocationCodeContext.Address,
@@ -429,31 +167,27 @@ namespace HotelBookingServer.Controllers
                                 ZipCode = "75024",
                                 City = new City()
                                 {
-                                   // Code = "PLN",
                                    Id=0,
-                                    CodeContext = LocationCodeContext.City,
-                                    Name = "Plano",
-                                    Country = "US",
-                                    State = "TX"
-
+                                   CodeContext = LocationCodeContext.City,
+                                   Name = "Plano",
+                                   Country = "US",
+                                   State = "TX"
                                 }
                             },
                         }
                     },
-                    //Products = new HotelTripProduct[] { (HotelTripProduct)TripProductPriceCache.Cache[tripFolderRequest.SessionID].TripProduct },
                     Products = new HotelTripProduct[]
                     {
                         new HotelTripProduct()
                         {
                             Attributes=new StateBag[]
                             {
-                                new StateBag{ Name ="API_SESSION_ID", Value=tripFolderRequest.SessionID},
+                                new StateBag{ Name ="API_SESSION_ID", Value=passengerInfo.SessionID},
                                 new StateBag{ Name ="token", Value=""},
                                 new StateBag{ Name ="ChargingHoursPriorToCPW", Value="48"},
                                 new StateBag{ Name ="IsLoginWhileSearching", Value="Y"},
                                 new StateBag{ Name ="IsInsuranceSelected", Value="no"},
                             },
-                            /*Id=Guid.Parse("372c3e4b-7e20-4590-8e83-2a0c54f3303f"),*/
                             IsOnlyLeadPaxInfoRequired=true,
                             Owner=new User()
                             {
@@ -463,7 +197,7 @@ namespace HotelBookingServer.Controllers
                                     new StateBag(){ Name="CompanyName", Value="Rovia"},
                                     new StateBag(){ Name="UserType", Value="Normal"}
                                 },
-                             Email = "ssaraf@tavisca.com",
+                            Email = "ssaraf@tavisca.com",
                             FirstName = "Shweta",
                             LastName = "Shrikhande",
                             UserId = 0,
@@ -523,18 +257,15 @@ namespace HotelBookingServer.Controllers
                 {
                     TripProductRphs = new int[] { 0 }
                 }
-
-
             };
             tripFolderBookRQ.TripFolder.Products[0].Owner = tripFolderBookRQ.TripFolder.Owner;
             TripsEngineClient tripsEngineClient = new TripsEngineClient();
             var response = await tripsEngineClient.BookTripFolderAsync(tripFolderBookRQ);
-            TripFolderCache.Cache[tripFolderRequest.SessionID] = response;
-            CompleteBookingRQ completeBookingRQ = CompleteBookingRQParser(response.SessionId,response);
+            TripFolderCache.Cache[passengerInfo.SessionID] = response;
+            CompleteBookingRQ completeBookingRQ = CompleteBookingRQParser(response.SessionId, response);
             CompleteBookingRS completeBookingRS = await tripsEngineClient.CompleteBookingAsync(completeBookingRQ);
             Confirmation confirmation = ConfirmationParser(completeBookingRS);
             await HttpContext.Response.WriteAsync(JsonConvert.SerializeObject(confirmation));
-            //return completeBookingRS;
         }
 
         private Confirmation ConfirmationParser(CompleteBookingRS completeBookingRS)
@@ -549,7 +280,7 @@ namespace HotelBookingServer.Controllers
                 CheckIn = hotelItinerary.StayPeriod.Start.ToString(),
                 CheckOut = hotelItinerary.StayPeriod.End.ToString(),
                 BookingStatus = completeBookingRS.ServiceStatus.Status.ToString(),
-                NoOfNights=hotelItinerary.StayPeriod.Duration.ToString(),
+                NoOfNights = hotelItinerary.StayPeriod.Duration.ToString(),
             };
             return confirmation;
         }
@@ -632,9 +363,6 @@ namespace HotelBookingServer.Controllers
                     Value = "true"
                 }
             };
-            //TripsEngineClient tripsEngineClient = new TripsEngineClient();
-            //CompleteBookingRS result = await tripsEngineClient.CompleteBookingAsync(bookingRQ);
-            //return result;
             return bookingRQ;
         }
     }
