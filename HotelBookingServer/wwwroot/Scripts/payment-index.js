@@ -42,14 +42,8 @@ function paymentInfo() {
         dataType: 'json',
         contentType: 'application/json',
         success: function(result) {
-            $.ajax({
-                url: '../../api/Payment/' + sessionId,
-                type: 'get',
-                success: function(result) {
-                    sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
-                    window.location.href = "/Confirmation";
-                }
-            });
+            sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
+            window.location.href = "/Confirmation";
         }
     });
 }

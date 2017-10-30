@@ -1,10 +1,11 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function() {
     var result = sessionStorage.getItem('ConfirmationDetails');
+    var passengerDetails = JSON.parse(sessionStorage.getItem('passengerDetails'));
     var confirmationDetails = JSON.parse(result);
     //var data = sessionStorage.getItem('UpdatedPrice');
     //var updatedData = JSON.parse(data);
-    var inDate = confirmationDetails.checkinDate;
-    var outDate = confirmationDetails.checkoutDate;
+    var inDate = confirmationDetails.CheckIn;
+    var outDate = confirmationDetails.CheckOut;
     var htmlData = {
         ConfirmationId: " " + confirmationDetails.ConfirmationID,
         hotelName: " " + confirmationDetails.HotelName,
@@ -17,11 +18,13 @@
 
         //amount: " " + (" " + confirmationDetails.status)
     }
-    $("#hotelName").val(htmlData.hotelName);
-    $("#email").val(htmlData.email);
-    $("#address").val(htmlData.address);
-    $("#roomName").val(htmlData.roomName);
-    $("#checkIn").val(htmlData.checkInDate);
-    $("#checkOut").val(htmlData.checkOutDate);
-    $("#nights").val(htmlData.nightsOfStay);
+    $("#hotelName").html(htmlData.hotelName);
+    $("#email").html(htmlData.email);
+    $("#address").html(htmlData.address);
+    $("#roomName").html(htmlData.roomName);
+    $("#checkIn").html(htmlData.checkInDate);
+    $("#checkOut").html(htmlData.checkOutDate);
+    $("#nights").html(htmlData.nightsOfStay);
+    $("#bookingId").html(htmlData.ConfirmationId);
+    $("#name").html(passengerDetails.FirstName + " " + passengerDetails.MiddleName + " " + passengerDetails.LastName + ",");
 });
