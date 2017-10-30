@@ -10,6 +10,7 @@ function formInfo() {
     var firstName = $("#FirstName").val();
     var middleName = $("#MiddleName").val();
     var lastName = $("#LastName").val();
+    var gender = $("#gender option:selected").val();
     var email = $("#email").val();
     var phoneNum = $("#phone").val();
     var day = $("#date option:selected").val();
@@ -26,6 +27,7 @@ function formInfo() {
             FirstName: firstName,
             LastName: lastName,
             MiddleName: middleName,
+            Gender:gender,
             Email: email,
             PhoneNumber: phoneNum,
             Day: day,

@@ -22,16 +22,24 @@
             <h2 class="padding-left">Personal Details</h2>
             <fieldset class="columns-nested">
                 <div class="In">
-                    <label for="search-field">First Name</label><br>
+                    <label>First Name</label><br>
                     <input type="text" name="fname" id="FirstName" placeholder="First Name" required>
                 </div>
                 <div class="Middle">
-                    <label for="search-field">Middle Name</label><br>
+                    <label>Middle Name</label><br>
                     <input type="text" id="MiddleName" name="mname" placeholder="Middle Name">
                 </div>
                 <div class="Out">
-                    <label for="search-field">Last Name</label><br>
+                    <label>Last Name</label><br>
                     <input type="text" name="lname" id="LastName" placeholder="Last Name" required>
+                </div>
+                <div class="Out">
+                    <label>Gender</label><br>
+                    <select id="gender" name="gender" required>
+                        <option value=""> - Gender - </option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
                 </div>
                 <div class="In">
                     <label>E-mail</label><br>
