@@ -2,8 +2,6 @@
     var result = sessionStorage.getItem('ConfirmationDetails');
     var passengerDetails = JSON.parse(sessionStorage.getItem('passengerDetails'));
     var confirmationDetails = JSON.parse(result);
-    //var data = sessionStorage.getItem('UpdatedPrice');
-    //var updatedData = JSON.parse(data);
     var inDate = confirmationDetails.CheckIn;
     var outDate = confirmationDetails.CheckOut;
     var htmlData = {
@@ -15,8 +13,6 @@
         nightsOfStay: " " + confirmationDetails.NoOfNights,
         email: " " + confirmationDetails.Email,
         address: " " + confirmationDetails.Address
-
-        //amount: " " + (" " + confirmationDetails.status)
     }
     $("#hotelName").html(htmlData.hotelName);
     $("#email").html(htmlData.email);

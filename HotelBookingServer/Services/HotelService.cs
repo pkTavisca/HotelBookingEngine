@@ -33,8 +33,6 @@ namespace HotelBookingServer.Services
                     return result;
                 }
             }
-            //HotelMultiAvailCache.AddToCache(searchRequest, result);
-            //return result;
             return null;
         }
         private PassengerTypeQuantity[] GetDefaultPassenger()

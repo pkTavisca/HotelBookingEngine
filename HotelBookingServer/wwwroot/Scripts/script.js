@@ -7,9 +7,6 @@ $("#search-field").keyup(function () {
         type: 'get',
         contentType: "application/json",
         success: function (jsonresult) {
-
-            //alert(parseit(jsonresult));
-
             $('#search-field').autocomplete({
                 minChars: 3,
                 source: parseit(jsonresult),
