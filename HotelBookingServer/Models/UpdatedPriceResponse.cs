@@ -14,5 +14,6 @@ namespace HotelBookingServer.Models
         public int Duration { get; set; }
         public decimal UpdatedPrice { get; set; }
         public string SessionId { get; set; }
+        public string Currency { get; set; }
     }
 }

@@ -10,7 +10,7 @@
         checkInDate: " " + inDate,
         checkOutDate: " " + outDate,
         duration: " " + updatedData.duration,
-        amount: " " + ("USD" + " " + updatedData.updatedPrice)
+        amount: " " + (updatedData.currency + " " + updatedData.updatedPrice)
     }
     $("#hotelName").html(htmlData.hotelName);
     $("#roomName").html(htmlData.roomType);
@@ -20,9 +20,9 @@
     $("#fare").html(htmlData.amount);
     $('#Proceed-button').click(function () {
         sessionStorage.setItem("SessionId", updatedData.sessionId);
-        window.location.href = "/customerDetails";
+        window.location.href = "customerDetails";
     });
     $('#Cancel-button').click(function () {
         window.location.href = "/index";
-    }
+    });
 });

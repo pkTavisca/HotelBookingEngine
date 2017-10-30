@@ -60,6 +60,7 @@ namespace HotelBookingServer.Services
             updatedPriceResponse.RoomType = hotelItinerary.Rooms[0].RoomName;
             updatedPriceResponse.UpdatedPrice = hotelItinerary.Rooms[0].DisplayRoomRate.TotalFare.Amount;
             updatedPriceResponse.SessionId = priceResponse.SessionId;
+            updatedPriceResponse.Currency = hotelItinerary.Rooms[0].DisplayRoomRate.TotalFare.Currency;
             return updatedPriceResponse;
         }
 
