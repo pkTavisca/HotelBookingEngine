@@ -1,8 +1,4 @@
-﻿//using HotelBookingServer.Models;
-//using HotelEngineServiceReference;
-using Microsoft.AspNetCore.Mvc;
-//using Microsoft.Extensions.Options;
-//using HotelBookingServer.Services;
+﻿using Microsoft.AspNetCore.Mvc;
 using TripEngineServiceReference;
 using System;
 using HotelBookingServer.Implementations;
@@ -17,8 +13,10 @@ namespace HotelBookingServer.Controllers
     public class TripFolderController : Controller
     {
         [HttpPost("post")]
-        public async Task Get([FromBody]PassengerInfo passengerInfo)
+        public async Task Get([FromBody]PassengerAndPaymentInfo completeDetails)
         {
+            var passengerInfo = completeDetails.PassengerInfo;
+            var creditCardInfo = completeDetails.CreditCardInfo;
             HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[passengerInfo.SessionID].TripProduct;
             DateTime passengerBirthDate = new DateTime(int.Parse(passengerInfo.Year), int.Parse(passengerInfo.Month), int.Parse(passengerInfo.Day));
             Gender passengerGender;
@@ -156,11 +154,11 @@ namespace HotelBookingServer.Controllers
                             },
                             Rph=0,
                             CardType = CreditCardType.Personal,
-                            ExpiryMonthYear = new DateTime(2019, 01, 01),
-                            NameOnCard = "Saurabh Cache",
+                            ExpiryMonthYear = new DateTime(int.Parse(creditCardInfo.ExpYear), int.Parse(creditCardInfo.ExpMonth), 01),
+                            NameOnCard = creditCardInfo.Name,
                             IsThreeDAuthorizeRequired = false,
-                            Number = "4444333322221111",
-                            SecurityCode = "123",
+                            Number = creditCardInfo.NumberOne + creditCardInfo.NumberTwo + creditCardInfo.NumberThree + creditCardInfo.NumberFour,
+                            SecurityCode = creditCardInfo.CVC,
                             Amount = tripProduct.HotelItinerary.Rooms[0].DisplayRoomRate.TotalFare,
                             BillingAddress = new Address()
                             {
@@ -278,7 +276,7 @@ namespace HotelBookingServer.Controllers
             HotelItinerary hotelItinerary = tripProduct.HotelItinerary;
             Confirmation confirmation = new Confirmation()
             {
-                ConfirmationID = completeBookingRS.TripFolder.Products[0].PassengerSegments[0].VendorConfirmationNumber,
+                ConfirmationID = completeBookingRS.TripFolder.ConfirmationNumber,
                 HotelName = hotelItinerary.HotelProperty.Name,
                 RoomName = hotelItinerary.Rooms[0].RoomName,
                 CheckIn = hotelItinerary.StayPeriod.Start.ToString(),

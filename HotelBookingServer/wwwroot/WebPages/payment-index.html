@@ -15,7 +15,7 @@
      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script> 
 </head>
 <body>
-    <form onsubmit="paymentInfo(); return false">
+    <form onsubmit="return false">
         <div style="border-radius:5px;" id="form-section">
             <article>
                 <h2 class="padding-left">Payment Details</h2>
@@ -66,7 +66,7 @@
                     </div>
                 </fieldset>
                <div class="button-style">
-                    <button id="payNow">Pay Now</button>
+                    <button id="payNow" type="button" onclick="paymentInfo()">Pay Now</button>
                 </div>
             </article>
         </div>
