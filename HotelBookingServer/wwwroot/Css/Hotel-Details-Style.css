@@ -34,7 +34,6 @@ article > h1 {
     flex-direction: row;
     overflow-x: hidden;
     padding-bottom: 20px;
-    /*overflow-y: hidden;*/
 }
 
 .border {
@@ -45,18 +44,16 @@ article > h1 {
     font-weight: bold;
     font-size: 2em;
     align-self: center;
-    /*padding-left:300px;*/
-    /*padding-top:100px;*/
     text-decoration: underline;
 }
 
 .indi-room {
     display: flex;
     flex-direction: column;
+    cursor: pointer;
 }
 
 #Address {
-    /*padding-left:680px;*/
     font-size: 20px;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -69,9 +66,7 @@ article > h1 {
 }
 
 .map-bottom {
-    /*padding-left:20px;*/
     height: 250px;
-    /*padding-bottom:50px;*/
 }
 
 .main-container {
@@ -96,7 +91,6 @@ article > h1 {
 .room-description {
     padding-top: 10px;
     padding-left: 10px;
-    /*padding-bottom:10px;*/
 }
 
 #Price {

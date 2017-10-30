@@ -10,7 +10,6 @@ body {
 
 h2 > a {
     color: white;
-    /*text-decoration-color:black;*/
 }
 
 .somediv h2 {
@@ -41,25 +40,7 @@ article > h1 {
     font-size: 40px;
 }
 
-/*article > img {
-    width: 340px;
-    height: 50px;
-  
-}*/
-
 .hotels-info-container {
-    /*padding-bottom: 30px;
-    display: flex;
-    /*flex-flow: wrap;*/
-    /*border: solid black;
-    width: 1200px;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    color: white;
-    background-color: black;
-    padding-left: 20px;
-    padding-top: 10px;
-    border-radius: 10px;*/
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
@@ -76,6 +57,9 @@ article > h1 {
     border-radius: 20px;
 }
 
+.hotels-info-container a {
+    cursor: pointer;
+}
 
 #hotel-list {
     display: flex;
@@ -83,8 +67,6 @@ article > h1 {
     justify-content: center;
     align-items: center;
     padding-top: 100px;
-    /*padding-left: 250px;
-    padding-right: 250px;*/
 }
 
 p {
