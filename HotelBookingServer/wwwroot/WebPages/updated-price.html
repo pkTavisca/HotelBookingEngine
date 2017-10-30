@@ -1,43 +1,48 @@
 <!doctype html>
 <html>
 <head>
-	<title></title>
-	<link rel="stylesheet" type="text/css" href="../Css/guest-style.css">
-	 <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="../Css/guest-style.css">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Baloo+Tammudu" rel="stylesheet">
 </head>
 <body>
-	 <section id="header">
+    <section id="header">
         <article>
             <h1>TAVISCA</h1>
         </article>
     </section>
 
     <div id="guest-container">
-            <div class="layout">
-                <div id="data-container">
-                    <h2 id="hotel-name">Hotel Name:</h2>
-                    <input type="text" id="hotelName" readonly/>
-                    <h2 id="room-name">Room Type:</h2>
-                    <input type="text" id="roomName" readonly/>
-                    <h2 id="check-in">Check-In Date:</h2>
-                    <input type="text" id="checkIn" readonly/>
-                    <h2 id="check-out">Check-Out Date:</h2>
-                    <input type="text" id="checkOut" readonly/>
-                    <h2 id="duration">No. of nights:</h2>
-                    <input type="text" id="nights" readonly/>
-                    <h2 id="totalFare">Total Amount:</h2>
-                    <input type="text" id="fare" readonly/>
-                    <div id="button-layout">
-                        <button id="Proceed-button"> Proceed</button>
-                        <button id="Cancel-button"> Cancel</button>
-                    </div>
-                </div>
+        <div id="inner-guest-container" class="layout">
+            <div id="hotel-name-container">
+                <span id="hotel-name">Hotel Name:</span><span id="hotelName"></span>
+            </div>
+            <div>
+                <span id="room-name">Room Type:</span><div id="roomName"></div>
+            </div>
+            <div>
+                <span id="check-in">Check-In Date:</span><div id="checkIn"></div>
+            </div>
+            <div>
+                <span id="check-out">Check-Out Date:</span><div id="checkOut"></div>
+            </div>
+            <div>
+                <span id="duration">No. of nights:</span><div id="nights"></div>
+            </div>
+            <div>
+                <span id="totalFare">Total Amount:</span><div id="fare"></div>
+            </div>
+            <div id="button-layout">
+                <button id="Proceed-button"> Proceed</button>
+                <button id="Cancel-button"> Cancel</button>
             </div>
         </div>
-    
-  	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
-        <script src="../Scripts/updated-price.js"></script>
+    </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.min.js"></script>
+    <script src="../Scripts/updated-price.js"></script>
 </body>
 </html>
 

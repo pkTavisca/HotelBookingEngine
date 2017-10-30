@@ -16,43 +16,41 @@ $(document).ready(function () {
 
 });
 function paymentInfo() {
-    $("#payNow").on("click", function () {
-        var name = $("#cardHolderName").val();
-        var numberOne = $("#numberOne").val();
-        var numberTwo = $("#numberTwo").val();
-        var numberThree = $("#numberThree").val();
-        var numberFour = $("#numberFour").val();
-        var cvc = $("#cvc").val();
-        var expMonth = $("#expiry_month").val();
-        var expYear = $("#expiry_year").val();
+    var name = $("#cardHolderName").val();
+    var numberOne = $("#numberOne").val();
+    var numberTwo = $("#numberTwo").val();
+    var numberThree = $("#numberThree").val();
+    var numberFour = $("#numberFour").val();
+    var cvc = $("#cvc").val();
+    var expMonth = $("#expiry_month").val();
+    var expYear = $("#expiry_year").val();
 
-        var paymentData =
-            {
-                Name: name,
-                NumberOne: numberOne,
-                NumberTwo: numberTwo,
-                NumberThree: numberThree,
-                NumberFour: numberFour,
-                CVC: cvc,
-                ExpMonth: expMonth,
-                ExpYear: expYear,
-                SessionID: paymentDetails
-            };
+    var paymentData =
+        {
+            Name: name,
+            NumberOne: numberOne,
+            NumberTwo: numberTwo,
+            NumberThree: numberThree,
+            NumberFour: numberFour,
+            CVC: cvc,
+            ExpMonth: expMonth,
+            ExpYear: expYear,
+            SessionID: paymentDetails
+        };
 
-        var paymentInfo = JSON.stringify(paymentData);
-        $.ajax({
+    var paymentInfo = JSON.stringify(paymentData);
+    $.ajax({
 
-            url: '../../api/Payment/' + paymentDetails,
-            type: 'get',
-            //crossDomain: true,
-            //data: paymentInfo,
-            //dataType: 'json',
-            //contentType: 'application/json',
-            success: function (result) {
-                sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
-                window.location.href = "/Confirmation";
-            }
+        url: '../../api/Payment/' + paymentDetails,
+        type: 'get',
+        //crossDomain: true,
+        //data: paymentInfo,
+        //dataType: 'json',
+        //contentType: 'application/json',
+        success: function (result) {
+            sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
+            window.location.href = "/Confirmation";
+        }
 
-        });
     });
- }
+}

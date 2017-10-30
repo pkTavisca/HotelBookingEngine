@@ -12,7 +12,7 @@
         duration: " " + updatedData.duration,
         amount: " " + ("USD" + " " + updatedData.updatedPrice)
     }
-    $("#hotelName").val(htmlData.hotelName);
+    $("#hotelName").html(htmlData.hotelName);
     $("#roomName").val(htmlData.roomType);
     $("#checkIn").val(htmlData.checkInDate);
     $("#checkOut").val(htmlData.checkOutDate);
