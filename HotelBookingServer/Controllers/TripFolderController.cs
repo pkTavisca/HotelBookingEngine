@@ -21,6 +21,9 @@ namespace HotelBookingServer.Controllers
         {
             HotelTripProduct tripProduct = (HotelTripProduct)TripProductPriceCache.Cache[passengerInfo.SessionID].TripProduct;
             DateTime passengerBirthDate = new DateTime(int.Parse(passengerInfo.Year), int.Parse(passengerInfo.Month), int.Parse(passengerInfo.Day));
+            Gender passengerGender;
+            if (passengerInfo.Gender.Equals("Female")) passengerGender = Gender.Female;
+            else passengerGender = Gender.Male;
             int passengerAge = (int)((DateTime.Now - passengerBirthDate).TotalDays / 365);
             TripFolderBookRQ tripFolderBookRQ = new TripFolderBookRQ()
             {
@@ -123,7 +126,7 @@ namespace HotelBookingServer.Controllers
                             },
                             Email = passengerInfo.Email,
                             FirstName = passengerInfo.FirstName,
-                            Gender = Gender.Male,
+                            Gender = passengerGender,
                             LastName = passengerInfo.LastName,
                             KnownTravelerNumber="789456",
                             PassengerType = PassengerType.Adult,
