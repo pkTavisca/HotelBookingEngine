@@ -9,6 +9,7 @@ $(document).ready(function() {
 });
 
 function paymentInfo() {
+    $("#spinner").show();
     var name = $("#cardHolderName").val();
     var numberOne = $("#numberOne").val();
     var numberTwo = $("#numberTwo").val();
@@ -42,8 +43,12 @@ function paymentInfo() {
         dataType: 'json',
         contentType: 'application/json',
         success: function(result) {
+            $("#spinner").hide();
             sessionStorage.setItem('ConfirmationDetails', JSON.stringify(result));
             window.location.href = "/Confirmation";
+        },
+        error: function() {
+            $("#spinner").hide();
         }
     });
 }
