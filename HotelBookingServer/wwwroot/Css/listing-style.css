@@ -2,12 +2,20 @@ body {
     background: url(../Resources/loading-circle.svg) no-repeat center fixed;
     background-size: 200px;
     margin: 0;
+    /*background-color: aliceblue;*/
 }
 
-.somediv {
+/*.somediv {
     background-color: aliceblue;
+}*/
+.main-heading{
+    margin:0px;
+    padding-top:120px;
+    text-decoration:underline;
+    font-family:'Acme',sans-serif;
+    font-size:50px;
+    text-align:center;
 }
-
 h2 > a {
     color: white;
 }
@@ -66,7 +74,7 @@ article > h1 {
     flex-flow: column wrap;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 
 p {
