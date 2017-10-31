@@ -27,7 +27,7 @@ namespace HotelBookingServer.Services
             return sessionId;
         }
 
-        private void AddResultsToCache(string searchTerm)
+        private void GetResults(string searchTerm)
         {
             string autosuggestApiUrl = _appSettings.SearchAutosuggestApiBaseUrl + searchTerm;
             string autosuggestResult = MakeApiCall(autosuggestApiUrl);
@@ -51,7 +51,7 @@ namespace HotelBookingServer.Services
         {
             if (_searchAutoSuggestResultsCache.Contains(searchTerm))
                 return _searchAutoSuggestResultsCache.GetFromCache(searchTerm);
-            AddResultsToCache(searchTerm);
+            GetResults(searchTerm);
             return _searchAutoSuggestResultsCache.GetFromCache(searchTerm);
         }
     }
