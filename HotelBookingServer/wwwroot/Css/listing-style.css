@@ -2,12 +2,8 @@ body {
     background: url(../Resources/loading-circle.svg) no-repeat center fixed;
     background-size: 200px;
     margin: 0;
-    /*background-color: aliceblue;*/
 }
 
-/*.somediv {
-    background-color: aliceblue;
-}*/
 .main-heading{
     margin:0px;
     padding-top:120px;
